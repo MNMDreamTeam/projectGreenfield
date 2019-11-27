@@ -11,7 +11,6 @@ import React from 'react';
 
 const Modal = () => {
   return (
-    <div>
       <div class="modal fade" id="modal" tabIndex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -31,7 +30,6 @@ const Modal = () => {
           </div>
         </div>
       </div>
-    </div>
   )
 };
 
