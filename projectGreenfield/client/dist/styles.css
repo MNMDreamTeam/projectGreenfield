@@ -1,9 +1,39 @@
-.carousel {
-    width:25em;
-    height:20em;
+#carousel {
+    width:20em;
+    height:15em;
   }
 
 .carousel-item {
-    widows:25em;
-    height:20em;
+    widows:20em;
+    height:15em;
+    
 }
+
+.Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+}
+
+.Col
+{
+    display: table-cell;
+    background-color:lightblue; /*Optional*/
+}
+
+.leftSide {
+    width:8em;
+    height:8em;
+    margin-bottom: 14em;
+   
+}
+
+.rightSide {
+    width:8em;
+    height:8em;
+    margin-bottom: 14em;
+  
+}
+
