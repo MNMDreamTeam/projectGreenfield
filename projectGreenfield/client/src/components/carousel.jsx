@@ -6,8 +6,7 @@ class Carousel extends React.Component{
     }
     render(){
         return (
-<div> 
-<div>hello</div>
+<div class="carousel"> 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -16,13 +15,13 @@ class Carousel extends React.Component{
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-30" src="https://www.w3schools.com/images/picture.jpg" alt="First slide"></img>
+      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg" alt="First slide"></img>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-30" src="https://www.w3schools.com/images/picture.jpg" alt="Second slide"></img>
+      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg" alt="Second slide"></img>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-30" src="https://www.w3schools.com/images/picture.jpg" alt="Third slide"></img>
+      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg" alt="Third slide"></img>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -34,7 +33,6 @@ class Carousel extends React.Component{
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div>hello</div>
 </div> 
         )
     }
