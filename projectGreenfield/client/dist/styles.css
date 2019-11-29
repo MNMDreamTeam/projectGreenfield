@@ -20,13 +20,14 @@
 .Col
 {
     display: table-cell;
-    background-color:lightblue; /*Optional*/
+    /* background-color:lightblue;  */
 }
 
 .leftSide {
     width:8em;
     height:8em;
     margin-bottom: 14em;
+    margin-left: .8em;
    
 }
 
@@ -34,6 +35,6 @@
     width:8em;
     height:8em;
     margin-bottom: 14em;
-  
+    margin-left: .8em;
 }
 

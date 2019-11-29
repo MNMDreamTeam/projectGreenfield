@@ -4,9 +4,10 @@ class Carousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            picsLeft: ["demo_iframe.htm", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"],
+            picsLeft: ["https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"],
             picsRight: ["https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"],
-            middle: "https://www.w3schools.com/images/picture.jpg"
+            middle: "demo_iframe.htm",
+            allPics: ["https://www.w3schools.com/images/picture.jpg",  "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "demo_iframe.htm", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"]
         }
         this.rightShift = this.rightShift.bind(this);
         this.leftShift = this.leftShift.bind(this);
@@ -48,7 +49,7 @@ class Carousel extends React.Component{
         </div>
 ))}
 <div id="carousel" class="Col"> 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -59,26 +60,26 @@ class Carousel extends React.Component{
     <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
   </ol>
   <div class="carousel-inner">
+    <div class="carousel-item">
+      <img class="d-block w-100" src={this.state.allPics[0]}></img>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src={this.state.allPics[1]}></img>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src={this.state.allPics[2]}></img>
+    </div>
     <div class="carousel-item active">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
+      <img class="d-block w-100" src={this.state.allPics[3]}></img>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
+      <img class="d-block w-100" src={this.state.allPics[4]}></img>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
+      <img class="d-block w-100" src={this.state.allPics[5]}></img>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.w3schools.com/images/picture.jpg"></img>
+      <img class="d-block w-100" src={this.state.allPics[6]}></img>
     </div>
 
   </div>
