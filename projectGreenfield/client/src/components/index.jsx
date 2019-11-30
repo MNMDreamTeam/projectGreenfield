@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from './modal.jsx'
+import Modal from './modal.jsx';
+import Related from './related.jsx';
 
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
   render(){
     return(
       <div>
-
+        <Related />
       </div>
     )
   }
