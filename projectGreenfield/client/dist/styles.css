@@ -177,9 +177,14 @@ p {
 }
 .logoBar {
     width:70em;
-    height:4em;
-    margin-left:15em;
+    height:7em;
+    margin-left:12em;
     margin-bottom:1.3em;
     background-color: rgb(117, 173, 228); 
 }
 
+.logoPic {
+    width:15em;
+    height:15em;
+    margin-top: -2em;
+}

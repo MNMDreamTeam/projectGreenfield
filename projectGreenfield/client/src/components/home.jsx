@@ -9,7 +9,9 @@ class Home extends React.Component {
 render(){
     return (
         <div>
-            <div class="logoBar"></div>
+            <div class="logoBar">
+            <img class="logoPic" src="./images/logo.jpg"></img>
+            </div>
             
             <div class="Row">
                 <div id="Col" class="showcase">
