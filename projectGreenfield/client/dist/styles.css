@@ -59,6 +59,7 @@
    
 }
 
+
 .rightSide {
     width:8em;
     height:8em;
@@ -93,20 +94,22 @@
     width:25em;
     height:35em;
     /* table-layout: fixed;  */
-    border: mediumblue 2px solid;
+    
     margin-top: 7em;
     margin-left: 8em;
-    
+    background-color: rgb(230, 229, 229);
 }
+
 
 .style{
     display: table;
     width:15em;
     height:35em;
     /* table-layout: fixed;  */
-    border: rgb(205, 0, 79) 2px solid;
+   
     margin-top: 7em;
     margin-left: 4em;
+    background-color:white;
 }
   
 .circleRow
@@ -126,8 +129,9 @@
     width:4em;
     height: 4em;
     border-radius: 50%;
-    background-color: mediumturquoise;
-    margin-left: 1em;
+    border: black 1px solid;
+    background-color: rgb(208, 208, 208);
+    margin-left: 1.5em;
     /* background-color:lightblue;  */
 
 }
@@ -143,7 +147,7 @@ p {
 }
 
 .dropdown1 {
-    border: black 2px solid;
+    border: black 1px solid;
     width:11em;
     display: inline-block;
     margin: .7em;
@@ -151,14 +155,14 @@ p {
 }
 
 .dropdown2 {
-    border: black 2px solid;
-    width:11em;
+    border: black 1px solid;
+    width:4em;
     display: inline-block;
     margin: .7em;
 }
 
 .dropdown3 {
-    border: black 2px solid;
+    border: black 1px solid;
     width:11em;
     display: inline-block;
     margin: .7em;
@@ -166,8 +170,15 @@ p {
 }
 
 .dropdown4 {
-    border: black 2px solid;
-    width:11em;
+    border: black 1px solid;
+    width:6em;
     display: inline-block;
     margin: .7em;
+}
+.logoBar {
+    width:70em;
+    height:4em;
+    margin-left:15em;
+    margin-bottom:1.3em;
+    background-color: rgb(117, 173, 228); 
 }
