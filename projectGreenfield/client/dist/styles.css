@@ -148,7 +148,7 @@ p {
 
 .dropdown1 {
     border: black 1px solid;
-    width:11em;
+    width:8.5em;
     display: inline-block;
     margin: .7em;
     margin-left:2em;
@@ -156,14 +156,14 @@ p {
 
 .dropdown2 {
     border: black 1px solid;
-    width:4em;
+    width:3em;
     display: inline-block;
     margin: .7em;
 }
 
 .dropdown3 {
     border: black 1px solid;
-    width:11em;
+    width:8.6em;
     display: inline-block;
     margin: .7em;
     margin-left:2em;
@@ -171,7 +171,7 @@ p {
 
 .dropdown4 {
     border: black 1px solid;
-    width:6em;
+    width:4.5em;
     display: inline-block;
     margin: .7em;
 }
@@ -182,3 +182,4 @@ p {
     margin-bottom:1.3em;
     background-color: rgb(117, 173, 228); 
 }
+
