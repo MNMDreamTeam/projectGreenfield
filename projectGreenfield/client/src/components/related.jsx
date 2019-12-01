@@ -24,41 +24,22 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    /*
-      Something like below -
-      will need to get related products id's, then setState with matching products
-
-      How to do the seperate calls -- Nested fetch maybe??
-    */
-
-    // fetch
-      // .then - data.json
-        // .then - fetch products list
-          // .then - setState with related products
-
     fetch('http://3.134.102.30/products/2/related')
     .then((res) => {
       return res.json();
-    }).then((data) => {
-      console.log('related', data);
-      data.forEach(el => {
+    }).then((relatedId) => {
+      // console.log('related', relatedId);
+      relatedId.forEach(el => {
         fetch(`http://3.134.102.30/products/${el}`)
         .then((item) => {
           return item.json();
         }).then((itemObj) => {
-          // setState?
-          console.log(itemObj);
+          // setState here? -- concat to array? is that legal for state? ask Teddi
+          // console.log(itemObj);
+          this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)});
+          console.log(this.state);
         })
       })
-      // fetch('http://3.134.102.30/products/list')
-      // .then((list) => {
-      //   return list.json();
-      // }).then((products) => {
-      //   // data = array of related id's
-      //   // products = array of product objects
-      //   console.log('related', data);
-      //   console.log('products', products);
-      // })
     })
   }
 
