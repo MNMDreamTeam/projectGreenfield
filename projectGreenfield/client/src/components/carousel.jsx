@@ -4,10 +4,10 @@ class Carousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            picsLeft: ["https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"],
-            picsRight: ["https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"],
-            middle: "demo_iframe.htm",
-            allPics: ["https://www.w3schools.com/images/picture.jpg",  "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "demo_iframe.htm", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg", "https://www.w3schools.com/images/picture.jpg"]
+            picsLeft: ["./images/boots.jpg", "./images/shorts.jpg", "./images/jacket.jpg"],
+            picsRight: ["./images/hat.jpg", "./images/jeans.jpg", "./images/shirt.jpg"],
+            middle: "./images/dress.jpg",
+            allPics: ["./images/boots.jpg", "./images/shorts.jpg", "./images/jacket.jpg", "./images/dress.jpg", "./images/hat.jpg", "./images/jeans.jpg", "./images/shirt.jpg"]
         }
         this.rightShift = this.rightShift.bind(this);
         this.leftShift = this.leftShift.bind(this);
