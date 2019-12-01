@@ -141,3 +141,33 @@ p {
     margin-left: 2em;
 
 }
+
+.dropdown1 {
+    border: black 2px solid;
+    width:11em;
+    display: inline-block;
+    margin: .7em;
+    margin-left:2em;
+}
+
+.dropdown2 {
+    border: black 2px solid;
+    width:11em;
+    display: inline-block;
+    margin: .7em;
+}
+
+.dropdown3 {
+    border: black 2px solid;
+    width:11em;
+    display: inline-block;
+    margin: .7em;
+    margin-left:2em;
+}
+
+.dropdown4 {
+    border: black 2px solid;
+    width:11em;
+    display: inline-block;
+    margin: .7em;
+}
