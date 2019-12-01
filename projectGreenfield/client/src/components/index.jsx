@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Button from './button.jsx';
 import Carousel from './carousel.jsx'
 import VerticalCarousel from './VerticalCarousel.jsx'
+import Home from './home.jsx'
 
 
 class App extends React.Component {
@@ -13,7 +14,7 @@ class App extends React.Component {
   render(){
     return(
       <div>
-        <VerticalCarousel />
+        <Home />
       </div>
     )
   }

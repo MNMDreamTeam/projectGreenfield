@@ -1,18 +1,18 @@
 #carousel {
-    width:20em;
-    height:20em;
+    width:25em;
+    height:25em;
 }
 
 #carousel2 {
-    width:20em;
-    height:20em;
-    margin-left: 25em;
-    margin-top: -35em;
+    width:25em;
+    height:25em;
+    margin-left: 20em;
+    margin-top: -31em;
 }
 
 .carousel-item {
-    width:20em;
-    height:20em;
+    width:25em;
+    height:25em;
 }
 
 .Row
@@ -23,19 +23,32 @@
     border-spacing: .6em;
 }
 
+
 .Row2
 {
     display: table;
     width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
     border-spacing: .6em;
+    margin-left: 6em;
     /* background-color:lightblue;  */
 }
 
 .Col
 {
     display: table-cell;
+    
     /* background-color:lightblue;  */
+
+}
+
+#Col
+{
+    display: table-cell;
+    border-spacing: 4em;
+   
+    /* background-color:lightblue;  */
+
 }
 
 .leftSide {
@@ -62,8 +75,8 @@
 }
 
 .rightSide2 {
-    width:6em;
-    height:6em;
+    width:4em;
+    height:4em;
     
     margin-left: .8em;
 }
@@ -74,3 +87,57 @@
  .carousel-control-next-icon{
    background-image: url('https://apufpel.com.br/assets/img/seta_ult.png')
  }
+
+ .showcase{
+    display: table;
+    width:25em;
+    height:35em;
+    /* table-layout: fixed;  */
+    border: mediumblue 2px solid;
+    margin-top: 7em;
+    margin-left: 8em;
+    
+}
+
+.style{
+    display: table;
+    width:15em;
+    height:35em;
+    /* table-layout: fixed;  */
+    border: rgb(205, 0, 79) 2px solid;
+    margin-top: 7em;
+    margin-left: 4em;
+}
+  
+.circleRow
+{
+    display: table;
+    /* width:4em;
+    height: 4em; */
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+    margin-left:1.4em;
+    /* background-color:lightblue;  */
+}
+
+.circleCol
+{
+    display: table-cell;
+    width:4em;
+    height: 4em;
+    border-radius: 50%;
+    background-color: mediumturquoise;
+    margin-left: 1em;
+    /* background-color:lightblue;  */
+
+}
+
+h2 {
+    margin-left:1em;
+
+}
+
+p {
+    margin-left: 2em;
+
+}
