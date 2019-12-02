@@ -1,20 +1,36 @@
 import React from 'react';
 import VerticalCarousel from './VerticalCarousel.jsx';
+import $ from 'jquery';
 class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            products: []
+            products: [],
+            currentProduct: {},
+            styles: []
         }
     }
 
-// componentDidMount(){
-//     $.get('http://3.134.102.30/products/list?count=11')
-//     .then(items)
-//         console.log('products', items)
-//         this.setState({products: items})
+componentDidMount(){
+    $.get('http://3.134.102.30/products/list?count=11')
+    .then(items => {
+        this.setState({products: items})
+        console.log('products', this.state.products);
+    })
+    .then(() => {
+        this.setState({currentProduct: this.state.products[0]})
+        console.log('current product', this.state.currentProduct);
+    })
+    .then(() => {
+        var ID = this.state.products[0].id;
+        $.get(`http://3.134.102.30/products/${ID}/styles`)
+        .then((styleObj) => {
+            this.setState({styles: styleObj.results})
+            console.log('styles', this.state.styles);
+        })
+    })
     
-// }
+}
 
 render(){
     return (
