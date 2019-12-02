@@ -3,8 +3,18 @@ import VerticalCarousel from './VerticalCarousel.jsx';
 class Home extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            products: []
+        }
     }
 
+// componentDidMount(){
+//     $.get('http://3.134.102.30/products/list?count=11')
+//     .then(items)
+//         console.log('products', items)
+//         this.setState({products: items})
+    
+// }
 
 render(){
     return (

@@ -13,6 +13,8 @@ class Carousel extends React.Component{
         this.leftShift = this.leftShift.bind(this);
     }
 
+    
+
     rightShift(){
         var left = this.state.picsLeft;
         var right = this.state.picsRight;
