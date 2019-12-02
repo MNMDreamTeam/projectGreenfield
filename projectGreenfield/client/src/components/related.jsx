@@ -1,8 +1,6 @@
 /*
   Base card structure built -
   TODO: Some more styling to make it look super awesome.
-  TODO: Do some brainstorming to figure out if this can be a functional component, or if it will actually need its own state???
-
 
   Next steps:
   1. Need a carousel to display each card with horizontal scrolling
@@ -24,26 +22,33 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://3.134.102.30/products/2/related')
-    .then((res) => {
-      return res.json();
-    }).then((relatedId) => {
-      // console.log('related', relatedId);
-      relatedId.forEach(el => {
-        fetch(`http://3.134.102.30/products/${el}`)
-        .then((item) => {
-          return item.json();
-        }).then((itemObj) => {
-          // setState here? -- concat to array? is that legal for state? ask Teddi
-          // console.log(itemObj);
-          this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)});
-          console.log(this.state);
-        })
-      })
+    var temp = [];
+
+    // let data = fetch('http://3.134.102.30/products/2/related')
+    // .then((res) => {
+    //   return res.json();
+    // }).then((relatedId) => {
+    //   // console.log('related', relatedId);
+    //   relatedId.forEach(el => {
+    //     fetch(`http://3.134.102.30/products/${el}`)
+    //     .then((item) => {
+    //       return item.json();
+    //     }).then((itemObj) => {
+    //       // setState here? -- concat to array? is that legal for state? ask Teddi
+    //       // console.log(itemObj);
+    //       // this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)}); // Yeah, this doesn't seem right....
+    //       temp.push(itemObj);
+    //     });
+    //   });
+    // });
+
+    Promise.all([data]).then(() => {
+      console.log(temp);
     })
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="container">
         <div className="row">
