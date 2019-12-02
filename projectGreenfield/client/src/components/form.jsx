@@ -53,86 +53,91 @@ class Form extends React.Component {
                     <h5 for='characteristics'>{this.state.product}</h5>
                     <label for='size'>Size</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: A size too small</label>
-                        <input className='form-check-input' type='radio' name='2' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: 1/2 a size too small</label>
-                        <input className='form-check-input' type='radio' name='3' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: Perfect</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: 1/2 a size too big</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: A size too wide</label>
+                        <input className='form-check-input' type='radio' name='size' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1'>1: A size too small</label>
+                        <input className='form-check-input' type='radio' name='size' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: 1/2 a size too small</label>
+                        <input className='form-check-input' type='radio' name='size' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: Perfect</label>
+                        <input className='form-check-input' type='radio' name='size' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: 1/2 a size too big</label>
+                        <input className='form-check-input' type='radio' name='size' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: A size too wide</label>
                     </div>
+                    <br></br>
                     <br></br>
                     <label for='width'>Width</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: Too narrow</label>
-                        <input className='form-check-input' type='radio' name='2' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: Slightly narrow</label>
-                        <input className='form-check-input' type='radio' name='3' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: Perfect</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: Slightly wide</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: Too wide</label>
+                        <input className='form-check-input' type='radio' name='width' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1' >1: Too narrow</label>
+                        <input className='form-check-input' type='radio' name='width' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: Slightly narrow</label>
+                        <input className='form-check-input' type='radio' name='width' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: Perfect</label>
+                        <input className='form-check-input' type='radio' name='width' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: Slightly wide</label>
+                        <input className='form-check-input' type='radio' name='width' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: Too wide</label>
                     </div>
+                    <br></br>
                     <br></br>
                     <label for='comfort'>Comfort</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: Uncomfortable</label>
-                        <input className='form-check-input' type='radio' name='2' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: Slightly uncomfortable</label>
-                        <input className='form-check-input' type='radio' name='3' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: Ok</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: Comfortable</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: Perfect</label>
+                        <input className='form-check-input' type='radio' name='comfort' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1'>1: Uncomfortable</label>
+                        <input className='form-check-input' type='radio' name='comfort' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: Slightly uncomfortable</label>
+                        <input className='form-check-input' type='radio' name='comfort' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: Ok</label>
+                        <input className='form-check-input' type='radio' name='comfort' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: Comfortable</label>
+                        <input className='form-check-input' type='radio' name='comfort' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: Perfect</label>
                     </div>
+                    <br></br>
                     <br></br>
                     <label for='quality'>Quality</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: Poor</label>
-                        <input className='form-check-input' type='radio' name='2' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: Below average</label>
-                        <input className='form-check-input' type='radio' name='3' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: What I expected</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: Pretty great</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: Perfect</label>
+                        <input className='form-check-input' type='radio' name='quality' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1'>1: Poor</label>
+                        <input className='form-check-input' type='radio' name='quality' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: Below average</label>
+                        <input className='form-check-input' type='radio' name='quality' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: What I expected</label>
+                        <input className='form-check-input' type='radio' name='quality' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: Pretty great</label>
+                        <input className='form-check-input' type='radio' name='quality' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: Perfect</label>
                     </div>
+                    <br></br>
                     <br></br>
                     <label for='length'>Length</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: Runs short</label>
-                        <input className='form-check-input' type='radio' name='2' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: Runs slightly short</label>
-                        <input className='form-check-input' type='radio' name='3' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: Perfect</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: Runs slightly long</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: Runs long</label>
+                        <input className='form-check-input' type='radio' name='length' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1'>1: Runs short</label>
+                        <input className='form-check-input' type='radio' name='length' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: Runs slightly short</label>
+                        <input className='form-check-input' type='radio' name='length' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: Perfect</label>
+                        <input className='form-check-input' type='radio' name='length' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: Runs slightly long</label>
+                        <input className='form-check-input' type='radio' name='length' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: Runs long</label>
                     </div>
+                    <br></br>
                     <br></br>
                     <label for='fit'>Fit</label>
                     <div className='form check form-check-inline' required>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='1'></input>
-                        <label className='form-check-label' for='1'>1: Runs tight</label>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='2'></input>
-                        <label className='form-check-label' for='2'>2: Runs slightly tight</label>
-                        <input className='form-check-input' type='radio' name='1' id='inline radio characteristics' value='3'></input>
-                        <label className='form-check-label' for='3'>3: Perfect</label>
-                        <input className='form-check-input' type='radio' name='4' id='inline radio characteristics' value='4'></input>
-                        <label className='form-check-label' for='4'>4: Runs slightly long</label>
-                        <input className='form-check-input' type='radio' name='5' id='inline radio characteristics' value='5'></input>
-                        <label className='form-check-label' for='5'>5: Runs long</label>
+                        <input className='form-check-input' type='radio' name='fit' id='inline radio characteristics' value='1'></input>
+                        <label className='form-check-label form-control-sm' for='1'>1: Runs tight</label>
+                        <input className='form-check-input' type='radio' name='fit' id='inline radio characteristics' value='2'></input>
+                        <label className='form-check-label form-control-sm' for='2'>2: Runs slightly tight</label>
+                        <input className='form-check-input' type='radio' name='fit' id='inline radio characteristics' value='3'></input>
+                        <label className='form-check-label form-control-sm' for='3'>3: Perfect</label>
+                        <input className='form-check-input' type='radio' name='fit' id='inline radio characteristics' value='4'></input>
+                        <label className='form-check-label form-control-sm' for='4'>4: Runs slightly long</label>
+                        <input className='form-check-input' type='radio' name='fit' id='inline radio characteristics' value='5'></input>
+                        <label className='form-check-label form-control-sm' for='5'>5: Runs long</label>
                     </div>
                     <br></br>
                     <br></br>
