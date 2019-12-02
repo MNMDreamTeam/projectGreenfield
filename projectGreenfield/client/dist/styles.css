@@ -1,0 +1,190 @@
+#carousel {
+    width:25em;
+    height:25em;
+}
+
+#carousel2 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
+    margin-top: -31em;
+}
+
+.carousel-item {
+    width:25em;
+    height:25em;
+}
+
+.Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+}
+
+
+.Row2
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+    margin-left: 8.5em;
+    /* background-color:lightblue;  */
+}
+
+.Col
+{
+    display: table-cell;
+    
+    /* background-color:lightblue;  */
+
+}
+
+#Col
+{
+    display: table-cell;
+    border-spacing: 4em;
+   
+    /* background-color:lightblue;  */
+
+}
+
+.leftSide {
+    width:8em;
+    height:8em;
+    margin-bottom: 18em;
+    margin-left: .8em;
+   
+}
+
+
+.rightSide {
+    width:8em;
+    height:8em;
+    margin-bottom: 18em;
+    margin-left: .8em;
+}
+
+.leftSide2 {
+    width:4em;
+    height:4em;
+   
+    margin-left: .8em;
+   
+}
+
+.rightSide2 {
+    width:4em;
+    height:4em;
+    
+    margin-left: .8em;
+}
+
+.carousel-control-prev-icon{
+    background-image: url('https://apufpel.com.br/assets/img/seta_prim.png')
+ }
+ .carousel-control-next-icon{
+   background-image: url('https://apufpel.com.br/assets/img/seta_ult.png')
+ }
+
+ .showcase{
+    display: table;
+    width:25em;
+    height:35em;
+    /* table-layout: fixed;  */
+    
+    margin-top: 7em;
+    margin-left: 8em;
+    background-color: rgb(230, 229, 229);
+}
+
+
+.style{
+    display: table;
+    width:15em;
+    height:35em;
+    /* table-layout: fixed;  */
+   
+    margin-top: 7em;
+    margin-left: 4em;
+    background-color:white;
+}
+  
+.circleRow
+{
+    display: table;
+    /* width:4em;
+    height: 4em; */
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+    margin-left:1.4em;
+    /* background-color:lightblue;  */
+}
+
+.circleCol
+{
+    display: table-cell;
+    width:4em;
+    height: 4em;
+    border-radius: 50%;
+    border: black 1px solid;
+    background-color: rgb(208, 208, 208);
+    margin-left: 1.5em;
+    /* background-color:lightblue;  */
+
+}
+
+h2 {
+    margin-left:1em;
+
+}
+
+p {
+    margin-left: 2em;
+
+}
+
+.dropdown1 {
+    border: black 1px solid;
+    width:8.5em;
+    display: inline-block;
+    margin: .7em;
+    margin-left:2em;
+}
+
+.dropdown2 {
+    border: black 1px solid;
+    width:3em;
+    display: inline-block;
+    margin: .7em;
+}
+
+.dropdown3 {
+    border: black 1px solid;
+    width:8.6em;
+    display: inline-block;
+    margin: .7em;
+    margin-left:2em;
+}
+
+.dropdown4 {
+    border: black 1px solid;
+    width:4.5em;
+    display: inline-block;
+    margin: .7em;
+}
+.logoBar {
+    width:70em;
+    height:7em;
+    margin-left:12em;
+    margin-bottom:1.3em;
+    background-color: rgb(117, 173, 228); 
+}
+
+.logoPic {
+    width:12em;
+    height:12em;
+    margin-top: -2.4em;
+}
