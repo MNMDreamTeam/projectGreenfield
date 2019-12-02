@@ -24,27 +24,24 @@ class Related extends React.Component {
   componentDidMount() {
     var temp = [];
 
-    // let data = fetch('http://3.134.102.30/products/2/related')
-    // .then((res) => {
-    //   return res.json();
-    // }).then((relatedId) => {
-    //   // console.log('related', relatedId);
-    //   relatedId.forEach(el => {
-    //     fetch(`http://3.134.102.30/products/${el}`)
-    //     .then((item) => {
-    //       return item.json();
-    //     }).then((itemObj) => {
-    //       // setState here? -- concat to array? is that legal for state? ask Teddi
-    //       // console.log(itemObj);
-    //       // this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)}); // Yeah, this doesn't seem right....
-    //       temp.push(itemObj);
-    //     });
-    //   });
-    // });
-
-    Promise.all([data]).then(() => {
-      console.log(temp);
-    })
+   fetch('http://3.134.102.30/products/2/related')
+    .then((res) => {
+      return res.json();
+    }).then((relatedId) => {
+      // console.log('related', relatedId);
+      relatedId.forEach(el => {
+        fetch(`http://3.134.102.30/products/${el}`)
+        .then((item) => {
+          return item.json();
+        }).then((itemObj) => {
+          // setState here? -- concat to array? is that legal for state? ask Teddi
+          // console.log(itemObj);
+          // this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)}); // Yeah, this doesn't seem right....
+          temp.push(itemObj);
+        });
+      });
+      
+    });
   }
 
   render() {
