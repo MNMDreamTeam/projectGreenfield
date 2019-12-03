@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 
-import Reviews from './reviews.jsx';
+// import Reviews from './reviews.jsx';
 import Home from './home.jsx';
 
 import Related from './related.jsx';
@@ -17,11 +17,9 @@ class App extends React.Component {
   render(){
     return(
       <div>
-
         <Home />
         <Related />
-        <Reviews />
-
+        {/* <Reviews /> */}
       </div>
     )
   }
