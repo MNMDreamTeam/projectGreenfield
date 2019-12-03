@@ -95,6 +95,7 @@ render(){
     var styleName = ""
     var description = ""
     var slogan = ""
+    var circles = <div></div>
     if (this.state.loaded === true){
         carousel = <VerticalCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         category = <p>{this.state.currentProduct.category}</p>
@@ -103,6 +104,13 @@ render(){
         styleName = this.state.currentStyle.name
         description = this.state.currentProduct.description
         slogan = this.state.currentProduct.slogan
+        circles = [];
+        {this.state.stylePics[this.state.curStyleIndex].map(item => {
+            //var picStyles = { backgroundImage:`url(${item})`}
+           circles.push(<div class="circleCol" onClick={() => {this.changeStyle(this.change)}}>
+               <img id="thumbnail" src={item}></img>
+           </div>)
+        })}
     } 
 
     return (
@@ -124,17 +132,8 @@ render(){
                 {price}
                     <p><b>STYLE > </b>{styleName}</p>
                     <div class="circleRow">
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>                    
-                    </div>
-                    <div class="circleRow">
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
-                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div> 
-                    </div>
+                        {circles} 
+                    </div> 
                     <div class="dropdown1">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT SIZE</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
