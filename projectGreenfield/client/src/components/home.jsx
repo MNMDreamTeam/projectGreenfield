@@ -155,6 +155,7 @@ render(){
                     <div class="dropdown1">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT SIZE</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">XS</a>
                             <a class="dropdown-item" href="#">Small</a>
                             <a class="dropdown-item" href="#">Medium</a>
                             <a class="dropdown-item" href="#">Large</a>
