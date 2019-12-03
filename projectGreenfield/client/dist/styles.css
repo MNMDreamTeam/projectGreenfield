@@ -76,7 +76,7 @@
 }
 
 .rightSide2 {
-    width:4em;
+    width:4.5em;
     height:5.5em;
     
     margin-left: .8em;
@@ -180,7 +180,9 @@ p {
     height:7em;
     margin-left:12em;
     margin-bottom:1.3em;
-    background-color: rgb(244, 172, 65); 
+    /* background-color: rgb(220, 244, 103); */
+   
+    background-color: rgb(242, 119, 176); 
 }
 
 .logoPic {
@@ -192,4 +194,9 @@ p {
 #description {
     margin-top: 1em;
     margin-left:20em;
+}
+
+#slogan {
+    margin-top: 1em;
+    margin-left:23em;
 }

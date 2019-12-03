@@ -8,11 +8,50 @@ class Home extends React.Component {
             products: [],
             currentProduct: {},
             currentStyle: {},
+            curStyleIndex: 0,
             styles: [],
             stylePics: [],
             loaded: false
         }
+        this.changeStyle = this.changeStyle.bind(this);
+        this.change = this.change.bind(this);
     }
+
+
+change(){
+    console.log(this.state.curStyleIndex);
+    var styleNumber = this.state.curStyleIndex;
+    var ID = this.state.currentProduct.id;
+    $.get(`http://3.134.102.30/products/${ID}/styles`)
+    .then((styleObj) => {
+        this.setState({styles: styleObj.results});
+        this.setState({currentStyle: styleObj.results[styleNumber]});
+        console.log(this.state.currentStyle);
+    })
+    .then(() => {
+        var pics = [];
+        for (var i=0; i<this.state.styles.length; i++){
+            var style = this.state.styles[i];
+            var stylepics = [];
+            for (var j=0; j<style.photos.length; j++){ 
+                stylepics.push(style.photos[j].url);
+            }
+            pics.push(stylepics);
+        }
+        this.setState({stylePics: pics});
+    })
+    .then(() => {
+        this.setState({loaded: true});
+    })
+}
+   
+changeStyle(callback){
+    this.setState({loaded: false});
+    var indx = this.state.curStyleIndex;
+    indx = indx + 1;
+    this.setState({curStyleIndex: indx});
+    callback();
+}
 
 componentDidMount(){
     $.get('http://3.134.102.30/products/list?count=11')
@@ -21,15 +60,13 @@ componentDidMount(){
     })
     .then(() => {
         this.setState({currentProduct: this.state.products[0]});
-        console.log(this.state.currentProduct);
     })
     .then(() => {
-        var ID = this.state.products[0].id;
+        var ID = this.state.currentProduct.id;
         $.get(`http://3.134.102.30/products/${ID}/styles`)
         .then((styleObj) => {
             this.setState({styles: styleObj.results});
             this.setState({currentStyle: styleObj.results[0]});
-            console.log(this.state.currentStyle);
         })
         .then(() => {
             var pics = [];
@@ -47,24 +84,25 @@ componentDidMount(){
             this.setState({loaded: true});
         })
     })
-    
 }
 
 render(){
 
     var carousel = <div></div>
-    var category = <p>CATEGORY</p>
-    var name =  <h2>Expanded Product Name</h2>
-    var price = <p>$49.00</p>
-    var styleName = "SELECTED STYLE"
-    var description = "description"
+    var category = <p></p>
+    var name =  <h2></h2>
+    var price = <p></p>
+    var styleName = ""
+    var description = ""
+    var slogan = ""
     if (this.state.loaded === true){
-        carousel = <VerticalCarousel stylepics={this.state.stylePics[0]}/>
+        carousel = <VerticalCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         category = <p>{this.state.currentProduct.category}</p>
         name =  <h2>{this.state.currentProduct.name}</h2>
         price = <p>${this.state.currentStyle.original_price}</p>
         styleName = this.state.currentStyle.name
         description = this.state.currentProduct.description
+        slogan = this.state.currentProduct.slogan
     } 
 
     return (
@@ -76,6 +114,7 @@ render(){
             <div class="Row">
                 <div id="Col" class="showcase">
                     {carousel}
+                    <h5 id="slogan">{slogan}</h5>
                     <p id="description">{description}</p>  
                 </div> 
                 <div id="Col" class="style">
@@ -85,16 +124,16 @@ render(){
                 {price}
                     <p><b>STYLE > </b>{styleName}</p>
                     <div class="circleRow">
-                        <div class="circleCol"></div>
-                        <div class="circleCol"></div>                       
-                        <div class="circleCol"></div>
-                        <div class="circleCol"></div>                    
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>                    
                     </div>
                     <div class="circleRow">
-                        <div class="circleCol"></div>
-                        <div class="circleCol"></div>                       
-                        <div class="circleCol"></div>
-                        <div class="circleCol"></div> 
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div>
+                        <div class="circleCol" onClick={() => {this.changeStyle(this.change)}}></div> 
                     </div>
                     <div class="dropdown1">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT SIZE</button>
