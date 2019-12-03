@@ -7,32 +7,66 @@ class Home extends React.Component {
         this.state = {
             products: [],
             currentProduct: {},
-            styles: []
+            currentStyle: {},
+            styles: [],
+            stylePics: [],
+            loaded: false
         }
     }
 
 componentDidMount(){
     $.get('http://3.134.102.30/products/list?count=11')
     .then(items => {
-        this.setState({products: items})
-        console.log('products', this.state.products);
+        this.setState({products: items});
     })
     .then(() => {
-        this.setState({currentProduct: this.state.products[0]})
-        console.log('current product', this.state.currentProduct);
+        this.setState({currentProduct: this.state.products[0]});
+        console.log(this.state.currentProduct);
     })
     .then(() => {
         var ID = this.state.products[0].id;
         $.get(`http://3.134.102.30/products/${ID}/styles`)
         .then((styleObj) => {
-            this.setState({styles: styleObj.results})
-            console.log('styles', this.state.styles);
+            this.setState({styles: styleObj.results});
+            this.setState({currentStyle: styleObj.results[0]});
+            console.log(this.state.currentStyle);
+        })
+        .then(() => {
+            var pics = [];
+            for (var i=0; i<this.state.styles.length; i++){
+                var style = this.state.styles[i];
+                var stylepics = [];
+                for (var j=0; j<style.photos.length; j++){ 
+                    stylepics.push(style.photos[j].url);
+                }
+                pics.push(stylepics);
+            }
+            this.setState({stylePics: pics});
+        })
+        .then(() => {
+            this.setState({loaded: true});
         })
     })
     
 }
 
 render(){
+
+    var carousel = <div></div>
+    var category = <p>CATEGORY</p>
+    var name =  <h2>Expanded Product Name</h2>
+    var price = <p>$49.00</p>
+    var styleName = "SELECTED STYLE"
+    var description = "description"
+    if (this.state.loaded === true){
+        carousel = <VerticalCarousel stylepics={this.state.stylePics[0]}/>
+        category = <p>{this.state.currentProduct.category}</p>
+        name =  <h2>{this.state.currentProduct.name}</h2>
+        price = <p>${this.state.currentStyle.original_price}</p>
+        styleName = this.state.currentStyle.name
+        description = this.state.currentProduct.description
+    } 
+
     return (
         <div>
             <div class="logoBar">
@@ -41,14 +75,15 @@ render(){
             
             <div class="Row">
                 <div id="Col" class="showcase">
-                    <VerticalCarousel/>
+                    {carousel}
+                    <p id="description">{description}</p>  
                 </div> 
                 <div id="Col" class="style">
                 <p>***** Read all reviews</p>
-                <p>CATEGORY</p>
-                <h2>Expanded Product Name</h2>
-                <p>$49.00</p>
-                <p><b>STYLE > </b>SELECTED STYLE</p>
+                {category}
+                {name}
+                {price}
+                    <p><b>STYLE > </b>{styleName}</p>
                     <div class="circleRow">
                         <div class="circleCol"></div>
                         <div class="circleCol"></div>                       
