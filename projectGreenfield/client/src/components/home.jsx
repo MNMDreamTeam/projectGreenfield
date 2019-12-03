@@ -18,9 +18,9 @@ class Home extends React.Component {
     }
 
 
-change(){
+change(ind){
     console.log(this.state.curStyleIndex);
-    var styleNumber = this.state.curStyleIndex;
+    var styleNumber = ind;
     var ID = this.state.currentProduct.id;
     $.get(`http://3.134.102.30/products/${ID}/styles`)
     .then((styleObj) => {
@@ -50,7 +50,7 @@ changeStyle(callback){
     var indx = this.state.curStyleIndex;
     indx = indx + 1;
     this.setState({curStyleIndex: indx});
-    callback();
+    callback(indx);
 }
 
 componentDidMount(){
