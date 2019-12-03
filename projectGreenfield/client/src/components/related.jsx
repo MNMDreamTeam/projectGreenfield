@@ -29,34 +29,65 @@ class Related extends React.Component {
       relatedProducts: []
       // add isLoading bool?
     }
+    this.calcRating = this.calcRating.bind(this);
+  }
+
+  calcRating(ratings) {
+    // Used to calculate the average star rating based on user ratings 1-5
+    if (Object.keys(ratings).length > 0) {
+      let div = 0;
+      let prod = 0;
+      for (let key in ratings) {
+        div += ratings[key];
+        prod += Number(key) * ratings[key];
+      }
+      return prod / div;
+    }
+
+    return 0;
   }
 
   componentDidMount() {
-    var tempProductsArr = [];
+    let tempProductsArr = [];
+
     fetch('http://3.134.102.30/products/2/related')
-    .then((res) => {
-      return res.json();
-    }).then((related) => {
-      // console.log('---', related);
-      Promise.all(
-        related.map(
-          el => fetch(`http://3.134.102.30/products/${el}/styles`)
-          .then(res => res.json())
-        )
-      ).then(styles => {
-        // console.log('---', styles);
-        styles.forEach(el => {
-          tempProductsArr.push(el.results[0]);
-        })
-        // Set state here i think?
-        // console.log('---', tempProductsArr);
-        this.setState({relatedProducts: tempProductsArr});
+      .then((res) => {
+        return res.json();
+      }).then((relatedIds) => {
+        // console.log('---', relatedIds);
+          relatedIds.forEach(el => {
+            let tempObj = {};
+            fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json())
+              .then(styles => {
+                // console.log('---', styles.results[0].photos[0].thumbnail_url);
+                tempObj.id = styles.product_id;
+                tempObj.price = styles.results[0].original_price;
+                tempObj.salePrice = styles.results[0].sale_price;
+                tempObj.pic = styles.results[0].photos[0].thumbnail_url;
+              }).then(next => {
+                fetch(`http://3.134.102.30/products/${el}`).then(res => res.json())
+                  .then(prods => {
+                    // console.log('---', prods);
+                    tempObj.name = prods.name;
+                    tempObj.cat = prods.category;
+                  })
+              }).then(next => {
+                fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json())
+                .then(rating => {
+                  // console.log('---', rating);
+                  tempObj.ratings = this.calcRating(rating.ratings);
+                })
+              })
+              tempProductsArr.push(tempObj);
+          })
+      }).then(last => {
+        // set state here
+        console.log('---', tempProductsArr);
       })
-    })
   }
 
   render() {
-    console.log('related --- ', this.state.relatedProducts);
+    // console.log('related --- ', this.state.relatedProducts);
     return (
       <div className="container">
         <div className="row">
@@ -64,22 +95,22 @@ class Related extends React.Component {
             <div className="carousel-inner">
               <div className="item carousel-item active">
                 <div className="card-group">
-                   
-                    <div className="row">
 
-                      <div className="col-sm-4">
-                        <div className="card" style={{ width: 10 + 'rem' }}>
-                          <img src="/296508_116_41.jpeg" className="card-img-top"></img>
-                          <div className="card-body">
-                            <h6 className="card-subtitle mb-2 text-muted">category</h6>
-                            <h6 className="card-text">name</h6>
-                            <h6 className="card-text">default_price</h6>
-                            <h6 className="card-text">stars</h6>
-                          </div>
+                  <div className="row">
+
+                    <div className="col-sm-4">
+                      <div className="card" style={{ width: 10 + 'rem' }}>
+                        <img src="/296508_116_41.jpeg" className="card-img-top"></img>
+                        <div className="card-body">
+                          <h6 className="card-subtitle mb-2 text-muted">category</h6>
+                          <h6 className="card-text">name</h6>
+                          <h6 className="card-text">default_price</h6>
+                          <h6 className="card-text">stars</h6>
                         </div>
                       </div>
-
                     </div>
+
+                  </div>
 
                 </div>
               </div>
@@ -96,7 +127,7 @@ export default Related;
 
 
 /*
-  OLD STUFF - 
+  OLD STUFF -
 
   fetch('http://3.134.102.30/products/2/related')
       .then((res) => {
@@ -117,4 +148,30 @@ export default Related;
         // console.log('--', tempProductsArr);
         this.setState({ relatedProducts: tempProductsArr });
       });
+
+
+      ************************************
+
+
+    fetch('http://3.134.102.30/products/2/related')
+    .then((res) => {
+      return res.json();
+    }).then((related) => {
+      // console.log('---', related);
+      Promise.all(
+        related.map(
+          el => fetch(`http://3.134.102.30/products/${el}/styles`)
+          .then(res => res.json())
+        )
+      ).then(styles => {
+        // console.log('---', styles);
+        styles.forEach(el => {
+          tempProductsArr.push(el.results[0]);
+        })
+        // Set state here i think?
+        console.log('---', tempProductsArr);
+        this.setState({relatedProducts: tempProductsArr});
+      })
+    })
+  }
 */
