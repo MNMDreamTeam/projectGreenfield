@@ -18,14 +18,30 @@ class Home extends React.Component {
     }
 
 
-change(ind){
+change(e,ind){
+    console.log('event target', e.target.src);
+    var searchUrl = e.target.src;
+    console.log('styles', this.state.styles);
+    var style = '';
+    for (var i in this.state.styles){
+        for (var j in this.state.styles[i].photos){ 
+            if (this.state.styles[i].photos[j].url === searchUrl){
+                console.log('match', this.state.styles[i].photos[j].url);
+                style = this.state.styles[i];
+                this.setState({curStyleIndex: i});
+                console.log('style index', this.state.curStyleIndex);
+                console.log('new style in state', style);
+                this.setState({currentStyle: style});
+            }
+        }
+    }
     console.log(this.state.curStyleIndex);
     var styleNumber = ind;
     var ID = this.state.currentProduct.id;
     $.get(`http://3.134.102.30/products/${ID}/styles`)
     .then((styleObj) => {
         this.setState({styles: styleObj.results});
-        this.setState({currentStyle: styleObj.results[styleNumber]});
+       // this.setState({currentStyle:});
         console.log(this.state.currentStyle);
     })
     .then(() => {
@@ -45,12 +61,12 @@ change(ind){
     })
 }
    
-changeStyle(callback){
+changeStyle(e,callback){
     this.setState({loaded: false});
     var indx = this.state.curStyleIndex;
     indx = indx + 1;
     this.setState({curStyleIndex: indx});
-    callback(indx);
+    callback(e,indx);
 }
 
 componentDidMount(){
@@ -81,6 +97,7 @@ componentDidMount(){
             this.setState({stylePics: pics});
         })
         .then(() => {
+            console.log(this.state.stylePics);
             this.setState({loaded: true});
         })
     })
@@ -105,11 +122,12 @@ render(){
         description = this.state.currentProduct.description
         slogan = this.state.currentProduct.slogan
         circles = [];
+        var count = 0;
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
-            //var picStyles = { backgroundImage:`url(${item})`}
-           circles.push(<div class="circleCol" onClick={() => {this.changeStyle(this.change)}}>
-               <img id="thumbnail" src={item}></img>
+           circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change)}}>
+               <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
            </div>)
+           count++;
         })}
     } 
 
