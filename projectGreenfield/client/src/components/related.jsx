@@ -17,7 +17,6 @@ class Related extends React.Component {
   constructor() {
     super();
     this.state = {
-      test: [{cat: 'gg'}, {pic: "fake pic"}, {thing1: "thing2"}],
       relatedProducts: [],
       isLoading: true
     }
@@ -69,18 +68,16 @@ class Related extends React.Component {
                   tempObj.ratings = this.calcRating(rating.ratings);
                 })
             }).then(next => {
+              // console.log('---', tempObj)
               tempProductsArr.push(tempObj);
               // console.log('---', tempProductsArr)
             }).then(next => {
               if (tempProductsArr.length === relatedIds.length) {
-                // console.log('---', tempProductsArr)
+                // console.log('---', tempProductsArr[0].name)
                 this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
               }
             })
         })
-      }).then(last => {
-        // console.log('---', tempProductsArr)
-        // this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
       })
   }
 
@@ -95,39 +92,40 @@ class Related extends React.Component {
       )
     } else {
       return (
-        <div className="container">
-          {console.log('---', this.state.relatedProducts[0])}
-          <div className="row">
-            <div id="relatedProdCarousel" className="carousel slide" data-ride="carousel">
-              <div className="carousel-inner">
-
-                <div className="item carousel-item active">
-
-                  <div className="card-group">
-
-                    <div className="row">
-                      <div className="col-sm-4">
-                        <div className="card" style={{ width: 10 + 'rem' }}>
-                          <img src="/296508_116_41.jpeg" className="card-img-top"></img>
-                          <div className="card-body">
-                            <h6 className="card-subtitle mb-2 text-muted">category</h6>
-                            <h6 className="card-text">name</h6>
-                            <h6 className="card-text">default_price</h6>
-                            <h6 className="card-text">stars</h6>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-
-                </div>
-
-              </div>
-            </div>
-          </div>
+        <div>
+          {/* {console.log(Object.keys(this.state.relatedProducts[1]))} */}
         </div>
+        // <div className="container">
+
+        //    <div className="row">
+        //      <div id="relatedProdCarousel" className="carousel slide" data-ride="carousel">
+        //        <div className="carousel-inner"
+        //          <div className="item carousel-item active"
+        //            <div className="card-group">
+        //              {this.state.relatedProducts.map(el =>
+        //              <div className="row">
+        //                <div className="col-sm-4">
+        //                  <div className="card" style={{ width: 10 + 'rem' }}>
+        //                    <img src={el.pic} className="card-img-top"></img>
+        //                    <div className="card-body">
+        //                      <h6 className="card-subtitle mb-2 text-muted">{el.cat}</h6>
+        //                      <h6 className="card-text">{el.name}</h6>
+        //                      <h6 className="card-text">{el.price}</h6>
+        //                      <h6 className="card-text">{el.ratings}</h6>
+        //                    </div>
+        //                  </div>
+        //                </div>
+        //              </div>
+        //              )}
+        //            </div>
+
+
+        // //         </div>
+
+        // //       </div>
+        // //     </div>
+        // //   </div>
+        // </div>
       )
     }
   }
