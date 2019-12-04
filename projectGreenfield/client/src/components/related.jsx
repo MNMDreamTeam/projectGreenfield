@@ -1,11 +1,11 @@
 /*
   Base card structure built -
 
-  TODO: Some more styling to make it look super awesome.
-
   Next steps:
-  1. Need a carousel to display each card with horizontal scrolling
-  2. TODO: Will need to get the currently viewed item product id when overview module is available.
+  1. Conditional for sale price if there is one
+  2. Action Button
+  3. Need a carousel to display each card with horizontal scrolling
+  4. TODO: Will need to get the currently viewed item product id when overview module is available.
 */
 
 
@@ -34,7 +34,7 @@ class Related extends React.Component {
         prod += Number(key) * ratings[key];
       }
       return (prod / div);
-    } 
+    }
     return 0;
   }
 
@@ -65,7 +65,7 @@ class Related extends React.Component {
 
               // Rating info -> 
               all.rating = this.calcRating(data[2].ratings);
-              
+
               tempProductsArr.push(all);
             }).then((stuff) => {
               if (tempProductsArr.length === relatedIds.length) {
@@ -85,24 +85,26 @@ class Related extends React.Component {
       )
     } else {
       return (
-        <div>
-          <div className="card-group">
-          {this.state.relatedProducts.map(el =>
-              <div className="row" key={el.id}>
-                <div className="col-sm-4">
-                  <div className="card" style={{ width: 12 + 'rem' }}>
-                    <img src={el.pic} className="card-img-top"></img>
-                    <div className="card-body">
-                      <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{el.cat}</em></small></p>
-                      <p className="card-text text-left"><b>{el.name}</b></p>
-                      <p className="card-text text-left"><small>$ {el.price}</small></p>
-                      <StarRatings starDimension={'15px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating}/>
+        <div className="container">
+          <div className="row">
+              <div className="card-group">
+                {this.state.relatedProducts.map(el =>
+                  <div className="row" key={el.id}>
+                    <div className="col-sm-4">
+                      <div className="card" style={{ width: 14 + 'rem' , height: 31 + 'rem'}}>
+                        <img src={el.pic} className="card-img-top" style={{ height: 17 + 'rem' }}></img>
+                        <div className="card-body flex-fill">
+                          <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{el.cat}</em></small></p>
+                          <p className="card-text text-left"><b>{el.name}</b></p>
+                          <p className="card-text text-left"><small>${el.price}</small></p>
+                          <StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating} />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                </div>
-          )}
-           </div>
+                )}
+              </div>
+            </div>
         </div>
       )
     }
