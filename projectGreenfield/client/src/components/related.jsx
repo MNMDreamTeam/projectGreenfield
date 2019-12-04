@@ -6,12 +6,13 @@
   Next steps:
   1. Need a carousel to display each card with horizontal scrolling
   2. TODO: Will need to get the currently viewed item product id when overview module is available.
-  3. Stars
 */
 
 
 
 import React from 'react';
+import StarRatings from '../../../node_modules/react-star-ratings';
+
 
 class Related extends React.Component {
   constructor() {
@@ -32,16 +33,15 @@ class Related extends React.Component {
         div += ratings[key];
         prod += Number(key) * ratings[key];
       }
-      return prod / div;
-    }
-
+      return (prod / div);
+    } 
     return 0;
   }
 
   componentDidMount() {
 
     let tempProductsArr = [];
-    fetch('http://3.134.102.30/products/2/related')
+    fetch('http://3.134.102.30/products/3/related')
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
@@ -65,7 +65,7 @@ class Related extends React.Component {
 
               // Rating info -> 
               all.rating = this.calcRating(data[2].ratings);
-
+              
               tempProductsArr.push(all);
             }).then((stuff) => {
               if (tempProductsArr.length === relatedIds.length) {
@@ -90,13 +90,13 @@ class Related extends React.Component {
           {this.state.relatedProducts.map(el =>
               <div className="row" key={el.id}>
                 <div className="col-sm-4">
-                  <div className="card" style={{ width: 10 + 'rem' }}>
+                  <div className="card" style={{ width: 12 + 'rem' }}>
                     <img src={el.pic} className="card-img-top"></img>
                     <div className="card-body">
-                      <h6 className="card-subtitle mb-2 text-muted">{el.cat}</h6>
-                      <h6 className="card-text">{el.name}</h6>
-                      <h6 className="card-text">{el.price}</h6>
-                      <h6 className="card-text">{el.rating}</h6>
+                      <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{el.cat}</em></small></p>
+                      <p className="card-text text-left"><b>{el.name}</b></p>
+                      <p className="card-text text-left"><small>$ {el.price}</small></p>
+                      <StarRatings starDimension={'15px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating}/>
                     </div>
                   </div>
                 </div>
