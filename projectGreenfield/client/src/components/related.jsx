@@ -5,7 +5,7 @@
 
   Next steps:
   1. Need a carousel to display each card with horizontal scrolling
-  2. Dynamically load data...Use hardcoded product id to populate related products from API...TODO: Will need to get the currently viewed item product id when overview module is available.
+  2. TODO: Will need to get the currently viewed item product id when overview module is available.
   3. Stars
 */
 
@@ -53,23 +53,22 @@ class Related extends React.Component {
 
           Promise.all([styles, prods, ratings])
             .then((data) => {
-              //Style info -> 
+              // Style info -> 
               all.id = data[0].product_id;
               all.price = data[0].results[0].original_price;
               all.salePrice = data[0].results[0].sale_price;
               all.pic = data[0].results[0].photos[0].thumbnail_url;
 
-              //Product info -> 
+              // Product info -> 
               all.name = data[1].name;
               all.cat = data[1].category;
 
-              //Rating info -> 
+              // Rating info -> 
               all.rating = this.calcRating(data[2].ratings);
 
               tempProductsArr.push(all);
             }).then((stuff) => {
               if (tempProductsArr.length === relatedIds.length) {
-                // console.log('---', tempProductsArr[1].name)
                 this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
               }
             })
@@ -78,9 +77,7 @@ class Related extends React.Component {
   }
 
   render() {
-    // console.log('related --- ', this.state);
     if (this.state.isLoading) {
-      // console.log('---', this.state.relatedProducts)
       return (
         <div>
           <h6>Lodaing....</h6>
@@ -113,97 +110,3 @@ class Related extends React.Component {
 }
 
 export default Related;
-
-
-/*
-  OLD STUFF -
-
-  fetch('http://3.134.102.30/products/2/related')
-      .then((res) => {
-        return res.json();
-      }).then((relatedId) => {
-        // console.log('related', relatedId);
-        relatedId.forEach(el => {
-          fetch(`http://3.134.102.30/products/${el}/styles`)
-            .then((item) => {
-              return item.json();
-            }).then((itemObj) => {
-              // console.log(itemObj);
-              // this.setState({relatedProducts: this.state.relatedProducts.concat(itemObj)}); // Yeah, this doesn't seem right....
-              tempProductsArr.push(itemObj);
-            });
-        });
-      }).then(() => {
-        // console.log('--', tempProductsArr);
-        this.setState({ relatedProducts: tempProductsArr });
-      });
-
-
-      ************************************
-
-
-    fetch('http://3.134.102.30/products/2/related')
-    .then((res) => {
-      return res.json();
-    }).then((related) => {
-      // console.log('---', related);
-      Promise.all(
-        related.map(
-          el => fetch(`http://3.134.102.30/products/${el}/styles`)
-          .then(res => res.json())
-        )
-      ).then(styles => {
-        // console.log('---', styles);
-        styles.forEach(el => {
-          tempProductsArr.push(el.results[0]);
-        })
-        // Set state here i think?
-        console.log('---', tempProductsArr);
-        this.setState({relatedProducts: tempProductsArr});
-      })
-    })
-  }
-
-
-
-  // let tempProductsArr = [];
-    // fetch('http://3.134.102.30/products/2/related')
-    //   .then((res) => {
-    //     return res.json();
-    //   }).then((relatedIds) => {
-    //     // console.log('---', relatedIds);
-    //     relatedIds.map(el => {
-    //       let tempObj = {};
-    //       fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json())
-    //         .then(styles => {
-    //           // console.log('---', styles.results[0].photos[0].thumbnail_url);
-    //           tempObj.id = styles.product_id;
-    //           tempObj.price = styles.results[0].original_price;
-    //           tempObj.salePrice = styles.results[0].sale_price;
-    //           tempObj.pic = styles.results[0].photos[0].thumbnail_url;
-    //         }).then(next => {
-    //           fetch(`http://3.134.102.30/products/${el}`).then(res => res.json())
-    //             .then(prods => {
-    //               // console.log('---', prods);
-    //               tempObj.name = prods.name;
-    //               tempObj.cat = prods.category;
-    //               // console.log('---', tempObj.name);
-    //             })
-    //         }).then(next => {
-    //           fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json())
-    //             .then(rating => {
-    //               // console.log('---', rating);
-    //               tempObj.ratings = this.calcRating(rating.ratings);
-    //             })
-    //         }).then(next => {
-    //           // console.log('---', tempObj)
-    //           tempProductsArr.push(tempObj);
-    //         }).then(next => {
-    //           if (tempProductsArr.length === relatedIds.length) {
-    //             // console.log('---', tempProductsArr[0].name)
-    //             this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
-    //           }
-    //         })
-    //     })
-    //   })
-*/
