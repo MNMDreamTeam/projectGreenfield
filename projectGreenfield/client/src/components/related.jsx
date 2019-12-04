@@ -39,41 +39,37 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
+
     let tempProductsArr = [];
     fetch('http://3.134.102.30/products/2/related')
-      .then((res) => {
-        return res.json();
-      }).then((relatedIds) => {
-        // console.log('---', relatedIds);
+      .then(res => res.json())
+      .then((relatedIds) => {
         relatedIds.forEach(el => {
-          let tempObj = {};
-          fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json())
-            .then(styles => {
-              // console.log('---', styles.results[0].photos[0].thumbnail_url);
-              tempObj.id = styles.product_id;
-              tempObj.price = styles.results[0].original_price;
-              tempObj.salePrice = styles.results[0].sale_price;
-              tempObj.pic = styles.results[0].photos[0].thumbnail_url;
-            }).then(next => {
-              fetch(`http://3.134.102.30/products/${el}`).then(res => res.json())
-                .then(prods => {
-                  // console.log('---', prods);
-                  tempObj.name = prods.name;
-                  tempObj.cat = prods.category;
-                })
-            }).then(next => {
-              fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json())
-                .then(rating => {
-                  // console.log('---', rating);
-                  tempObj.ratings = this.calcRating(rating.ratings);
-                })
-            }).then(next => {
-              // console.log('---', tempObj)
-              tempProductsArr.push(tempObj);
-              // console.log('---', tempProductsArr)
-            }).then(next => {
+          let styles = fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json());
+          let prods = fetch(`http://3.134.102.30/products/${el}`).then(res => res.json());
+          let ratings = fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json());
+
+          let all = {};
+
+          Promise.all([styles, prods, ratings])
+            .then((data) => {
+              //Style info -> 
+              all.id = data[0].product_id;
+              all.price = data[0].results[0].original_price;
+              all.salePrice = data[0].results[0].sale_price;
+              all.pic = data[0].results[0].photos[0].thumbnail_url;
+
+              //Product info -> 
+              all.name = data[1].name;
+              all.cat = data[1].category;
+
+              //Rating info -> 
+              all.rating = this.calcRating(data[2].ratings);
+
+              tempProductsArr.push(all);
+            }).then((stuff) => {
               if (tempProductsArr.length === relatedIds.length) {
-                // console.log('---', tempProductsArr[0].name)
+                // console.log('---', tempProductsArr[1].name)
                 this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
               }
             })
@@ -93,39 +89,24 @@ class Related extends React.Component {
     } else {
       return (
         <div>
-          {/* {console.log(Object.keys(this.state.relatedProducts[1]))} */}
+          <div className="card-group">
+          {this.state.relatedProducts.map(el =>
+              <div className="row" key={el.id}>
+                <div className="col-sm-4">
+                  <div className="card" style={{ width: 10 + 'rem' }}>
+                    <img src={el.pic} className="card-img-top"></img>
+                    <div className="card-body">
+                      <h6 className="card-subtitle mb-2 text-muted">{el.cat}</h6>
+                      <h6 className="card-text">{el.name}</h6>
+                      <h6 className="card-text">{el.price}</h6>
+                      <h6 className="card-text">{el.rating}</h6>
+                    </div>
+                  </div>
+                </div>
+                </div>
+          )}
+           </div>
         </div>
-        // <div className="container">
-
-        //    <div className="row">
-        //      <div id="relatedProdCarousel" className="carousel slide" data-ride="carousel">
-        //        <div className="carousel-inner"
-        //          <div className="item carousel-item active"
-        //            <div className="card-group">
-        //              {this.state.relatedProducts.map(el =>
-        //              <div className="row">
-        //                <div className="col-sm-4">
-        //                  <div className="card" style={{ width: 10 + 'rem' }}>
-        //                    <img src={el.pic} className="card-img-top"></img>
-        //                    <div className="card-body">
-        //                      <h6 className="card-subtitle mb-2 text-muted">{el.cat}</h6>
-        //                      <h6 className="card-text">{el.name}</h6>
-        //                      <h6 className="card-text">{el.price}</h6>
-        //                      <h6 className="card-text">{el.ratings}</h6>
-        //                    </div>
-        //                  </div>
-        //                </div>
-        //              </div>
-        //              )}
-        //            </div>
-
-
-        // //         </div>
-
-        // //       </div>
-        // //     </div>
-        // //   </div>
-        // </div>
       )
     }
   }
@@ -182,4 +163,47 @@ export default Related;
       })
     })
   }
+
+
+
+  // let tempProductsArr = [];
+    // fetch('http://3.134.102.30/products/2/related')
+    //   .then((res) => {
+    //     return res.json();
+    //   }).then((relatedIds) => {
+    //     // console.log('---', relatedIds);
+    //     relatedIds.map(el => {
+    //       let tempObj = {};
+    //       fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json())
+    //         .then(styles => {
+    //           // console.log('---', styles.results[0].photos[0].thumbnail_url);
+    //           tempObj.id = styles.product_id;
+    //           tempObj.price = styles.results[0].original_price;
+    //           tempObj.salePrice = styles.results[0].sale_price;
+    //           tempObj.pic = styles.results[0].photos[0].thumbnail_url;
+    //         }).then(next => {
+    //           fetch(`http://3.134.102.30/products/${el}`).then(res => res.json())
+    //             .then(prods => {
+    //               // console.log('---', prods);
+    //               tempObj.name = prods.name;
+    //               tempObj.cat = prods.category;
+    //               // console.log('---', tempObj.name);
+    //             })
+    //         }).then(next => {
+    //           fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json())
+    //             .then(rating => {
+    //               // console.log('---', rating);
+    //               tempObj.ratings = this.calcRating(rating.ratings);
+    //             })
+    //         }).then(next => {
+    //           // console.log('---', tempObj)
+    //           tempProductsArr.push(tempObj);
+    //         }).then(next => {
+    //           if (tempProductsArr.length === relatedIds.length) {
+    //             // console.log('---', tempProductsArr[0].name)
+    //             this.setState({ relatedProducts: [...tempProductsArr], isLoading: false });
+    //           }
+    //         })
+    //     })
+    //   })
 */
