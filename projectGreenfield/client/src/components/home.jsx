@@ -86,6 +86,8 @@ changeStyle(e,callback){
     var indx = this.state.curStyleIndex;
     indx = indx + 1;
     this.setState({curStyleIndex: indx});
+    this.setState({curSizeNumChoice: 1});
+    this.setState({curSize : 'SELECT SIZE'});
     callback(e,indx);
 }
 
@@ -191,26 +193,12 @@ render(){
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          {dropdownArr}
-                            {/* <a class="dropdown-item" href="#">XS</a>
-                            <a class="dropdown-item" href="#">Small</a>
-                            <a class="dropdown-item" href="#">Medium</a>
-                            <a class="dropdown-item" href="#">Large</a>
-                            <a class="dropdown-item" href="#">XL</a> */}
                         </div>
                     </div>
                     <div class="dropdown2">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {numArr}
-                            {/* <a class="dropdown-item" href="#">2</a>
-                            <a class="dropdown-item" href="#">3</a>
-                            <a class="dropdown-item" href="#">4</a>
-                            <a class="dropdown-item" href="#">5</a>
-                            <a class="dropdown-item" href="#">6</a>
-                            <a class="dropdown-item" href="#">7</a>
-                            <a class="dropdown-item" href="#">8</a>
-                            <a class="dropdown-item" href="#">9</a>
-                            <a class="dropdown-item" href="#">10</a> */}
                         </div>
                     </div><br></br>
                     <div class="dropdown3">
