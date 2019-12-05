@@ -85,14 +85,22 @@ class Related extends React.Component {
     } else {
       return (
         <div className="container">
-        <h4><em><u>Related Products:</u></em></h4>
+          <h4><em><u>Related Products:</u></em></h4>
           <div className="row">
-              <div className="card-group d-flex flex-nowrap">
-                {this.state.relatedProducts.map(el => 
-                  <RelatedCards info={el} key={el.id}/>
-                )}
+            <div className="container-fluid">
+              <div id="relatedCar" className="carousel slide container carousel-fade" data-ride="carousel" style={{width: 48 + 'rem'}}>
+                <div className="carousel-inner row mx-auto">
+                  <div className="card-group d-flex flex-nowrap">
+                    {this.state.relatedProducts.map(el =>
+                      <div classname="carousel-item">
+                        <RelatedCards info={el} key={el.id} />
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
         </div>
       )
     }
