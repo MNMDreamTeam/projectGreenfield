@@ -11,7 +11,7 @@
 
 
 import React from 'react';
-import StarRatings from '../../../node_modules/react-star-ratings';
+import StarRatings from '../../../react-star-ratings';
 
 
 class Related extends React.Component {
