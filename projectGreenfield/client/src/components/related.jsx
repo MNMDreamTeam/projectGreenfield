@@ -11,8 +11,7 @@
 
 
 import React from 'react';
-import StarRatings from '../../../react-star-ratings';
-
+import RelatedCards from './relatedCards.jsx';
 
 class Related extends React.Component {
   constructor() {
@@ -89,25 +88,8 @@ class Related extends React.Component {
         <h4><em><u>Related Products:</u></em></h4>
           <div className="row">
               <div className="card-group d-flex flex-nowrap">
-                {this.state.relatedProducts.map(el =>
-                  <div className="row" key={el.id}>
-                    <div className="col-sm-4">
-                      <div className="card" style={{ width: 14 + 'rem' , height: 31 + 'rem'}}>
-                        <img src={el.pic} className="card-img-top" style={{ height: 17 + 'rem' }}></img>
-                        <div className="card-body flex-fill">
-                          <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{el.cat}</em></small></p>
-                          <p className="card-text text-left"><b>{el.name}</b></p>
-                          {el.salePrice > 0 &&
-                            <p className="card-text text-left text-danger"><small>{el.salePrice}</small></p>
-                          }
-                          {el.salePrice <= 0 && 
-                            <p className="card-text text-left"><small>${el.price}</small></p>
-                          }
-                          <StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {this.state.relatedProducts.map(el => 
+                  <RelatedCards info={el} key={el.id}/>
                 )}
               </div>
             </div>
