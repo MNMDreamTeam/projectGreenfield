@@ -206,3 +206,8 @@ p {
     height:4em;
     border-radius: 50%;
 }
+
+#sale {
+    color: red;
+    margin-left:1em;
+}

@@ -112,12 +112,17 @@ render(){
     var styleName = ""
     var description = ""
     var slogan = ""
+    var sale = <div></div>
     var circles = <div></div>
     if (this.state.loaded === true){
         carousel = <VerticalCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         category = <p>{this.state.currentProduct.category}</p>
         name =  <h2>{this.state.currentProduct.name}</h2>
         price = <p>${this.state.currentStyle.original_price}</p>
+        if (this.state.currentStyle.sale_price !== "0"){
+            price = <p>${this.state.currentStyle.sale_price}</p>
+            sale = <div id="sale" >Sale!</div>
+        }
         styleName = this.state.currentStyle.name
         description = this.state.currentProduct.description
         slogan = this.state.currentProduct.slogan
@@ -147,6 +152,7 @@ render(){
                 <p>***** Read all reviews</p>
                 {category}
                 {name}
+                {sale}
                 {price}
                     <p><b>STYLE > </b>{styleName}</p>
                     <div class="circleRow">
