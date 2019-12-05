@@ -9,12 +9,14 @@ class Home extends React.Component {
             currentProduct: {},
             currentStyle: {},
             curStyleIndex: 0,
+            curSizeNum: 1,
             styles: [],
             stylePics: [],
             loaded: false
         }
         this.changeStyle = this.changeStyle.bind(this);
         this.change = this.change.bind(this);
+        this.changeNumber = this.changeNumber.bind(this);
     }
 
 
@@ -42,7 +44,7 @@ change(e,ind){
     .then((styleObj) => {
         this.setState({styles: styleObj.results});
        // this.setState({currentStyle:});
-        console.log(this.state.currentStyle);
+        console.log(this.state.currentStyle.skus);
     })
     .then(() => {
         var pics = [];
@@ -59,6 +61,17 @@ change(e,ind){
     .then(() => {
         this.setState({loaded: true});
     })
+}
+
+
+changeNumber(e){
+    console.log(e.target.innerHTML);
+    for (var key in this.state.currentStyle.skus){
+        if (key === e.target.innerHTML){
+            this.setState({curSizeNum : this.state.currentStyle.skus[key]});
+            console.log('current size num in state', this.state.curSizeNum)
+        }
+    }
 }
    
 changeStyle(e,callback){
@@ -114,6 +127,8 @@ render(){
     var slogan = ""
     var sale = <div></div>
     var circles = <div></div>
+    var numArr = [] 
+    var dropdownArr = []
     if (this.state.loaded === true){
         carousel = <VerticalCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         category = <p>{this.state.currentProduct.category}</p>
@@ -126,6 +141,13 @@ render(){
         styleName = this.state.currentStyle.name
         description = this.state.currentProduct.description
         slogan = this.state.currentProduct.slogan
+        for (var key in this.state.currentStyle.skus){
+            dropdownArr.push(<a class="dropdown-item" href="#" onClick={(e) => {this.changeNumber(e)}}>{key}</a>);
+            console.log(key);
+        }
+        for (var x = 1; x<this.state.curSizeNum+1; x++){
+            numArr.push(<a class="dropdown-item" href="#">{x}</a>);
+        }
         circles = [];
         var count = 0;
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
@@ -161,18 +183,19 @@ render(){
                     <div class="dropdown1">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT SIZE</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">XS</a>
+                         {dropdownArr}
+                            {/* <a class="dropdown-item" href="#">XS</a>
                             <a class="dropdown-item" href="#">Small</a>
                             <a class="dropdown-item" href="#">Medium</a>
                             <a class="dropdown-item" href="#">Large</a>
-                            <a class="dropdown-item" href="#">XL</a>
+                            <a class="dropdown-item" href="#">XL</a> */}
                         </div>
                     </div>
                     <div class="dropdown2">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">1</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">1</a>
-                            <a class="dropdown-item" href="#">2</a>
+                            {numArr}
+                            {/* <a class="dropdown-item" href="#">2</a>
                             <a class="dropdown-item" href="#">3</a>
                             <a class="dropdown-item" href="#">4</a>
                             <a class="dropdown-item" href="#">5</a>
@@ -180,7 +203,7 @@ render(){
                             <a class="dropdown-item" href="#">7</a>
                             <a class="dropdown-item" href="#">8</a>
                             <a class="dropdown-item" href="#">9</a>
-                            <a class="dropdown-item" href="#">10</a>
+                            <a class="dropdown-item" href="#">10</a> */}
                         </div>
                     </div><br></br>
                     <div class="dropdown3">
