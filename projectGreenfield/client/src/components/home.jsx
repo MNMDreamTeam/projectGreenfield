@@ -9,7 +9,9 @@ class Home extends React.Component {
             currentProduct: {},
             currentStyle: {},
             curStyleIndex: 0,
+            curSize: 'SELECT SIZE',
             curSizeNum: 1,
+            curSizeNumChoice: 1,
             styles: [],
             stylePics: [],
             loaded: false
@@ -69,9 +71,14 @@ changeNumber(e){
     for (var key in this.state.currentStyle.skus){
         if (key === e.target.innerHTML){
             this.setState({curSizeNum : this.state.currentStyle.skus[key]});
+            this.setState({curSize : key});
             console.log('current size num in state', this.state.curSizeNum)
         }
     }
+}
+
+changeNumberChoice(e){
+    this.setState({curSizeNumChoice: e.target.innerHTML});
 }
    
 changeStyle(e,callback){
@@ -146,7 +153,7 @@ render(){
             console.log(key);
         }
         for (var x = 1; x<this.state.curSizeNum+1; x++){
-            numArr.push(<a class="dropdown-item" href="#">{x}</a>);
+            numArr.push(<a class="dropdown-item" href="#" onClick={(e) => {this.changeNumberChoice(e)}}>{x}</a>);
         }
         circles = [];
         var count = 0;
@@ -181,7 +188,7 @@ render(){
                         {circles} 
                     </div> 
                     <div class="dropdown1">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT SIZE</button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                          {dropdownArr}
                             {/* <a class="dropdown-item" href="#">XS</a>
@@ -192,7 +199,7 @@ render(){
                         </div>
                     </div>
                     <div class="dropdown2">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">1</button>
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {numArr}
                             {/* <a class="dropdown-item" href="#">2</a>
