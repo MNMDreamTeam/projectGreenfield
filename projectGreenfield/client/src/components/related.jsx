@@ -41,7 +41,7 @@ class Related extends React.Component {
   componentDidMount() {
 
     let tempProductsArr = [];
-    fetch('http://3.134.102.30/products/3/related')
+    fetch('http://3.134.102.30/products/9/related')
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
@@ -86,8 +86,9 @@ class Related extends React.Component {
     } else {
       return (
         <div className="container">
+        <h4><em><u>Related Products:</u></em></h4>
           <div className="row">
-              <div className="card-group">
+              <div className="card-group d-flex flex-nowrap">
                 {this.state.relatedProducts.map(el =>
                   <div className="row" key={el.id}>
                     <div className="col-sm-4">
@@ -96,7 +97,12 @@ class Related extends React.Component {
                         <div className="card-body flex-fill">
                           <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{el.cat}</em></small></p>
                           <p className="card-text text-left"><b>{el.name}</b></p>
-                          <p className="card-text text-left"><small>${el.price}</small></p>
+                          {el.salePrice > 0 &&
+                            <p className="card-text text-left text-danger"><small>{el.salePrice}</small></p>
+                          }
+                          {el.salePrice <= 0 && 
+                            <p className="card-text text-left"><small>${el.price}</small></p>
+                          }
                           <StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating} />
                         </div>
                       </div>
