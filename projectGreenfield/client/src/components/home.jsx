@@ -14,13 +14,25 @@ class Home extends React.Component {
             curSizeNumChoice: 1,
             styles: [],
             stylePics: [],
+            cart: [],
             loaded: false
         }
         this.changeStyle = this.changeStyle.bind(this);
         this.change = this.change.bind(this);
         this.changeNumber = this.changeNumber.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
+addToCart(){
+    var itemChosen = {
+        productName: this.state.currentProduct.name,
+        style: this.state.currentStyle.name,
+        size: this.state.curSize,
+        number: this.state.curSizeNumChoice
+    }
+    this.setState({cart: itemChosen});
+    console.log('item added to cart:', itemChosen);
+}
 
 change(e,ind){
     console.log('event target', e.target.src);
@@ -202,7 +214,7 @@ render(){
                         </div>
                     </div><br></br>
                     <div class="dropdown3">
-                        <button class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">ADD TO BAG +</button>
+                        <button class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onClick={this.addToCart}>ADD TO BAG +</button>
                     </div>
                     <div class="dropdown4">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star</button>
