@@ -8,7 +8,6 @@ import Home from './home.jsx';
 import Related from './related.jsx';
 import Outfit from './outfit.jsx';
 
-
 class App extends React.Component {
   constructor(props){
     super(props);
