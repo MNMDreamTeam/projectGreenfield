@@ -84,26 +84,29 @@ class Related extends React.Component {
       )
     } else {
       return (
-        <div className="container">
-          <h4><em><u>Related Products:</u></em></h4>
-          <div className="row">
-            <div className="container-fluid">
-              <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel"> {/*style={{ width: 43 + 'rem' }} */}
-                <div className="carousel-inner v-2" role="listbox">
-                  <div className="card-group d-flex flex-nowrap">
-                    {this.state.relatedProducts.map(el =>
-                      <div classname="carousel-item">
-                        <RelatedCards info={el} key={el.id} />
-                      </div>
-                    )}
+        // Related Products
+        <div>
+          <div className="container">
+            <h4><em><u>Related Products:</u></em></h4>
+            <div className="row">
+              <div className="container-fluid">
+                <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel"> {/*style={{ width: 43 + 'rem' }} */}
+                  <div className="carousel-inner v-2" role="listbox">
+                    <div className="card-group d-flex flex-nowrap">
+                      {this.state.relatedProducts.map(el =>
+                        <div classname="carousel-item">
+                          <RelatedCards info={el} key={el.id} />
+                        </div>
+                      )}
+                    </div>
                   </div>
+                  <a className="carousel-control-prev" href="#relatedCar" data-slider="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </a>
+                  <a className="carousel-control-next" href="#relatedCar" data-slider="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </a>
                 </div>
-                <a className="carousel-control-prev" href="#relatedCar" data-slider="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a className="carousel-control-next" href="#relatedCar" data-slider="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
               </div>
             </div>
           </div>
