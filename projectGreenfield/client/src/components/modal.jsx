@@ -56,7 +56,7 @@ class Modal extends React.Component {
   }
 
   closeModal() {
-
+    // TODO: Close modal and reset state on related......
   }
 
   render() {
@@ -90,8 +90,8 @@ class Modal extends React.Component {
                     </div>
                   </div>
                   <div className="container-fluid">
-                    {this.state.comparedItems.map(el =>
-                      <div className="row border-bottom">
+                    {this.state.comparedItems.map((el, i) =>
+                      <div className="row border-bottom" key={i}>
                         <div className="col-sm text-left">
                           {el[0] > 0 && 
                             <b>&#10004;</b>
