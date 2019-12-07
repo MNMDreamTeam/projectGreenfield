@@ -1,5 +1,6 @@
 import React from 'react';
 import VerticalCarousel from './VerticalCarousel.jsx';
+import ExpandedCarousel from './expandedCarousel.jsx';
 import $ from 'jquery';
 class Home extends React.Component {
     constructor(props){
@@ -15,12 +16,15 @@ class Home extends React.Component {
             styles: [],
             stylePics: [],
             cart: [],
-            loaded: false
+            loaded: false,
+            expanded: false
         }
         this.changeStyle = this.changeStyle.bind(this);
         this.change = this.change.bind(this);
         this.changeNumber = this.changeNumber.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        this.expand = this.expand.bind(this);
+        this.minimize = this.minimize.bind(this);
     }
 
 addToCart(){
@@ -92,6 +96,14 @@ changeNumber(e){
 changeNumberChoice(e){
     this.setState({curSizeNumChoice: e.target.innerHTML});
 }
+
+expand(){
+    this.setState({expanded: true});
+}
+
+minimize(){
+    this.setState({expanded: false});
+}
    
 changeStyle(e,callback){
     this.setState({loaded: false});
@@ -138,7 +150,7 @@ componentDidMount(){
 }
 
 render(){
-
+    
     var carousel = <div></div>
     var category = <p></p>
     var name =  <h2></h2>
@@ -151,7 +163,6 @@ render(){
     var numArr = [] 
     var dropdownArr = []
     if (this.state.loaded === true){
-        carousel = <VerticalCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         category = <p>{this.state.currentProduct.category}</p>
         name =  <h2>{this.state.currentProduct.name}</h2>
         price = <p>${this.state.currentStyle.original_price}</p>
@@ -177,6 +188,61 @@ render(){
            </div>)
            count++;
         })}
+        if (this.state.expanded === true){
+            infoUnderImage = <div> 
+                {category}
+                {name}
+                {price}
+                <p><b>STYLE > </b>{styleName}</p>
+                <div class="circleRow">
+                    {circles} 
+                </div> 
+            </div>
+            productInfo = undefined
+            carousel = <ExpandedCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+            close = <button id="closeButton" onClick={this.minimize}>X</button>
+        } else {
+        var close = undefined
+        var infoUnderImage = <div><h5 id="slogan">{slogan}</h5>
+        <p id="description">{description}</p></div>
+        var productInfo = <div id="Col" class="style">
+        <p>***** Read all reviews</p>
+        {category}
+        {name}
+        {sale}
+        {price}
+            <p><b>STYLE > </b>{styleName}</p>
+            <div class="circleRow">
+                {circles} 
+            </div> 
+            <div class="dropdown1">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                 {dropdownArr}
+                </div>
+            </div>
+            <div class="dropdown2">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {numArr}
+                </div>
+            </div><br></br>
+            <div class="dropdown3">
+                <button class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onClick={this.addToCart}>ADD TO BAG +</button>
+            </div>
+            <div class="dropdown4">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">*</a>
+                    <a class="dropdown-item" href="#">**</a>
+                    <a class="dropdown-item" href="#">***</a>
+                    <a class="dropdown-item" href="#">****</a>
+                    <a class="dropdown-item" href="#">*****</a>
+                </div>
+            </div>
+        </div> 
+        carousel = <VerticalCarousel expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+        }
     } 
 
     return (
@@ -187,46 +253,11 @@ render(){
             
             <div class="Row">
                 <div id="Col" class="showcase">
+                    {close}
                     {carousel}
-                    <h5 id="slogan">{slogan}</h5>
-                    <p id="description">{description}</p>  
+                    {infoUnderImage}
                 </div> 
-                <div id="Col" class="style">
-                <p>***** Read all reviews</p>
-                {category}
-                {name}
-                {sale}
-                {price}
-                    <p><b>STYLE > </b>{styleName}</p>
-                    <div class="circleRow">
-                        {circles} 
-                    </div> 
-                    <div class="dropdown1">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                         {dropdownArr}
-                        </div>
-                    </div>
-                    <div class="dropdown2">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {numArr}
-                        </div>
-                    </div><br></br>
-                    <div class="dropdown3">
-                        <button class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onClick={this.addToCart}>ADD TO BAG +</button>
-                    </div>
-                    <div class="dropdown4">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">*</a>
-                            <a class="dropdown-item" href="#">**</a>
-                            <a class="dropdown-item" href="#">***</a>
-                            <a class="dropdown-item" href="#">****</a>
-                            <a class="dropdown-item" href="#">*****</a>
-                        </div>
-                    </div>
-                </div> 
+                {productInfo}
             </div>
         </div>
     )

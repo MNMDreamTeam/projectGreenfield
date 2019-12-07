@@ -211,3 +211,14 @@ p {
     color: red;
     margin-left:1em;
 }
+
+#expanded {
+    width:70em;
+    height:40em;
+    margin-left:9.5em; 
+}
+
+#closeButton {
+    margin-top: 2em;
+    margin-left: 2em;
+}
