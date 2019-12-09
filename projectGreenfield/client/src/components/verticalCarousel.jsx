@@ -21,7 +21,7 @@ class VerticalCarousel extends React.Component{
         var innerPics = [];
         for (var i=1; i<this.state.allPics.length; i++){
             innerPics.push(<div class="carousel-item">
-            <img class="d-block w-100" src={this.state.allPics[i]}></img>
+            <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[i]}></img>
           </div>);
         }
         return innerPics;
@@ -32,7 +32,7 @@ class VerticalCarousel extends React.Component{
 <div>
 {this.state.allPics.map(item => (
         <div class="Row2">
-            <img class="rightSide2" onClick={this.props.expand} src={item}></img>
+            <img class="rightSide2" src={item}></img>
         </div>
 ))}
 <div id="carousel2" class="Row2"> 
