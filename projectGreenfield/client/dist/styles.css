@@ -189,3 +189,11 @@ p {
     margin-top: -2.4em;
 }
 
+.col-md-6 {
+    border-width: thick;
+    /* border-style: dotted; */
+}
+
+#multiple-choice {
+    border-style: dotted;
+}
