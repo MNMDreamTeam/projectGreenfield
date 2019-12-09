@@ -179,7 +179,7 @@ p {
     width:70em;
     height:7em;
     margin-left:12em;
-    margin-bottom:1.3em;
+    margin-bottom:.5em;
     /* background-color: rgb(220, 244, 103); */
    
     background-color: rgb(116, 196, 245); 
@@ -223,3 +223,16 @@ p {
     margin-left: 2em;
 }
 
+#cart {
+    width:3em;
+    height:3em;
+    margin-bottom:1em; 
+}
+
+.notification-counter {    
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font: 8px Verdana;
+}

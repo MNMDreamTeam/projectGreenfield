@@ -17,6 +17,7 @@ class Home extends React.Component {
             stylePics: [],
             curPicIndex: 0,
             cart: [],
+            cartNum: 0,
             loaded: false,
             expanded: false
         }
@@ -35,8 +36,11 @@ addToCart(){
         size: this.state.curSize,
         number: this.state.curSizeNumChoice
     }
+    var cartCount = Number(this.state.cartNum) + Number(itemChosen.number);
     this.setState({cart: itemChosen});
+    this.setState({cartNum: cartCount});
     console.log('item added to cart:', itemChosen);
+    localStorage.setItem('Items in Cart', cartCount);
 }
 
 change(e,ind){
@@ -129,6 +133,12 @@ changeStyle(e,callback){
 }
 
 componentDidMount(){
+
+    
+    var num = localStorage.getItem('Items in Cart');
+    console.log('number of items in one transaction', num);
+    this.setState({cartNum: Number(num)});
+    
     $.get('http://3.134.102.30/products/list?count=11')
     .then(items => {
         this.setState({products: items});
@@ -175,7 +185,15 @@ render(){
     var circles = <div></div>
     var numArr = [] 
     var dropdownArr = []
+    var cart = <div>
+        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <span class="notification-counter">0</span>
+        </div>
     if (this.state.loaded === true){
+        cart = <div>
+        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <span class="notification-counter">{this.state.cartNum}</span>
+        </div>
         category = <p>{this.state.currentProduct.category}</p>
         name =  <h2>{this.state.currentProduct.name}</h2>
         price = <p>${this.state.currentStyle.original_price}</p>
@@ -219,6 +237,7 @@ render(){
         var infoUnderImage = <div><h5 id="slogan">{slogan}</h5>
         <p id="description">{description}</p></div>
         var productInfo = <div id="Col" class="style">
+        {cart}
         <p>***** Read all reviews</p>
         {category}
         {name}
