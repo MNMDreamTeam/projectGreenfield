@@ -17,8 +17,8 @@ class App extends React.Component {
       <div>
         <Home />
         <Related />
+        <Outfit />
         <Reviews />
-
       </div>
     )
   }

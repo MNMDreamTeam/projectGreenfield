@@ -58,7 +58,7 @@ class Modal extends React.Component {
     if (this.state.isLoading) {
       return (
         <div>
-          <h6>Lodaing....</h6>
+          <h6>Loading....</h6>
         </div>
       )
     } else {
@@ -74,13 +74,13 @@ class Modal extends React.Component {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <div className="container">
+                  <div className="container p-3">
                     <div className="row">
                       <div className="col-sm text-left">
-                        {this.state.currentlyViewed}
+                        <b>{this.state.currentlyViewed}</b>
                       </div>
                       <div className="col-sm text-right">
-                        {this.state.relatedItem}
+                        <b>{this.state.relatedItem}</b>
                       </div>
                     </div>
                   </div>
@@ -89,15 +89,15 @@ class Modal extends React.Component {
                       <div className="row border-bottom" key={i}>
                         <div className="col-sm text-left">
                           {el[0] > 0 &&
-                            <b>&#10004;</b>
+                            <small><b>&#10004;</b></small>
                           }
                       </div>
                         <div className="col-sm text-center">
-                          <em>{el[1]}</em>
+                          <small><em>{el[1]}</em></small>
                         </div>
                         <div className="col-sm text-right">
                           {el[2] > 0 &&
-                            <b>&#10004;</b>
+                            <small><b>&#10004;</b></small>
                           }
                       </div>
                       </div>
