@@ -9,7 +9,6 @@ class Modal extends React.Component {
       comparedItems: [],
       isLoading: true
     }
-    this.closeModal = this.closeModal.bind(this);
     this.dirtyWork = this.dirtyWork.bind(this)
   }
 
@@ -55,10 +54,6 @@ class Modal extends React.Component {
     return characteristcsArr;
   }
 
-  closeModal() {
-    // TODO: Close modal and reset state on related......
-  }
-
   render() {
     if (this.state.isLoading) {
       return (
@@ -68,13 +63,13 @@ class Modal extends React.Component {
       )
     } else {
       return (
-        <div data-toggle="collapse" data-target="#modal" onClick={this.closeModal}>
+        <div data-toggle="collapse" data-target="#modal" onClick={this.props.modalClose}>
           <div className="modal show fade" id="modal" tabIndex="-1" role="dialog" data-show="true" style={{ display: 'block' }}>
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-header">
                   <h4 className="modal-title" id="modalTitle">Comparing</h4>
-                  <button type="button" className="close" data-dismiss="modal" onClick={this.closeModal}>
+                  <button type="button" className="close" data-dismiss="modal" onClick={this.props.modalClose}>
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -93,7 +88,7 @@ class Modal extends React.Component {
                     {this.state.comparedItems.map((el, i) =>
                       <div className="row border-bottom" key={i}>
                         <div className="col-sm text-left">
-                          {el[0] > 0 && 
+                          {el[0] > 0 &&
                             <b>&#10004;</b>
                           }
                       </div>
@@ -101,7 +96,7 @@ class Modal extends React.Component {
                           <em>{el[1]}</em>
                         </div>
                         <div className="col-sm text-right">
-                          {el[2] > 0 && 
+                          {el[2] > 0 &&
                             <b>&#10004;</b>
                           }
                       </div>

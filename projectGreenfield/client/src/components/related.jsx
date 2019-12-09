@@ -25,6 +25,7 @@ class Related extends React.Component {
     }
     this.calcRating = this.calcRating.bind(this);
     this.modalClick = this.modalClick.bind(this);
+    this.modalClose = this.modalClose.bind(this);
   }
 
   calcRating(ratings) {
@@ -56,17 +57,17 @@ class Related extends React.Component {
 
           Promise.all([styles, prods, ratings])
             .then((data) => {
-              // Style info -> 
+              // Style info ->
               all.id = data[0].product_id;
               all.price = data[0].results[0].original_price;
               all.salePrice = data[0].results[0].sale_price;
               all.pic = data[0].results[0].photos[0].thumbnail_url;
 
-              // Product info -> 
+              // Product info ->
               all.name = data[1].name;
               all.cat = data[1].category;
 
-              // Rating info -> 
+              // Rating info ->
               all.rating = this.calcRating(data[2].ratings);
 
               tempProductsArr.push(all);
@@ -86,6 +87,12 @@ class Related extends React.Component {
     }});
   }
 
+  modalClose() {
+    this.setState({showModal: {
+      show: false
+    }});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -98,7 +105,7 @@ class Related extends React.Component {
         // Related Products
           <div className="container">
             <h4><em><u>Related Products:</u></em></h4>
-            {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId}/> : null}
+            {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose}/> : null}
             <div className="row">
               <div className="container-fluid">
                 <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel"> {/*style={{ width: 43 + 'rem' }} */}
