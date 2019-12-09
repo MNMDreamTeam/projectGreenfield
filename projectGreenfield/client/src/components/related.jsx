@@ -12,15 +12,20 @@
 
 import React from 'react';
 import RelatedCards from './relatedCards.jsx';
+import Modal from './modal.jsx';
 
 class Related extends React.Component {
   constructor() {
     super();
     this.state = {
+      displayedId: 89,
       relatedProducts: [],
-      isLoading: true
+      isLoading: true,
+      showModal: {show: false, relatedId: 0}
     }
     this.calcRating = this.calcRating.bind(this);
+    this.modalClick = this.modalClick.bind(this);
+    this.modalClose = this.modalClose.bind(this);
   }
 
   calcRating(ratings) {
@@ -40,7 +45,7 @@ class Related extends React.Component {
   componentDidMount() {
 
     let tempProductsArr = [];
-    fetch('http://3.134.102.30/products/9/related')
+    fetch(`http://3.134.102.30/products/${this.state.displayedId}/related`)
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
@@ -52,17 +57,17 @@ class Related extends React.Component {
 
           Promise.all([styles, prods, ratings])
             .then((data) => {
-              // Style info -> 
+              // Style info ->
               all.id = data[0].product_id;
               all.price = data[0].results[0].original_price;
               all.salePrice = data[0].results[0].sale_price;
               all.pic = data[0].results[0].photos[0].thumbnail_url;
 
-              // Product info -> 
+              // Product info ->
               all.name = data[1].name;
               all.cat = data[1].category;
 
-              // Rating info -> 
+              // Rating info ->
               all.rating = this.calcRating(data[2].ratings);
 
               tempProductsArr.push(all);
@@ -75,6 +80,19 @@ class Related extends React.Component {
       })
   }
 
+  modalClick(e) {
+    this.setState({showModal: {
+      show:true,
+      relatedId: e.info.id
+    }});
+  }
+
+  modalClose() {
+    this.setState({showModal: {
+      show: false
+    }});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -84,24 +102,32 @@ class Related extends React.Component {
       )
     } else {
       return (
-        <div className="container">
-          <h4><em><u>Related Products:</u></em></h4>
-          <div className="row">
-            <div className="container-fluid">
-              <div id="relatedCar" className="carousel slide container carousel-fade" data-ride="carousel" style={{width: 48 + 'rem'}}>
-                <div className="carousel-inner row mx-auto">
-                  <div className="card-group d-flex flex-nowrap">
-                    {this.state.relatedProducts.map(el =>
-                      <div classname="carousel-item">
-                        <RelatedCards info={el} key={el.id} />
-                      </div>
-                    )}
+        // Related Products
+          <div className="container">
+            <h4><em><u>Related Products:</u></em></h4>
+            {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose}/> : null}
+            <div className="row">
+              <div className="container-fluid">
+                <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel"> {/*style={{ width: 43 + 'rem' }} */}
+                  <div className="carousel-inner v-2" role="listbox">
+                    <div className="card-group d-flex flex-nowrap">
+                      {this.state.relatedProducts.map(el =>
+                        // <div className="carousel-item">
+                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} />
+                        // </div>
+                      )}
+                    </div>
                   </div>
+                  <a className="carousel-control-prev" href="#relatedCar" data-slider="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </a>
+                  <a className="carousel-control-next" href="#relatedCar" data-slider="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       )
     }
   }
