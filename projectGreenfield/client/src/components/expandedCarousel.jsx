@@ -1,6 +1,6 @@
 import React from 'react';
 
-class VerticalCarousel extends React.Component{
+class ExpandedCarousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -20,8 +20,8 @@ class VerticalCarousel extends React.Component{
     renderLoop(){
         var innerPics = [];
         for (var i=1; i<this.state.allPics.length; i++){
-            innerPics.push(<div class="carousel-item">
-            <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[i]}></img>
+            innerPics.push(<div  id="expanded"class="carousel-item">
+            <img  class="d-block w-100" src={this.state.allPics[i]}></img>
           </div>);
         }
         return innerPics;
@@ -30,20 +30,14 @@ class VerticalCarousel extends React.Component{
     render(){
         return (
 <div>
-{this.state.allPics.map(item => (
-        <div class="Row2">
-            <img class="rightSide2" src={item}></img>
-        </div>
-))}
-<div id="carousel2" class="Row2"> 
 <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
-  <ol class="carousel-indicators">
+<ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     {this.renderIndicators()}
   </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[0]}></img>
+  <div  class="carousel-inner" >
+    <div  id="expanded" class="carousel-item active">
+      <img   class="d-block w-100" src={this.state.allPics[0]}></img>
     </div>
     {this.renderLoop()}
   </div>
@@ -56,11 +50,9 @@ class VerticalCarousel extends React.Component{
     <span class="sr-only">Next</span>
   </a>
 </div>
-</div> 
-
 </div>
         )
     }
 }
 
-export default VerticalCarousel;
+export default ExpandedCarousel;
