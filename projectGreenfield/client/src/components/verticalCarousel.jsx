@@ -4,7 +4,8 @@ class VerticalCarousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            allPics: this.props.stylepics
+            allPics: this.props.stylepics,
+            curPicIndex: this.props.curPicIndex
         }
        
     }
@@ -19,10 +20,12 @@ class VerticalCarousel extends React.Component{
    
     renderLoop(){
         var innerPics = [];
-        for (var i=1; i<this.state.allPics.length; i++){
+        for (var i=0; i<this.state.allPics.length; i++){
+            if (i !== this.state.curPicIndex){
             innerPics.push(<div class="carousel-item">
-            <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[i]}></img>
-          </div>);
+                <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[i]}></img>
+            </div>);
+            }
         }
         return innerPics;
     }
@@ -43,7 +46,7 @@ class VerticalCarousel extends React.Component{
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[0]}></img>
+      <img class="d-block w-100" onClick={this.props.expand} src={this.state.allPics[this.state.curPicIndex]}></img>
     </div>
     {this.renderLoop()}
   </div>

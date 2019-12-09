@@ -4,7 +4,8 @@ class ExpandedCarousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            allPics: this.props.stylepics
+            allPics: this.props.stylepics,
+            curPicIndex: this.props.curPicIndex
         }
        
     }
@@ -19,10 +20,12 @@ class ExpandedCarousel extends React.Component{
    
     renderLoop(){
         var innerPics = [];
-        for (var i=1; i<this.state.allPics.length; i++){
-            innerPics.push(<div  id="expanded"class="carousel-item">
+        for (var i=0; i<this.state.allPics.length; i++){
+            if (i !== this.state.curPicIndex){
+                innerPics.push(<div  id="expanded"class="carousel-item">
             <img  class="d-block w-100" src={this.state.allPics[i]}></img>
           </div>);
+            }
         }
         return innerPics;
     }
@@ -37,7 +40,7 @@ class ExpandedCarousel extends React.Component{
   </ol>
   <div  class="carousel-inner" >
     <div  id="expanded" class="carousel-item active">
-      <img   class="d-block w-100" src={this.state.allPics[0]}></img>
+      <img   class="d-block w-100" src={this.state.allPics[this.state.curPicIndex]}></img>
     </div>
     {this.renderLoop()}
   </div>
