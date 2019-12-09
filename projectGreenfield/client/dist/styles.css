@@ -191,6 +191,16 @@ p {
     margin-top: -2.4em;
 }
 
+<<<<<<< HEAD
+.col-md-6 {
+    border-width: thick;
+    /* border-style: dotted; */
+}
+
+#multiple-choice {
+    border-style: dotted;
+}
+=======
 #description {
     margin-top: 1em;
     margin-left:20em;
@@ -223,3 +233,4 @@ p {
     margin-left: 2em;
 }
 
+>>>>>>> f15d6884c858dde1efe33cd12c7699e921157fce

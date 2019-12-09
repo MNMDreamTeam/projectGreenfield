@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import Modal from './modal.jsx'
-
-
-
-
-
-
-// import Reviews from './reviews.jsx';
+import Reviews from './reviews.jsx';
 import Home from './home.jsx';
 import Related from './related.jsx';
 import Outfit from './outfit.jsx';
+
 
 class App extends React.Component {
   constructor(props){
@@ -23,8 +17,8 @@ class App extends React.Component {
       <div>
         <Home />
         <Related />
-        <Outfit />
-        {/* <Reviews /> */}
+        <Reviews />
+
       </div>
     )
   }
