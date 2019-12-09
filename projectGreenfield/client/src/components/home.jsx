@@ -15,6 +15,7 @@ class Home extends React.Component {
             curSizeNumChoice: 1,
             styles: [],
             stylePics: [],
+            curPicIndex: 0,
             cart: [],
             loaded: false,
             expanded: false
@@ -97,7 +98,19 @@ changeNumberChoice(e){
     this.setState({curSizeNumChoice: e.target.innerHTML});
 }
 
-expand(){
+expand(e){
+    console.log('event target onclick', e.target.src);
+    var ind = 0;
+    for (var i=0; i<this.state.stylePics[this.state.curStyleIndex].length; i++){
+        console.log('cur style pic from state pics array', this.state.stylePics[i]);
+        console.log('pic from source', e.target.src);
+        if (this.state.stylePics[this.state.curStyleIndex][i] === e.target.src){
+            ind = i;
+        }
+    }
+    console.log('style index:', ind);
+    this.setState({curPicIndex: ind});
+    console.log('style index in state', this.state.curPicIndex);
     this.setState({expanded: true});
 }
 
@@ -199,7 +212,7 @@ render(){
                 </div> 
             </div>
             productInfo = undefined
-            carousel = <ExpandedCarousel stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+            carousel = <ExpandedCarousel curPicIndex={this.state.curPicIndex} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
             close = <button id="closeButton" onClick={this.minimize}>X</button>
         } else {
         var close = undefined
@@ -241,7 +254,7 @@ render(){
                 </div>
             </div>
         </div> 
-        carousel = <VerticalCarousel expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+        carousel = <VerticalCarousel curPicIndex={this.state.curPicIndex} expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         }
     } 
 
