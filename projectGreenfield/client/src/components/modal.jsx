@@ -58,7 +58,6 @@ class Modal extends React.Component {
     if (this.state.isLoading) {
       return (
         <div>
-          <h6>Loading....</h6>
         </div>
       )
     } else {
