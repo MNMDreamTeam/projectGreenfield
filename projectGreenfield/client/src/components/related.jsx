@@ -15,8 +15,8 @@ import RelatedCards from './relatedCards.jsx';
 import Modal from './modal.jsx';
 
 class Related extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       displayedId: 89,
       relatedProducts: [],
@@ -43,7 +43,6 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-
     let tempProductsArr = [];
     fetch(`http://3.134.102.30/products/${this.state.displayedId}/related`)
       .then(res => res.json())
@@ -113,7 +112,7 @@ class Related extends React.Component {
                     <div className="card-group d-flex flex-nowrap">
                       {this.state.relatedProducts.map(el =>
                         // <div className="carousel-item">
-                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} />
+                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard}/>
                         // </div>
                       )}
                     </div>
