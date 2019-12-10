@@ -11,11 +11,27 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      prodId: 1
+      prodId: 1,
+      userClicks: []
     }
     this.handleRelatedCard = this.handleRelatedCard.bind(this);
+    this.userClick = this.userClick.bind(this);
   }
 
+  userClick(e){
+    var click = {}
+    click.target = e.target.className;
+    click.module = e.target.id;
+    var dt = new Date();
+    var utcDate = dt.toUTCString();
+    click.timeSamp = utcDate
+    console.log('click', click);
+    var arr = this.state.userClicks;
+    arr.push(click);
+    this.setState({
+      userClicks: arr
+    })
+  }
 
   handleRelatedCard(e) {
     this.setState({
@@ -27,7 +43,7 @@ class App extends React.Component {
     return(
       <div>
         {/* {console.log('---', this.state.prodId)} */}
-        <Home prodId={this.state.prodId}/>
+        <Home prodId={this.state.prodId} userClick={this.userClick}/>
         <Related handleRelatedCard={this.handleRelatedCard}/>
         <Outfit />
         <Reviews />

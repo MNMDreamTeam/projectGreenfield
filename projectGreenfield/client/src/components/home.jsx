@@ -256,7 +256,7 @@ render(){
         var count = 0;
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
            circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change)}}>
-               <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
+               <img onClick={this.props.userClick} id="thumbnail" class="styles-thumbnail" src={this.state.stylePics[count][0]}></img>
            </div>)
            count++;
         })}
@@ -271,8 +271,8 @@ render(){
                 </div>
             </div>
             productInfo = undefined
-            carousel = <ExpandedCarousel curPicIndex={this.state.curPicIndex} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
-            close = <button id="closeButton" onClick={this.minimize}>X</button>
+            carousel = <ExpandedCarousel userClick={this.props.userClick} curPicIndex={this.state.curPicIndex} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+            close = <button onClick={this.props.userClick} id="closeButton" class="closeExpandedView" onClick={this.minimize}>X</button>
         } else {
         var close = undefined
         var infoUnderImage = <div><h5 id="slogan">{slogan}</h5>
@@ -289,22 +289,22 @@ render(){
                 {circles}
             </div>
             <div class="dropdown1">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
+                <button onClick={this.props.userClick} class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                  {dropdownArr}
                 </div>
             </div>
             <div class="dropdown2">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
+                <button  onClick={this.props.userClick} class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSizeNumChoice}</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {numArr}
                 </div>
             </div><br></br>
             <div class="dropdown3">
-                <button class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onClick={this.addToCart}>ADD TO BAG +</button>
+                <button onClick={this.props.userClick} class="btn btn-default" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false" onClick={this.addToCart}>ADD TO BAG +</button>
             </div>
             <div class="dropdown4">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star</button>
+                <button onClick={this.props.userClick} class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Star</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">*</a>
                     <a class="dropdown-item" href="#">**</a>
@@ -315,7 +315,7 @@ render(){
             </div>
         </div>
         thumbnails = <Thumbnail stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
-        carousel = <VerticalCarousel curPicIndex={this.state.curPicIndex} expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
+        carousel = <VerticalCarousel userClick={this.props.userClick} curPicIndex={this.state.curPicIndex} expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         }
     }
 
