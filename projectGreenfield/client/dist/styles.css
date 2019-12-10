@@ -7,7 +7,42 @@
     width:25em;
     height:25em;
     margin-left: 22em;
+    margin-top: -9em;
+}
+
+#carousel3 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
+    margin-top: -16em;
+}
+
+#carousel4 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
+    margin-top: -20em;
+}
+
+#carousel5 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
+    margin-top: -27em;
+}
+
+#carousel6 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
     margin-top: -34em;
+}
+
+#carousel7 {
+    width:25em;
+    height:25em;
+    margin-left: 22em;
+    margin-top: -40em;
 }
 
 .carousel-item {
@@ -31,6 +66,7 @@
     table-layout: fixed; /*Optional*/
     border-spacing: .4em;
     margin-left: 8.5em;
+    
     /* background-color:lightblue;  */
 }
 
