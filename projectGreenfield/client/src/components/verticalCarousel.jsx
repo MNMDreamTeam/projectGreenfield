@@ -33,12 +33,14 @@ class VerticalCarousel extends React.Component{
     render(){
         return (
 <div>
+{/* <div id="Col">
 {this.state.allPics.map(item => (
         <div class="Row2">
             <img class="rightSide2" src={item}></img>
         </div>
 ))}
-<div id="carousel2" class="Row2"> 
+</div> */}
+<div id={`carousel${this.state.allPics.length}`} class="Row2"> 
 <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

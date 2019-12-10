@@ -1,6 +1,7 @@
 import React from 'react';
 import VerticalCarousel from './VerticalCarousel.jsx';
 import ExpandedCarousel from './expandedCarousel.jsx';
+import Thumbnail from './thumbnails.jsx';
 import $ from 'jquery';
 class Home extends React.Component {
     constructor(props){
@@ -32,20 +33,20 @@ class Home extends React.Component {
     }
 
 forceRender() {
+    this.setState({loaded: false});
     this.setState({prodId: this.props.prodId})
-    $.get('http://3.134.102.30/products/list?count=11')
-    .then(items => {
-        this.setState({products: items});
+    $.get(`http://3.134.102.30/products/${this.props.prodId}`)
+    .then(obj => {
+        this.setState({currentProduct: obj});
+        console.log('object in force render', obj);
     })
     .then(() => {
-        this.setState({currentProduct: this.state.products[0]});
-    })
-    .then(() => {
-        var ID = this.state.prodId;
+        var ID = this.state.currentProduct.id;
         $.get(`http://3.134.102.30/products/${ID}/styles`)
         .then((styleObj) => {
             this.setState({styles: styleObj.results});
             this.setState({currentStyle: styleObj.results[0]});
+            console.log('object in force render ID:', this.state.currentStyle);
         })
         .then(() => {
             var pics = [];
@@ -80,7 +81,7 @@ addToCart(){
     localStorage.setItem('Items in Cart', cartCount);
 }
 
-change(e,ind){
+change(e){
     console.log('event target', e.target.src);
     var searchUrl = e.target.src;
     console.log('styles', this.state.styles);
@@ -98,7 +99,6 @@ change(e,ind){
         }
     }
     console.log(this.state.curStyleIndex);
-    var styleNumber = ind;
     var ID = this.state.prodId;
     $.get(`http://3.134.102.30/products/${ID}/styles`)
     .then((styleObj) => {
@@ -166,12 +166,11 @@ changeStyle(e,callback){
     this.setState({curStyleIndex: indx});
     this.setState({curSizeNumChoice: 1});
     this.setState({curSize : 'SELECT SIZE'});
-    callback(e,indx);
+    callback(e);
 }
 
 componentDidMount(){
 
-    
     var num = localStorage.getItem('Items in Cart');
     console.log('number of items in one transaction', num);
     this.setState({cartNum: Number(num)});
@@ -222,6 +221,7 @@ render(){
     var circles = <div></div>
     var numArr = []
     var dropdownArr = []
+    var thumbnails = <div></div>
     {console.log('***', this.props.prodId, '***', this.state.prodId)}
     if (this.state.prodId !== this.props.prodId) {
         this.forceRender()
@@ -314,6 +314,7 @@ render(){
                 </div>
             </div>
         </div>
+        thumbnails = <Thumbnail stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         carousel = <VerticalCarousel curPicIndex={this.state.curPicIndex} expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         }
     }
@@ -327,6 +328,7 @@ render(){
             <div class="Row">
                 <div id="Col" class="showcase">
                     {close}
+                    {thumbnails}
                     {carousel}
                     {infoUnderImage}
                 </div>
