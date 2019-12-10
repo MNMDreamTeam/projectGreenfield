@@ -10,13 +10,25 @@ import Outfit from './outfit.jsx';
 class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      prodId: 1
+    }
+    this.handleRelatedCard = this.handleRelatedCard.bind(this);
+  }
+
+
+  handleRelatedCard(e) {
+    this.setState({
+      prodId: Number(e.info.id)
+    })
   }
 
   render(){
     return(
       <div>
-        <Home />
-        <Related />
+        {/* {console.log('---', this.state.prodId)} */}
+        <Home prodId={this.state.prodId}/>
+        <Related handleRelatedCard={this.handleRelatedCard}/>
         <Outfit />
         <Reviews />
       </div>

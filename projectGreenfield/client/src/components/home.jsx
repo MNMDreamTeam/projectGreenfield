@@ -8,6 +8,7 @@ class Home extends React.Component {
         this.state = {
             products: [],
             currentProduct: {},
+            prodId: this.props.prodId,
             currentStyle: {},
             curStyleIndex: 0,
             curSize: 'SELECT SIZE',
@@ -26,7 +27,43 @@ class Home extends React.Component {
         this.addToCart = this.addToCart.bind(this);
         this.expand = this.expand.bind(this);
         this.minimize = this.minimize.bind(this);
+        this.forceRender = this.forceRender.bind(this);
     }
+
+forceRender() {
+    this.setState({prodId: this.props.prodId})
+    $.get('http://3.134.102.30/products/list?count=11')
+    .then(items => {
+        this.setState({products: items});
+    })
+    .then(() => {
+        this.setState({currentProduct: this.state.products[0]});
+    })
+    .then(() => {
+        var ID = this.state.prodId;
+        $.get(`http://3.134.102.30/products/${ID}/styles`)
+        .then((styleObj) => {
+            this.setState({styles: styleObj.results});
+            this.setState({currentStyle: styleObj.results[0]});
+        })
+        .then(() => {
+            var pics = [];
+            for (var i=0; i<this.state.styles.length; i++){
+                var style = this.state.styles[i];
+                var stylepics = [];
+                for (var j=0; j<style.photos.length; j++){
+                    stylepics.push(style.photos[j].url);
+                }
+                pics.push(stylepics);
+            }
+            this.setState({stylePics: pics});
+        })
+        .then(() => {
+            console.log(this.state.stylePics);
+            this.setState({loaded: true});
+        })
+    })
+}
 
 addToCart(){
     var itemChosen = {
@@ -45,7 +82,7 @@ change(e,ind){
     console.log('styles', this.state.styles);
     var style = '';
     for (var i in this.state.styles){
-        for (var j in this.state.styles[i].photos){ 
+        for (var j in this.state.styles[i].photos){
             if (this.state.styles[i].photos[j].url === searchUrl){
                 console.log('match', this.state.styles[i].photos[j].url);
                 style = this.state.styles[i];
@@ -58,7 +95,7 @@ change(e,ind){
     }
     console.log(this.state.curStyleIndex);
     var styleNumber = ind;
-    var ID = this.state.currentProduct.id;
+    var ID = this.state.prodId;
     $.get(`http://3.134.102.30/products/${ID}/styles`)
     .then((styleObj) => {
         this.setState({styles: styleObj.results});
@@ -70,7 +107,7 @@ change(e,ind){
         for (var i=0; i<this.state.styles.length; i++){
             var style = this.state.styles[i];
             var stylepics = [];
-            for (var j=0; j<style.photos.length; j++){ 
+            for (var j=0; j<style.photos.length; j++){
                 stylepics.push(style.photos[j].url);
             }
             pics.push(stylepics);
@@ -117,7 +154,7 @@ expand(e){
 minimize(){
     this.setState({expanded: false});
 }
-   
+
 changeStyle(e,callback){
     this.setState({loaded: false});
     var indx = this.state.curStyleIndex;
@@ -129,6 +166,7 @@ changeStyle(e,callback){
 }
 
 componentDidMount(){
+    console.log('CDM')
     $.get('http://3.134.102.30/products/list?count=11')
     .then(items => {
         this.setState({products: items});
@@ -137,7 +175,7 @@ componentDidMount(){
         this.setState({currentProduct: this.state.products[0]});
     })
     .then(() => {
-        var ID = this.state.currentProduct.id;
+        var ID = this.state.prodId;
         $.get(`http://3.134.102.30/products/${ID}/styles`)
         .then((styleObj) => {
             this.setState({styles: styleObj.results});
@@ -148,7 +186,7 @@ componentDidMount(){
             for (var i=0; i<this.state.styles.length; i++){
                 var style = this.state.styles[i];
                 var stylepics = [];
-                for (var j=0; j<style.photos.length; j++){ 
+                for (var j=0; j<style.photos.length; j++){
                     stylepics.push(style.photos[j].url);
                 }
                 pics.push(stylepics);
@@ -163,7 +201,7 @@ componentDidMount(){
 }
 
 render(){
-    
+
     var carousel = <div></div>
     var category = <p></p>
     var name =  <h2></h2>
@@ -173,8 +211,12 @@ render(){
     var slogan = ""
     var sale = <div></div>
     var circles = <div></div>
-    var numArr = [] 
+    var numArr = []
     var dropdownArr = []
+    {console.log('***', this.props.prodId, '***', this.state.prodId)}
+    if (this.state.prodId !== this.props.prodId) {
+        this.forceRender()
+    }
     if (this.state.loaded === true){
         category = <p>{this.state.currentProduct.category}</p>
         name =  <h2>{this.state.currentProduct.name}</h2>
@@ -202,14 +244,14 @@ render(){
            count++;
         })}
         if (this.state.expanded === true){
-            infoUnderImage = <div> 
+            infoUnderImage = <div>
                 {category}
                 {name}
                 {price}
                 <p><b>STYLE > </b>{styleName}</p>
                 <div class="circleRow">
-                    {circles} 
-                </div> 
+                    {circles}
+                </div>
             </div>
             productInfo = undefined
             carousel = <ExpandedCarousel curPicIndex={this.state.curPicIndex} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
@@ -226,8 +268,8 @@ render(){
         {price}
             <p><b>STYLE > </b>{styleName}</p>
             <div class="circleRow">
-                {circles} 
-            </div> 
+                {circles}
+            </div>
             <div class="dropdown1">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{this.state.curSize}</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -253,23 +295,23 @@ render(){
                     <a class="dropdown-item" href="#">*****</a>
                 </div>
             </div>
-        </div> 
+        </div>
         carousel = <VerticalCarousel curPicIndex={this.state.curPicIndex} expand={this.expand} stylepics={this.state.stylePics[this.state.curStyleIndex]}/>
         }
-    } 
+    }
 
     return (
         <div>
             <div class="logoBar">
             <img class="logoPic" src="./images/logo.jpg"></img>
             </div>
-            
+
             <div class="Row">
                 <div id="Col" class="showcase">
                     {close}
                     {carousel}
                     {infoUnderImage}
-                </div> 
+                </div>
                 {productInfo}
             </div>
         </div>
