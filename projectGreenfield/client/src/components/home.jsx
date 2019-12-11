@@ -206,11 +206,11 @@ componentDidMount(){
                 pics.push(stylepics);
             }
             this.setState({stylePics: pics});
+            this.props.handleStyles(this.state.currentStyle, this.props); ///////////////
         })
         .then(() => {
             // console.log(this.state.stylePics);
             this.setState({loaded: true});
-            this.props.handleStyles(this.state.currentStyle, this.props); ///////////////
         })
     })
 }
@@ -260,16 +260,16 @@ render(){
             numArr.push(<a class="dropdown-item" href="#" onClick={(e) => {this.changeNumberChoice(e)}}>{x}</a>);
         }
         circles = [];
+
         var count = 0;
-        if (Object.assign(this.state.currentStyle).length > 0) {
+        // if (Object.assign(this.state.currentStyle).length > 0) {
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
-            console.log('---', this.state.stylePics[count][0]);
            circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change); this.props.handleStyles(this.state.currentStyle)}} >
                 <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
            </div>)
            count++;
         })}
-    }
+
         if (this.state.expanded === true){
             infoUnderImage = <div>
                 {category}
