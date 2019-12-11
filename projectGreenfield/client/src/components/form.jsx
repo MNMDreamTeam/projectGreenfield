@@ -11,6 +11,10 @@ class Form extends React.Component {
         };
     }
 
+    handleSubmit(event) {
+        event.preventDefault();
+    }
+
     handleChange(event) {
         let input = event.target.value;
         if (input.length < 50){
@@ -39,7 +43,7 @@ class Form extends React.Component {
     
     render() {
         return (
-            <form className="needs-validation container" noValidate>
+            <form className="needs-validation" noValidate>
                 <div className='col-md-8 border border-info rounded'>
                     <h2>Write Your Review</h2>
                     <div className='form-check border border-info rounded' required>
@@ -192,7 +196,7 @@ class Form extends React.Component {
                         <label>Upload your photos</label>
                         <br></br>
                         <textarea className='form-control rounded-0' id='photos' rows='1' placeholder='www.example-url.com'></textarea>
-                        <button type='submit' className="btn btn-secondary" onClick={this.addPicture.bind(this)}>Add photo</button>
+                        <button type='button' className="btn btn-secondary" onClick={this.addPicture.bind(this)}>Add photo</button>
                         {/* Look at react forms file input */}
                     </div>
                     <br></br>
@@ -211,7 +215,7 @@ class Form extends React.Component {
                         <label className='form-control-sm'>For authentication reasons, you will not be emailed</label>
                     </div>
                     <br></br>
-                    <button type="submit" className="btn btn-primary">Submit Review</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit.bind(this)}>Submit Review</button>
                     <br></br>
                 </div>
             </form>

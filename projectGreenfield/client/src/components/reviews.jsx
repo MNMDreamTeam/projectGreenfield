@@ -9,7 +9,8 @@ class Reviews extends React.Component {
         this.state = {
             totalRatings: null,
             percentOfRecommended: null,
-            ratingsBreakdown: {}
+            ratingsBreakdown: {},
+            characteristics: {}
         };
     }
 
@@ -39,8 +40,27 @@ class Reviews extends React.Component {
         }
     }
 
-    checkRatingsBreakdown(obj) {
-        
+    fillRatingsBreakdown(obj) {
+        obj.max = 0;
+        for(var key in obj){
+            if (key !== 'max'){
+            obj.max += obj[key];
+            obj[key] = (obj[key] / obj.max) * 100;
+            console.log('all values in obj', obj[key], key)
+            }
+        }
+        if (!obj[1]){
+            obj[1] = 0;
+        }if (!obj[2]){
+            obj[2] = 0;
+        }if (!obj[3]){
+            obj[3] = 0;
+        }if (!obj[4]){
+            obj[4] = 0;
+        }if (!obj[5]){
+            obj[5] = 0;
+        }
+        return obj;
     }
 
     //in api recomended: {'0': 'no', '1': 'yes'}
@@ -50,7 +70,9 @@ class Reviews extends React.Component {
             .then((data) => {
                 let ratings = this.calcRating(data.ratings);
                 let recommended = this.calcPercent(data.recommended);
-                this.setState({totalRatings: ratings, percentOfRecommended: recommended, ratingsBreakdown: data.ratings})
+                let breakdown = this.fillRatingsBreakdown(data.ratings);
+                let characteristics = data.characteristics;
+                this.setState({totalRatings: ratings, percentOfRecommended: recommended, ratingsBreakdown: breakdown, characteristics: characteristics})
             })
     }
 
@@ -59,8 +81,27 @@ class Reviews extends React.Component {
             <div className='container'>
                 <h4><em><u>Ratings and Reviews</u></em></h4>
                 <h1>{this.state.totalRatings} {this.state.totalRatings ? (<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.totalRatings} />) : 'loading'}</h1>
-                <large>{this.state.percentOfRecommended} this product</large>
-
+                <span>{this.state.percentOfRecommended} this product</span>
+                <br></br>
+                <div class="progress" style={{width: 140 + 'px'}}>5 stars {this.state.ratingsBreakdown[5] ?
+                    (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[5], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[5]} aria-valuemin="0" aria-valuemax="100" ></div>) : ''}
+                </div>
+                <div class="progress" style={{width: 140 + 'px'}}>4 stars {this.state.ratingsBreakdown[4] ?
+                    (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[4], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[4]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
+                </div>
+                <div class="progress" style={{width: 140 + 'px'}}>3 stars {this.state.ratingsBreakdown[3] ?
+                    (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[3], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[3]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
+                </div>
+                <div class="progress" style={{width: 140 + 'px'}}>2 stars {this.state.ratingsBreakdown[2] ?
+                    (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[2], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[2]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
+                </div>
+                <div class="progress" style={{width: 140 + 'px'}}>1 star &nbsp;{this.state.ratingsBreakdown[1] ?
+                    (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[1], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[1]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
+                </div>
+                <br></br>
+                <form class="range-field w-75">
+                    <input class="border-0" type="range" value={this.state.characteristics} min="0" max="100" />
+                </form>
                 <Form />
             </div>
         )
