@@ -10,7 +10,7 @@ const OutfitCard = (props) => {
           <button className="btn btn-floating" type="button" style={{ position: 'absolute', top: .312 + 'rem', right: .312 + 'rem' }}><b>&#10754;</b></button>
           <div className="card-body flex-fill">
             <p className="card-subtitle mb-2 text-muted border-bottom text-right"><small><em>{props.info.cat}</em></small></p>
-            <p className="card-text text-left"><b>{props.info.name}</b></p>
+            <p className="card-text text-left"><b>{props.info.name}</b> - <muted><small><em>{props.info.styleName}</em></small></muted></p>
             {props.info.sale_price > 0 &&
               <div>
                 <p className="card-text text-left text-danger"><small>${props.info.sale_price}</small></p>

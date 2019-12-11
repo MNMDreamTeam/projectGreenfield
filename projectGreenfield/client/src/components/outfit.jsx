@@ -19,6 +19,7 @@ class Outfit extends React.Component {
             cardInfo.styleId = this.props.currentStyle.style_id; // ??
             cardInfo.name = data[0].name;
             cardInfo.cat = data[0].category;
+            cardInfo.styleName = this.props.currentStyle.name;
             cardInfo.sale_price = this.props.currentStyle.sale_price;
             cardInfo.original_price = this.props.currentStyle.original_price;
             cardInfo.pic = this.props.currentStyle.photos[0].url;
