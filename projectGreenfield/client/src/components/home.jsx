@@ -265,7 +265,10 @@ render(){
         // if (Object.assign(this.state.currentStyle).length > 0) {
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
            circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change); this.props.handleStyles(this.state.currentStyle)}} >
-                <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
+               {(this.state.stylePics[count] !== undefined)
+                ? <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
+                : null
+               }
            </div>)
            count++;
         })}

@@ -1,15 +1,3 @@
-/*
-  Base card structure built -
-
-  Next steps:
-  1. Conditional for sale price if there is one
-  2. Action Button
-  3. Need a carousel to display each card with horizontal scrolling
-  4. TODO: Will need to get the currently viewed item product id when overview module is available.
-*/
-
-
-
 import React from 'react';
 import RelatedCards from './relatedCards.jsx';
 import Modal from './modal.jsx';
@@ -21,7 +9,7 @@ class Related extends React.Component {
       displayedId: 1,
       relatedProducts: [],
       isLoading: true,
-      showModal: {show: false, relatedId: 0}
+      showModal: { show: false, relatedId: 0 }
     }
     this.calcRating = this.calcRating.bind(this);
     this.modalClick = this.modalClick.bind(this);
@@ -82,22 +70,26 @@ class Related extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.id !== this.props.id) {
-      this.setState({displayedId: this.props.id});
+      this.setState({ displayedId: this.props.id });
       this.componentDidMount();
     }
   }
 
   modalClick(e) {
-    this.setState({showModal: {
-      show:true,
-      relatedId: e.info.id
-    }});
+    this.setState({
+      showModal: {
+        show: true,
+        relatedId: e.info.id
+      }
+    });
   }
 
   modalClose() {
-    this.setState({showModal: {
-      show: false
-    }});
+    this.setState({
+      showModal: {
+        show: false
+      }
+    });
   }
 
   render() {
@@ -110,31 +102,31 @@ class Related extends React.Component {
     } else {
       return (
         // Related Products
-          <div className="container">
-            <h4><em><u>Related Products:</u></em></h4>
-            {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose}/> : null}
-            <div className="row">
-              <div className="container-fluid">
-                <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel"> {/*style={{ width: 43 + 'rem' }} */}
-                  <div className="carousel-inner v-2" role="listbox">
-                    <div className="card-group d-flex flex-nowrap">
-                      {this.state.relatedProducts.map(el =>
-                        // <div className="carousel-item">
-                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard}/>
-                        // </div>
-                      )}
-                    </div>
+        <div className="container">
+          <h4><em><u>Related Products:</u></em></h4>
+          {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose} /> : null}
+          <div className="row">
+            <div className="container-fluid">
+              <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel">
+                <div className="carousel-inner v-2" role="listbox">
+                  <div className="card-group d-flex flex-nowrap">
+                    {this.state.relatedProducts.map(el =>
+                      <div className="item active">
+                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
+                      </div>
+                    )}
                   </div>
-                  <a className="carousel-control-prev" href="#relatedCar" data-slider="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a className="carousel-control-next" href="#relatedCar" data-slider="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
                 </div>
+                <a className="carousel-control-prev" href="#relatedCar" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a className="carousel-control-next" href="#relatedCar" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
               </div>
             </div>
           </div>
+        </div>
       )
     }
   }
