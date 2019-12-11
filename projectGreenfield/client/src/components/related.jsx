@@ -18,7 +18,7 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayedId: 89,
+      displayedId: 1,
       relatedProducts: [],
       isLoading: true,
       showModal: {show: false, relatedId: 0}
@@ -43,8 +43,9 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
+    console.log('CDM')
     let tempProductsArr = [];
-    fetch(`http://3.134.102.30/products/${this.state.displayedId}/related`)
+    fetch(`http://3.134.102.30/products/${this.props.id}/related`)
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
@@ -77,6 +78,13 @@ class Related extends React.Component {
             })
         })
       })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({displayedId: this.props.id});
+      this.componentDidMount();
+    }
   }
 
   modalClick(e) {
