@@ -30,7 +30,6 @@ class Related extends React.Component {
 
   calcRating(ratings) {
     // Used to calculate the average star rating based on user ratings 1-5
-    console.log('here')
     if (Object.keys(ratings).length > 0) {
       let div = 0;
       let prod = 0;
@@ -44,8 +43,9 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
+    console.log('CDM')
     let tempProductsArr = [];
-    fetch(`http://3.134.102.30/products/${this.state.displayedId}/related`)
+    fetch(`http://3.134.102.30/products/${this.props.id}/related`)
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
@@ -78,6 +78,14 @@ class Related extends React.Component {
             })
         })
       })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.setState({displayedId: this.props.id});
+      this.componentDidMount();
+    }
+    console.log('***', this.state.displayedId)
   }
 
   modalClick(e) {

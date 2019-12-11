@@ -261,13 +261,15 @@ render(){
         }
         circles = [];
         var count = 0;
+        if (Object.assign(this.state.currentStyle).length > 0) {
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
+            console.log('---', this.state.stylePics[count][0]);
            circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change); this.props.handleStyles(this.state.currentStyle)}} >
-               <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
+                <img id="thumbnail" src={this.state.stylePics[count][0]}></img>
            </div>)
            count++;
         })}
-        {console.log('--*', this.state.currentStyle)}
+    }
         if (this.state.expanded === true){
             infoUnderImage = <div>
                 {category}

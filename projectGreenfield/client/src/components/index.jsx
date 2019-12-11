@@ -32,7 +32,7 @@ class App extends React.Component {
     return(
       <div>
         <Home prodId={this.state.prodId} handleStyles={this.handleStyles}/>
-        <Related handleRelatedCard={this.handleRelatedCard}/>
+        <Related handleRelatedCard={this.handleRelatedCard} id={this.state.prodId}/>
         <Outfit currentStyle ={this.state.selectedStyle} product={this.state.prodId}/>
         <Reviews />
       </div>
