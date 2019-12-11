@@ -72,7 +72,8 @@ class Reviews extends React.Component {
                 let recommended = this.calcPercent(data.recommended);
                 let breakdown = this.fillRatingsBreakdown(data.ratings);
                 let characteristics = data.characteristics;
-                this.setState({totalRatings: ratings, percentOfRecommended: recommended, ratingsBreakdown: breakdown, characteristics: characteristics})
+                this.setState({totalRatings: ratings, percentOfRecommended: recommended, ratingsBreakdown: breakdown, 
+                    characteristics: characteristics})
             })
     }
 
