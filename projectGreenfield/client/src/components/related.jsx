@@ -85,7 +85,6 @@ class Related extends React.Component {
       this.setState({displayedId: this.props.id});
       this.componentDidMount();
     }
-    console.log('***', this.state.displayedId)
   }
 
   modalClick(e) {

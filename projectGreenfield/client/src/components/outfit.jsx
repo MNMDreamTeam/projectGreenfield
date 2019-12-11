@@ -8,6 +8,7 @@ class Outfit extends React.Component {
             outfitList: []
         }
         this.addToOutfit = this.addToOutfit.bind(this);
+        this.removeFromOutfit = this.removeFromOutfit.bind(this);
     }
 
     addToOutfit(e) {
@@ -15,18 +16,26 @@ class Outfit extends React.Component {
         let cardInfo = {};
 
         Promise.all([product])
-        .then((data) => {
-            cardInfo.styleId = this.props.currentStyle.style_id; // ??
-            cardInfo.name = data[0].name;
-            cardInfo.cat = data[0].category;
-            cardInfo.styleName = this.props.currentStyle.name;
-            cardInfo.sale_price = this.props.currentStyle.sale_price;
-            cardInfo.original_price = this.props.currentStyle.original_price;
-            cardInfo.pic = this.props.currentStyle.photos[0].url;
-        })
-        .then(() => {
-            // TODO: Star rating
-            this.setState({ outfitList: [...this.state.outfitList, cardInfo] })
+            .then((data) => {
+                cardInfo.styleId = this.props.currentStyle.style_id; // ??
+                cardInfo.name = data[0].name;
+                cardInfo.cat = data[0].category;
+                cardInfo.styleName = this.props.currentStyle.name;
+                cardInfo.sale_price = this.props.currentStyle.sale_price;
+                cardInfo.original_price = this.props.currentStyle.original_price;
+                cardInfo.pic = this.props.currentStyle.photos[0].url;
+            })
+            .then(() => {
+                // TODO: Star rating
+                this.setState({ outfitList: [...this.state.outfitList, cardInfo] });
+            })
+    }
+
+    removeFromOutfit(e) {
+        this.setState({
+            outfitList: this.state.outfitList.filter(el => {
+                return el.styleId !== e.info.styleId;
+            })
         })
     }
 
@@ -48,7 +57,7 @@ class Outfit extends React.Component {
                             <div className="card-group d-flex flex-nowrap">
                                 {(this.state.outfitList.length)
                                     ? this.state.outfitList.map((el, i) => {
-                                        return <OutfitCard info={el} key={i} />
+                                        return <OutfitCard info={el} key={i} removeFromOutfit={this.removeFromOutfit} />
                                     }) : <div></div>}
                             </div>
                         </div>
