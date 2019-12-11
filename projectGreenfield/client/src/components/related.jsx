@@ -18,7 +18,7 @@ class Related extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayedId: 89,
+      displayedId: 1,
       relatedProducts: [],
       isLoading: true,
       showModal: {show: false, relatedId: 0}
@@ -30,6 +30,7 @@ class Related extends React.Component {
 
   calcRating(ratings) {
     // Used to calculate the average star rating based on user ratings 1-5
+    console.log('here')
     if (Object.keys(ratings).length > 0) {
       let div = 0;
       let prod = 0;

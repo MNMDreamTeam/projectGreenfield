@@ -11,25 +11,29 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      prodId: 1
+      prodId: 1,
+      selectedStyle: {}
     }
     this.handleRelatedCard = this.handleRelatedCard.bind(this);
+    this.handleStyles = this.handleStyles.bind(this);
   }
 
+  handleStyles(e) {
+    this.setState({selectedStyle: e});
+  }
 
   handleRelatedCard(e) {
     this.setState({
-      prodId: Number(e.info.id)
+      prodId: Number(e.info.id),
     })
   }
 
   render(){
     return(
       <div>
-        {/* {console.log('---', this.state.prodId)} */}
-        <Home prodId={this.state.prodId}/>
+        <Home prodId={this.state.prodId} handleStyles={this.handleStyles}/>
         <Related handleRelatedCard={this.handleRelatedCard}/>
-        <Outfit />
+        <Outfit currentStyle ={this.state.selectedStyle} product={this.state.prodId}/>
         <Reviews />
       </div>
     )
