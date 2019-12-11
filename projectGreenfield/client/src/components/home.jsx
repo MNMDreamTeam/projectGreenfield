@@ -234,12 +234,12 @@ render(){
         this.forceRender()
     }
     var cart = <div>
-        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <img id="cart" src="../../images/shoppingCart.png"></img>
         <span class="notification-counter">0</span>
         </div>
     if (this.state.loaded === true){
         cart = <div>
-        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <img id="cart" src="../../images/shoppingCart.png"></img>
         <span class="notification-counter">{this.state.cartNum}</span>
         </div>
         category = <p>{this.state.currentProduct.category}</p>
