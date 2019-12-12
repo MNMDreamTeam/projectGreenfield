@@ -12,10 +12,27 @@ class App extends React.Component {
     super(props);
     this.state = {
       prodId: 1,
+      userClicks: [],
       selectedStyle: {}
     }
     this.handleRelatedCard = this.handleRelatedCard.bind(this);
+    this.userClick = this.userClick.bind(this);
     this.handleStyles = this.handleStyles.bind(this);
+  }
+
+  userClick(e){
+    var click = {}
+    click.target = e.target.className;
+    click.module = e.target.id;
+    var dt = new Date();
+    var utcDate = dt.toUTCString();
+    click.timeSamp = utcDate
+    console.log('click', click);
+    var arr = this.state.userClicks;
+    arr.push(click);
+    this.setState({
+      userClicks: arr
+    })
   }
 
   handleStyles(e) {
