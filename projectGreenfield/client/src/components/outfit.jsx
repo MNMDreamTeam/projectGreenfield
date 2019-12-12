@@ -54,7 +54,7 @@ class Outfit extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="card-group d-flex flex-nowrap">
+                            <div className="card-group d-flex flex-nowrap overflow-auto">
                                 {(this.state.outfitList.length)
                                     ? this.state.outfitList.map((el, i) => {
                                         return <OutfitCard info={el} key={i} removeFromOutfit={this.removeFromOutfit} />
