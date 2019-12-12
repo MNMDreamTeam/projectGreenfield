@@ -1,5 +1,6 @@
 import React from 'react';
 import OutfitCard from './outfitCard.jsx';
+import Alert from './alert.jsx';
 
 class Outfit extends React.Component {
     constructor(props) {
@@ -12,6 +13,9 @@ class Outfit extends React.Component {
     }
 
     addToOutfit(e) {
+        if (JSON.stringify(this.state.outfitList).includes(this.props.currentStyle.style_id)) {
+            <Alert />
+        } else {
         let product = fetch(`http://3.134.102.30/products/${this.props.product}`).then(res => res.json());
         let cardInfo = {};
 
@@ -29,6 +33,7 @@ class Outfit extends React.Component {
                 // TODO: Star rating
                 this.setState({ outfitList: [...this.state.outfitList, cardInfo] });
             })
+        }
     }
 
     removeFromOutfit(e) {

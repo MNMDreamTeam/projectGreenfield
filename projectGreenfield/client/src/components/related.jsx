@@ -112,24 +112,12 @@ class Related extends React.Component {
           {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose} /> : null}
           <div className="row">
             <div className="container">
-              {/* <div id="relatedCar" className="carousel slide carousel-multi-item v-2" data-ride="carousel">
-                <div className="carousel-inner v-2" role="listbox"> */}
                   <div className="card-group d-flex flex-nowrap overflow-auto">
                     {this.state.relatedProducts.map(el =>
-                      // <div className="item">
                         <RelatedCards info={el} key={el.id} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
-                      // </div>
                     )}
                   </div>
                 </div>
-                {/* <a className="carousel-control-prev" data-slide="prev" onClick={this.prevClick}>
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a className="carousel-control-next" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a> */}
-              {/* </div>
-            </div> */}
           </div>
         </div>
       )
