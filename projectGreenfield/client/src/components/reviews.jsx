@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from './form.jsx';
 import StarRatings from '../../../react-star-ratings';
+import CharacteristicSlides from './characteristicSlides.jsx';
 
 class Reviews extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class Reviews extends React.Component {
     calcPercent(obj) {
         if (obj.hasOwnProperty(1) && obj.hasOwnProperty(0)){
             let total = obj[1] + obj[0];
-            let perc = (obj[1] / total) * 100;
+            let perc = Math.round((obj[1] / total) * 100);
             return perc + '% of reviews recommend';
         }else if (!obj.hasOwnProperty(1)){
             return '100% of reviews did not recommend';
@@ -63,6 +64,18 @@ class Reviews extends React.Component {
         return obj;
     }
 
+    characteristicsArrCollapse(obj) {
+        let arr = [];
+        for (let key in obj){
+            let characterObj = {};
+            obj[key] = obj[key].value;
+            characterObj[key] = obj[key];
+            arr.push(characterObj);
+        }
+        console.log(arr);
+        return arr;
+    }
+
     //in api recomended: {'0': 'no', '1': 'yes'}
     componentDidMount() {
         fetch(`http://3.134.102.30/reviews/5/meta`) // using this as a good base case
@@ -71,7 +84,7 @@ class Reviews extends React.Component {
                 let ratings = this.calcRating(data.ratings);
                 let recommended = this.calcPercent(data.recommended);
                 let breakdown = this.fillRatingsBreakdown(data.ratings);
-                let characteristics = data.characteristics;
+                let characteristics = this.characteristicsArrCollapse(data.characteristics);
                 this.setState({totalRatings: ratings, percentOfRecommended: recommended, ratingsBreakdown: breakdown, 
                     characteristics: characteristics})
             })
@@ -99,10 +112,8 @@ class Reviews extends React.Component {
                 <div class="progress" style={{width: 140 + 'px'}}>1 star &nbsp;{this.state.ratingsBreakdown[1] ?
                     (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[1], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[1]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
                 </div>
-                <br></br>
-                <form class="range-field w-75">
-                    <input class="border-0" type="range" value={this.state.characteristics} min="0" max="100" />
-                </form>
+                {console.log('state', this.state)}
+                {Array.isArray(this.state.characteristics) ? (<CharacteristicSlides characteristics={this.state.characteristics}/>) : 'loading'}
                 <Form />
             </div>
         )
