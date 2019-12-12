@@ -23,7 +23,7 @@ class ExpandedCarousel extends React.Component{
         for (var i=0; i<this.state.allPics.length; i++){
             if (i !== this.state.curPicIndex){
                 innerPics.push(<div  id="expanded"class="carousel-item">
-            <img  class="d-block w-100" src={this.state.allPics[i]}></img>
+            <img onClick={this.props.userClick} class="d-block w-100" src={this.state.allPics[i]}></img>
           </div>);
             }
         }
@@ -40,15 +40,15 @@ class ExpandedCarousel extends React.Component{
   </ol>
   <div  class="carousel-inner" >
     <div  id="expanded" class="carousel-item active">
-      <img   class="d-block w-100" src={this.state.allPics[this.state.curPicIndex]}></img>
+      <img onClick={this.props.userClick} id="expanded-carousel"  class="d-block w-100" src={this.state.allPics[this.state.curPicIndex]}></img>
     </div>
     {this.renderLoop()}
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a onClick={this.props.userClick} id="expanded-carousel" class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a onClick={this.props.userClick} id="expanded-carousel" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
