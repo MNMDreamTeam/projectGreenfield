@@ -12,10 +12,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       prodId: 1,
-      userClicks: []
+      userClicks: [],
+      selectedStyle: {}
     }
     this.handleRelatedCard = this.handleRelatedCard.bind(this);
     this.userClick = this.userClick.bind(this);
+    this.handleStyles = this.handleStyles.bind(this);
   }
 
   userClick(e){
