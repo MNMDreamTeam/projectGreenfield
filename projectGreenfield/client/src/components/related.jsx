@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedCards from './relatedCards.jsx';
+import ProductsCar from './productsCar.jsx';
 import Modal from './modal.jsx';
 
 class Related extends React.Component {
@@ -14,7 +15,6 @@ class Related extends React.Component {
     this.calcRating = this.calcRating.bind(this);
     this.modalClick = this.modalClick.bind(this);
     this.modalClose = this.modalClose.bind(this);
-    this.prevClick = this.prevClick.bind(this);
   }
 
   calcRating(ratings) {
@@ -93,10 +93,6 @@ class Related extends React.Component {
     });
   }
 
-  prevClick(e) {
-    console.log(e.target)
-  }
-
   render() {
     if (this.state.isLoading) {
       return (
@@ -112,11 +108,7 @@ class Related extends React.Component {
           {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose} /> : null}
           <div className="row">
             <div className="container">
-                  <div className="card-group d-flex flex-nowrap overflow-auto">
-                    {this.state.relatedProducts.map(el =>
-                        <RelatedCards info={el} key={el.id} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
-                    )}
-                  </div>
+                    <ProductsCar from={1} prods={this.state.relatedProducts} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard}/>
                 </div>
           </div>
         </div>

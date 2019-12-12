@@ -13,9 +13,9 @@ class Outfit extends React.Component {
     }
 
     addToOutfit(e) {
-        if (JSON.stringify(this.state.outfitList).includes(this.props.currentStyle.style_id)) {
-            <Alert />
-        } else {
+        // if (JSON.stringify(this.state.outfitList).includes(this.props.currentStyle.style_id)) {
+        //     console.log('here')
+        // } else {
         let product = fetch(`http://3.134.102.30/products/${this.props.product}`).then(res => res.json());
         let cardInfo = {};
 
@@ -33,7 +33,7 @@ class Outfit extends React.Component {
                 // TODO: Star rating
                 this.setState({ outfitList: [...this.state.outfitList, cardInfo] });
             })
-        }
+       // }
     }
 
     removeFromOutfit(e) {
@@ -51,6 +51,7 @@ class Outfit extends React.Component {
                     <h4><em><u>Your Outfit(s):</u></em></h4>
                     <div className="container-fluid">
                         <div className="row">
+                        <div className="card-group d-flex flex-nowrap">
                             <div className="card text-center" style={{ width: 14 + 'rem', height: 31 + 'rem' }}>
                                 <div className="card-body"></div>
                                 <div className="card-body text-dark">
@@ -64,6 +65,7 @@ class Outfit extends React.Component {
                                     ? this.state.outfitList.map((el, i) => {
                                         return <OutfitCard info={el} key={i} removeFromOutfit={this.removeFromOutfit} />})
                                     : <div></div>}
+                                    </div>
                             </div>
                         </div>
                     </div>
