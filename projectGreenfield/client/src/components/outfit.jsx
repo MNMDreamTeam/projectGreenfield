@@ -17,7 +17,7 @@ class Outfit extends React.Component {
 
         Promise.all([product])
             .then((data) => {
-                cardInfo.styleId = this.props.currentStyle.style_id; // ??
+                cardInfo.styleId = this.props.currentStyle.style_id;
                 cardInfo.name = data[0].name;
                 cardInfo.cat = data[0].category;
                 cardInfo.styleName = this.props.currentStyle.name;
@@ -57,8 +57,8 @@ class Outfit extends React.Component {
                             <div className="card-group d-flex flex-nowrap overflow-auto">
                                 {(this.state.outfitList.length)
                                     ? this.state.outfitList.map((el, i) => {
-                                        return <OutfitCard info={el} key={i} removeFromOutfit={this.removeFromOutfit} />
-                                    }) : <div></div>}
+                                        return <OutfitCard info={el} key={i} removeFromOutfit={this.removeFromOutfit} />})
+                                    : <div></div>}
                             </div>
                         </div>
                     </div>
