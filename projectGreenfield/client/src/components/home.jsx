@@ -234,12 +234,12 @@ render(){
         this.forceRender()
     }
     var cart = <div>
-        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <img id="cart" src="../../images/shoppingCart.png"></img>
         <span class="notification-counter">0</span>
         </div>
     if (this.state.loaded === true){
         cart = <div>
-        <img id="cart" src="/Users/maxdorfman/Documents/hrg/projectGreenfield/projectGreenfield/shoppingCart.png"></img>
+        <img id="cart" src="../../images/shoppingCart.png"></img>
         <span class="notification-counter">{this.state.cartNum}</span>
         </div>
         category = <p>{this.state.currentProduct.category}</p>
@@ -265,7 +265,10 @@ render(){
         // if (Object.assign(this.state.currentStyle).length > 0) {
         {this.state.stylePics[this.state.curStyleIndex].map(item => {
            circles.push(<div class="circleCol" onClick={(e) => {this.changeStyle(e, this.change); this.props.handleStyles(this.state.currentStyle)}} >
-                <img id="thumbnail" class="styles-thumbnail" src={this.state.stylePics[count][0]}></img>
+               {(this.state.stylePics[count] !== undefined)
+                ? <img id="thumbnail" class="styles-thumbnail" src={this.state.stylePics[count][0]}></img>
+                : null
+               }
            </div>)
            count++;
         })}
