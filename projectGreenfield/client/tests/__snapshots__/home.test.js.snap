@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render banner text correctly with given strings 1`] = `
+<div>
+  <div
+    class="logoBar"
+  >
+    <img
+      class="logoPic"
+      src="./images/logo.jpg"
+    />
+  </div>
+  <div
+    class="Row"
+  >
+    <div
+      class="showcase"
+      id="Col"
+    >
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home should render carousel pictures correctly with given product id 1`] = `
+<div>
+  <div
+    class="logoBar"
+  >
+    <img
+      class="logoPic"
+      src="./images/logo.jpg"
+    />
+  </div>
+  <div
+    class="Row"
+  >
+    <div
+      class="showcase"
+      id="Col"
+    >
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home should render correctly with no props 1`] = `
+<div>
+  <div
+    class="logoBar"
+  >
+    <img
+      class="logoPic"
+      src="./images/logo.jpg"
+    />
+  </div>
+  <div
+    class="Row"
+  >
+    <div
+      class="showcase"
+      id="Col"
+    >
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;

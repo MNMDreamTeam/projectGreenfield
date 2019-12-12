@@ -33,19 +33,22 @@ class App extends React.Component {
     })
   }
 
+  handleStyles(e) {
+    this.setState({selectedStyle: e});
+  }
+
   handleRelatedCard(e) {
     this.setState({
-      prodId: Number(e.info.id)
+      prodId: Number(e.info.id),
     })
   }
 
   render(){
     return(
       <div>
-        {/* {console.log('---', this.state.prodId)} */}
-        <Home prodId={this.state.prodId} userClick={this.userClick}/>
-        <Related handleRelatedCard={this.handleRelatedCard}/>
-        <Outfit />
+        <Home prodId={this.state.prodId} handleStyles={this.handleStyles}/>
+        <Related handleRelatedCard={this.handleRelatedCard} id={this.state.prodId}/>
+        <Outfit currentStyle ={this.state.selectedStyle} product={this.state.prodId}/>
         <Reviews />
       </div>
     )

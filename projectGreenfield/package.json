@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config=jest.config.json",
     "react-dev": "webpack -d --watch"
   },
   "repository": {
@@ -28,9 +28,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.12.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   }
