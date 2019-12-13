@@ -8,30 +8,23 @@ class CharacteristicSlides extends React.Component {
 
     getCharacteristicMeanings(array) {
         let meaningsArr = [];
-
         if (array[0] === ('Size')){
             meaningsArr.push('Too small', 'Too large');
-            
         }
         if (array.includes('Width')){
             meaningsArr.push('Too small', 'Too large');
-            
         }
         if (array.includes('Length')){
             meaningsArr.push('Too small', 'Too large');
-            
         }
         if (array.includes('Fit')){
             meaningsArr.push('Too small', 'Too large');
-            
         }
         if (array.includes('Comfort')){
             meaningsArr.push('Poor', 'Perfect');
-            
         }
         if (array[0] === ('Quality')){
             meaningsArr.push('Poor', 'Perfect');
-            
         }
         return meaningsArr;
     }

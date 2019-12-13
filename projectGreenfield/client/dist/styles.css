@@ -336,3 +336,11 @@ p {
     margin-top: -400px;
     margin-left: 270px;
 }
+
+.nameAndDate {
+    margin-left: 300px;
+}
+
+.reviewCard {
+    width: 100%;
+}

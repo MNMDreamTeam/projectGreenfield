@@ -28,18 +28,33 @@ class ReviewCards extends React.Component {
     render() {
         return (
             <div>
-                <p>{this.state.reviews.length} reviews sorted by relevance</p>
-                <div className='card w-300'>
-                    <span className='card-body'>
-                        {this.state.reviews.length > 0 ? <StarRatings starDimension={'15px'} starSpacing={'10px'} 
-                        starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.reviews[0].rating}/> : 'loading'}
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {this.state.reviews.length > 0 ? this.state.reviews[0].reviewer_name : 'loading'}&nbsp;&nbsp;&nbsp;
-                        {this.state.reviews.length > 0 ? this.state.reviews[0].date.substring(0, 10) : 'loading'}
-                    </span>
-                </div>
+                <b>{this.state.reviews.length} reviews sorted by relevance</b>
+                {this.state.reviews.map(character => {
+                    return (
+                        <div className='card w-400'>
+                            <div className='card-body reviewCard'>
+                                <span className='reviewStars'>{this.state.reviews.length > 0 ? <StarRatings starDimension={'15px'} starSpacing={'10px'} 
+                                    starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.reviews[0].rating}/> : 'loading'}
+                                </span>
+                                <span className='nameAndDate'>{this.state.reviews.length > 0 ? this.state.reviews[0].reviewer_name : 'loading'}&nbsp;&nbsp;&nbsp;
+                                    {this.state.reviews.length > 0 ? this.state.reviews[0].date.substring(0, 10) : 'loading'}
+                                </span>
+                                <br></br>
+                                <br></br>
+                                <div className='reviewSummary'>
+                                    <b>{this.state.reviews.length > 0 ? this.state.reviews[0].summary : 'loading'}</b>
+                                </div>
+                                <br></br>
+                                <div className='reviewBody'>
+                                    <small>{this.state.reviews.length > 0 ? this.state.reviews[0].body : 'loading'}</small>
+                                </div>
+                                <br></br>
+                                <div className = 'Helpful-Report'>
+                                    <small>Helpful? <u>Yes</u>({this.state.reviews.length > 0 ? this.state.reviews[0].recommend : 'loading'})  |  <u>Report</u></small>
+                                </div>
+                            </div>
+                        </div>)
+                    })}
                 {console.log('state:', this.state.reviews)}
                 {/* <Form /> */}
             </div>
