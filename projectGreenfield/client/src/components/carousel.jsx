@@ -4,7 +4,7 @@ class Carousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            picsLeft: ["./images/boots.jpg", "./images/shorts.jpg", "./images/jacket.jpg"],
+            picsLeft: ["../../dist/images/boots.jpg", "../../dist/images/shorts.jpg", "../../dist/images/jacket.jpg"],
             picsRight: ["./images/hat.jpg", "./images/jeans.jpg", "./images/shirt.jpg"],
             middle: "./images/dress.jpg",
             allPics: ["./images/boots.jpg", "./images/shorts.jpg", "./images/jacket.jpg", "./images/dress.jpg", "./images/hat.jpg", "./images/jeans.jpg", "./images/shirt.jpg"]
