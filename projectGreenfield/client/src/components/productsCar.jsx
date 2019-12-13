@@ -1,12 +1,14 @@
 import React from 'react';
 import RelatedCards from './relatedCards.jsx';
+import Carousel from 'react-bootstrap/Carousel';
 
 class ProductsCar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       from: this.props.from,
-      currentId: 0
+      currentId: 0,
+      cards: []
     }
     this.prevClick = this.prevClick.bind(this);
     this.nextClick = this.nextClick.bind(this);
@@ -30,12 +32,12 @@ class ProductsCar extends React.Component {
     return (
       <div>
         <div id="cards" className="carousel slide" data-ride="carousel">
-          <div className="carousel-inner">
+           <div className="carousel-inner row w-100 mx-auto">
             <div className="card-group d-flex flex-nowrap overflow-auto">
               {this.props.prods.map((el, i) =>
                 <div id={i} className="item">
                   {this.state.from === 1 &&
-                    <RelatedCards info={el} key={el.id} modalClick={this.props.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
+                   <RelatedCards info={el} key={el.id} modalClick={this.props.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
                   }
                   {/* {this.state.from === 2 && } */}
                 </div>
@@ -45,10 +47,24 @@ class ProductsCar extends React.Component {
           <a className="carousel-control-prev" role="button" data-slide="prev" onClick={this.prevClick}>
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           </a>
-          <a className="carousel-control-next" href="#cards" role="button" data-slide="next" onClick={this.nextClick}>
+          <a className="carousel-control-next" role="button" data-slide="next" onClick={this.nextClick}>
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
           </a>
         </div>
+
+        <Carousel>
+          <Carousel.Item>
+            <img src="../../images/back4.png"></img>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="../../images/back4.png"></img>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img src="../../images/back4.png"></img>
+          </Carousel.Item>
+        </Carousel>
+
+
       </div>
     )
   }

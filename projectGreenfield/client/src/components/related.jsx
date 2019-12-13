@@ -105,11 +105,11 @@ class Related extends React.Component {
         <div className="container">
           <h4><em><u>Related Products:</u></em></h4>
           {this.state.showModal.show ? <Modal currentView={this.state.displayedId} relatedId={this.state.showModal.relatedId} modalClose={this.modalClose} /> : null}
-          <div className="row">
+          {/* <div className="row"> */}
             <div className="container">
                     <ProductsCar from={1} prods={this.state.relatedProducts} modalClick={this.modalClick} handleRelatedCard={this.props.handleRelatedCard}/>
-                </div>
-          </div>
+            </div>
+          {/* </div> */}
         </div>
       )
     }
