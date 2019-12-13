@@ -40,7 +40,7 @@ class Outfit extends React.Component {
                     this.componentDidMount();
                 })
         } else {
-            // Alert the user someother way than this garbage
+            // notify the user someother way than this alert garbage
             alert('All the other kids')
         }
     }
