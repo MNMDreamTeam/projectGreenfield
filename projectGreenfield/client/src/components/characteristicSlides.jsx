@@ -4,24 +4,36 @@ import ReactDOM from 'react-dom';
 class CharacteristicSlides extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        };
     }
 
     getCharacteristicMeanings(array) {
-        
-        for (let i = 0; i < array.length; i++){
-            let meaningsArr = [];
-            if (array[i].hasOwnProperty('size', 'width', 'length', 'fit')){
-                meaningsArr.push('Too small', 'Too large');
-                return meaningsArr;
-            }
-            else if (array[i].hasOwnProperty('comfort', 'quality')){
-                meaningsArr.push('Poor', 'Perfect');
-                return meaningsArr;
-            }
+        let meaningsArr = [];
+        console.log(array);
+        if (array[0] === ('Size')){
+            meaningsArr.push('Too small', 'Too large');
+            
         }
+        if (array.includes('Width')){
+            meaningsArr.push('Too small', 'Too large');
+            
+        }
+        if (array.includes('Length')){
+            meaningsArr.push('Too small', 'Too large');
+            
+        }
+        if (array.includes('Fit')){
+            meaningsArr.push('Too small', 'Too large');
+            
+        }
+        if (array.includes('Comfort')){
+            meaningsArr.push('Poor', 'Perfect');
+            
+        }
+        if (array[0] === ('Quality')){
+            meaningsArr.push('Poor', 'Perfect');
+            
+        }
+        return meaningsArr;
     }
 
     render() {
@@ -30,9 +42,10 @@ class CharacteristicSlides extends React.Component {
                 {this.props.characteristics.map(character => {
                     // console.log(character);
                     return (<div>
-                        <label>{Object.keys(character)}</label>
+                        <small class='characteristics'>{Object.keys(character)}</small>
                         <br></br>
-                        <b>{console.log(this.getCharacteristicMeanings(this.props.characteristics))}</b><input class='sliders' type="range" min='0' max='5' value={Object.values(character)} data-slider-enabled="false" step='0.1'></input><b></b>
+                        <small><small>{this.getCharacteristicMeanings(Object.keys(character))[0]} &nbsp;</small></small><input class='slider' type="range" min='0' max='5' value={Object.values(character)} data-slider-enabled="false" step='0.1'></input><small><small>&nbsp; {this.getCharacteristicMeanings(Object.keys(character))[1]}</small></small>
+                        <br></br>
                     </div>)
                 })} 
             </div>

@@ -273,3 +273,37 @@ p {
     font: 8px Verdana;
 }
 
+.progress {
+    margin: 10px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 5px;
+    background: #a6a6a6;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+  }
+
+.characteristics {
+    padding-top: 5px;
+}
+
+.left-row-review {
+    display: inline-block;
+}
+
+.right-row-review {
+    margin-bottom: 400px;
+    margin-top: -400px;
+    margin-left: 270px;
+}
