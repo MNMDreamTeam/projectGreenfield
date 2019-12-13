@@ -1,3 +1,7 @@
+/*
+   TODO: Clean this up a bit. Load from localStorage and maybe get rid of state. Or maybe leave it?
+*/
+
 import React from 'react';
 import OutfitCard from './outfitCard.jsx';
 import Alert from './alert.jsx';

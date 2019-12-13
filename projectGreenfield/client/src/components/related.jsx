@@ -32,7 +32,6 @@ class Related extends React.Component {
   }
 
   componentDidMount() {
-    console.log('CDM')
     let tempProductsArr = [];
     fetch(`http://3.134.102.30/products/${this.props.id}/related`)
       .then(res => res.json())
