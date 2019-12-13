@@ -178,7 +178,6 @@ changeStyle(e,callback){
 componentDidMount(){
 
     var num = localStorage.getItem('Items in Cart');
-    // console.log('number of items in one transaction', num);
     this.setState({cartNum: Number(num)});
 
     $.get('http://3.134.102.30/products/list?count=11')
