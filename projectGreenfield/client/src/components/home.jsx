@@ -178,7 +178,6 @@ changeStyle(e,callback){
 componentDidMount(){
 
     var num = localStorage.getItem('Items in Cart');
-    // console.log('number of items in one transaction', num);
     this.setState({cartNum: Number(num)});
 
     $.get('http://3.134.102.30/products/list?count=11')
@@ -234,12 +233,12 @@ render(){
         this.forceRender()
     }
     var cart = <div>
-        <img id="cart" src="../../images/shoppingCart.png"></img>
+        <img id="cart" src="../../dist/images/shoppingCart.png"></img>
         <span class="notification-counter">0</span>
         </div>
     if (this.state.loaded === true){
         cart = <div>
-        <img id="cart" src="../../images/shoppingCart.png"></img>
+        <img id="cart" src="../../dist/images/shoppingCart.png"></img>
         <span class="notification-counter">{this.state.cartNum}</span>
         </div>
         category = <p>{this.state.currentProduct.category}</p>
