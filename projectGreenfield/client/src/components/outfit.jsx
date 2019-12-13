@@ -36,10 +36,6 @@ class Outfit extends React.Component {
                     cardInfo.pic = this.props.currentStyle.photos[0].url;
                 })
                 .then(() => {
-                    // TODO: Star rating
-                    //this.setState({ outfitList: [...this.state.outfitList, cardInfo] });
-                })
-                .then(() => {
                     localStorage.setItem(JSON.stringify(cardInfo.styleId), JSON.stringify(cardInfo));
                     this.componentDidMount();
                 })
@@ -56,7 +52,6 @@ class Outfit extends React.Component {
                 return el.styleId !== e.info.styleId;
             })
         })
-
     }
 
     render() {
