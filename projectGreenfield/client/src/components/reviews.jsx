@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form from './form.jsx';
 import StarRatings from '../../../react-star-ratings';
 import CharacteristicSlides from './characteristicSlides.jsx';
 import ReviewCards from './reviewCards.jsx';
@@ -48,7 +47,7 @@ class Reviews extends React.Component {
             if (key !== 'max'){
             obj.max += obj[key];
             obj[key] = (obj[key] / obj.max) * 100;
-            console.log('all values in obj', obj[key], key)
+            // console.log('all values in obj', obj[key], key)
             }
         }
         if (!obj[1]){
@@ -73,7 +72,7 @@ class Reviews extends React.Component {
             characterObj[key] = obj[key];
             arr.push(characterObj);
         }
-        console.log(arr);
+        // console.log(arr);
         return arr;
     }
 
@@ -115,14 +114,13 @@ class Reviews extends React.Component {
                         <div class="progress" style={{width: 140 + 'px'}}>1 star &nbsp;{this.state.ratingsBreakdown[1] ?
                             (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[1], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[1]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
                         </div>
-                        {console.log('state', this.state)}
+                        {/* {console.log('state', this.state)} */}
                         {Array.isArray(this.state.characteristics) ? (<CharacteristicSlides characteristics={this.state.characteristics}/>) : 'loading'}
                     </div>
                     <div className='right-row-review'>
                         <ReviewCards />
                     </div>
                 </div>
-                <Form />
             </div>
         )
     }

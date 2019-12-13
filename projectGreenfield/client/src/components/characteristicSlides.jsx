@@ -8,7 +8,7 @@ class CharacteristicSlides extends React.Component {
 
     getCharacteristicMeanings(array) {
         let meaningsArr = [];
-        console.log(array);
+
         if (array[0] === ('Size')){
             meaningsArr.push('Too small', 'Too large');
             
@@ -40,7 +40,6 @@ class CharacteristicSlides extends React.Component {
         return (
             <div>
                 {this.props.characteristics.map(character => {
-                    // console.log(character);
                     return (<div>
                         <small class='characteristics'>{Object.keys(character)}</small>
                         <br></br>
