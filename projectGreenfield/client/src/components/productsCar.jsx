@@ -30,16 +30,15 @@ class ProductsCar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="box">
         <div id="cards" className="carousel slide" data-ride="carousel">
-           <div className="carousel-inner row w-100 mx-auto">
+          <div className="carousel-inner row w-100">
             <div className="card-group d-flex flex-nowrap overflow-auto">
               {this.props.prods.map((el, i) =>
                 <div id={i} className="item">
                   {this.state.from === 1 &&
-                   <RelatedCards info={el} key={el.id} modalClick={this.props.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
+                    <RelatedCards info={el} key={el.id} modalClick={this.props.modalClick} handleRelatedCard={this.props.handleRelatedCard} />
                   }
-                  {/* {this.state.from === 2 && } */}
                 </div>
               )}
             </div>
@@ -51,20 +50,6 @@ class ProductsCar extends React.Component {
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
           </a>
         </div>
-
-        <Carousel>
-          <Carousel.Item>
-            <img src="../../images/back4.png"></img>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img src="../../images/back4.png"></img>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img src="../../images/back4.png"></img>
-          </Carousel.Item>
-        </Carousel>
-
-
       </div>
     )
   }
