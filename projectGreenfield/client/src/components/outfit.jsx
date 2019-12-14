@@ -45,7 +45,7 @@ class Outfit extends React.Component {
                 })
         } else {
             // notify the user someother way than this alert garbage
-            alert('All the other kids')
+            alert("And say your hairs on fire, you must have lost your wits, yeah All the other kids with the pumped up kicks Youd better run, better run, out run my gun All the other kids with the pumped up kicks Youd better run, better run, faster than my bullet All the other kids with the pumped up kicks Youd better run, better run, out run my gun")
         }
     }
 

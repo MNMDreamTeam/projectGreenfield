@@ -1,14 +1,12 @@
 import React from 'react';
 import RelatedCards from './relatedCards.jsx';
-import Carousel from 'react-bootstrap/Carousel';
 
 class ProductsCar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       from: this.props.from,
-      currentId: 0,
-      cards: []
+      currentId: 0
     }
     this.prevClick = this.prevClick.bind(this);
     this.nextClick = this.nextClick.bind(this);
