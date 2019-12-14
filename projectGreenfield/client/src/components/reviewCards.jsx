@@ -29,28 +29,28 @@ class ReviewCards extends React.Component {
         return (
             <div>
                 <b>{this.state.reviews.length} reviews sorted by relevance</b>
-                {this.state.reviews.map(character => {
+                {this.state.reviews.map(el => {
                     return (
-                        <div className='card w-400'>
-                            <div className='card-body reviewCard'>
+                        <div className='card w-400 reviewCard'>
+                            <div className='card-body'>
                                 <span className='reviewStars'>{this.state.reviews.length > 0 ? <StarRatings starDimension={'15px'} starSpacing={'10px'} 
-                                    starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.reviews[0].rating}/> : 'loading'}
+                                    starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating}/> : 'loading'}
                                 </span>
-                                <span className='nameAndDate'>{this.state.reviews.length > 0 ? this.state.reviews[0].reviewer_name : 'loading'}&nbsp;&nbsp;&nbsp;
-                                    {this.state.reviews.length > 0 ? this.state.reviews[0].date.substring(0, 10) : 'loading'}
+                                <span className='nameAndDate'>{this.state.reviews.length > 0 ? el.reviewer_name : 'loading'}&nbsp;&nbsp;&nbsp;
+                                    {this.state.reviews.length > 0 ? el.date.substring(0, 10) : 'loading'}
                                 </span>
                                 <br></br>
                                 <br></br>
                                 <div className='reviewSummary'>
-                                    <b>{this.state.reviews.length > 0 ? this.state.reviews[0].summary : 'loading'}</b>
+                                    <b>{this.state.reviews.length > 0 ? el.summary : 'loading'}</b>
                                 </div>
                                 <br></br>
                                 <div className='reviewBody'>
-                                    <small>{this.state.reviews.length > 0 ? this.state.reviews[0].body : 'loading'}</small>
+                                    <small>{this.state.reviews.length > 0 ? el.body : 'loading'}</small>
                                 </div>
                                 <br></br>
                                 <div className = 'Helpful-Report'>
-                                    <small>Helpful? <u>Yes</u>({this.state.reviews.length > 0 ? this.state.reviews[0].recommend : 'loading'})  |  <u>Report</u></small>
+                                    <small>Helpful? <u>Yes</u>({this.state.reviews.length > 0 ? el.helpfulness : 'loading'})  |  <u>Report</u></small>
                                 </div>
                             </div>
                         </div>)

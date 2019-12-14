@@ -338,9 +338,27 @@ p {
 }
 
 .nameAndDate {
-    margin-left: 300px;
+    margin-left: 200px;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    max-width: 50px;
 }
 
 .reviewCard {
-    width: 100%;
+    width: 600px;
+}
+
+.reviewSummary {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.reviewBody {
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    max-width: 500px;
 }
