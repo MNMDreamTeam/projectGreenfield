@@ -61,7 +61,8 @@ describe('Outfits', () => {
   it('should not render when nothing pressed', () => {
     const wrapper = shallow(<Outfit />);
     expect(wrapper).toMatchSnapshot();
-  });
+  })
+
 });
 
 describe('Reviews', () => {
@@ -73,33 +74,15 @@ describe('Reviews', () => {
   });
 });
 
-describe('Star Ratings', () => {
-  test('render a carousel with a current picture index and an array of picture Urls', () => {
-    const dimension = '15px';
-    const spacing = '10px';
-    const starColor = 'rgb(189, 153, 57)';
-    const number = 5;
-    const rating = 3.8;
-    const wrapper = shallow(
-      <StarRatings starDimension={dimension} starSpacing={spacing} starRatedColor={starColor} numberOfStars={number} rating={rating} />
-    );
-    expect(wrapper).toMatchSnapshot();
-  });
-});
 
-
-
-  // test('render Markdown in preview mode', () => {
-  //   const wrapper = shallow(
-  //       <MarkdownEditor value="*Hello* Jest!" />
-  //   );
-
-  //   expect(wrapper).toMatchSnapshot();
-
-  //   wrapper.find('[name="toggle-preview"]').simulate('click');
-
-  //   expect(wrapper).toMatchSnapshot();
-  // });
+// test('render Markdown in preview mode', () => {
+//   const wrapper = shallow(
+//       <MarkdownEditor value="*Hello* Jest!" />
+//   );
+//   expect(wrapper).toMatchSnapshot();
+//   wrapper.find('[name="toggle-preview"]').simulate('click');
+//   expect(wrapper).toMatchSnapshot();
+// });
 
 
 // describe('VerticalCarousel', () => {

@@ -236,6 +236,70 @@ exports[`Outfits render a carousel with a current picture index and an array of 
 </div>
 `;
 
+exports[`Outfits should not render when nothing pressed 1`] = `
+<div>
+  <div
+    className="container"
+  >
+    <h4>
+      <em>
+        <u>
+          Your Outfit(s):
+        </u>
+      </em>
+    </h4>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="card-group d-flex flex-nowrap"
+        >
+          <div
+            className="card text-center"
+            style={
+              Object {
+                "height": "31rem",
+                "width": "14rem",
+              }
+            }
+          >
+            <div
+              className="card-body"
+            />
+            <div
+              className="card-body text-dark"
+            >
+              <button
+                className="btn btn-floating"
+                onClick={[Function]}
+                type="button"
+              >
+                <h1>
+                  +
+                </h1>
+              </button>
+              <h5
+                className="card-title text-center"
+              >
+                Add to Your Outfit
+              </h5>
+            </div>
+          </div>
+          <div
+            className="card-group d-flex flex-nowrap overflow-auto"
+          >
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Outfits should render a card when + button clicked 1`] = `
 <div>
   <div

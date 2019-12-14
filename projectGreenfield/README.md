@@ -25,42 +25,79 @@
 
 # Overview/Product Detail
 
-# Related Products
-![Related Products](./Related.jpg)
+![Related Products](./Docs/Overview.jpg)
 
-## -- 1.
-  ## - Related products component -
+  ## - 1 -
+    - Product images
+
+  ## - 2 -
+    - Product Carousel
+
+  ## - 3 -
+    - Product Description
+
+  ## - 4 -
+    - Style Selector
+
+  ## - 5 -
+    - Size/Options
+
+# Related Products
+
+![Related Products](./Docs/Related.jpg)
+
+## - 1 -
+  ### - Related products component -
   ### -- Displays all products that are related to the current product displayed in the overview.
 
-  ### -- 1.2
-  ### - Product Card -
-  ### -- Displays the product info summary.
-  ### -- Picture from - Product Styles
-  ### -- Category from - Product Styles
-  ### -- Name from - Product Info
-  ### -- Price from - Product Styles
-      - If on sale, sale price is shown in red
-  ### -- Average Rating from - Review Meta
 
-  ### -- 1.3
-  ### - Comparison Modal -
-  ### -- Pop-up to compare related item with overview item
+  ## - 1.2 -
+      - Product Card -
+        -- Displays the product info summary.
+        -- Picture from - Product Styles
+        -- Category from - Product Styles
+        -- Name from - Product Info
+        -- Price from - Product Styles
+          # - If on sale, sale price is shown in red, strikethrough original.
+        -- Average Rating from - Review Meta
 
 
-![Related Products](./RelatedModal.jpg)
+  ## - 1.3 -
+      - Comparison Modal -
+        -- Pop-up to compare related item with overview item.
+
+
+![Related Products](./Docs/RelatedModal.jpg)
 
   ## - Outfit -
 
-![Outfit](./YourOutfit.jpg)
+![Outfit](./Docs/YourOutfit.jpg)
+
   ### -- Allows the user to build an outfit based on displayed overview product
 
-  ## -- 1
-  ## - Oufit display
+  ## - 1 -
+    - Oufit display
+      -- Card group for outfit builder
 
-  ## -- 2
-  ### - Add to outfit button
+  ## - 2 -
+    - Add to outfit button
+      -- Adds item to outfit. Currently persists in loacalStorage.
+      -- Contraints - Only one add per style.
 
-  ## -- 3
-  ### - Remove from outfit button
+  ## - 3 -
+    - Remove from outfit button
+      -- Deletes from localStorage
 
 # Reviews
+
+![Reviews](./Docs/Reviews.png)
+
+  ##  - 1 -
+    - Product Star Rating
+
+  ## - 2 -
+    - Characteristics Rating
+
+  ## - 3 -
+    - Reviews
+
