@@ -27,19 +27,19 @@
 
 ![Related Products](./Docs/Overview.jpg)
 
-## - 1 -
+  ## - 1 -
     - Product images
 
-## - 2 -
+  ## - 2 -
     - Product Carousel
 
-## - 3 -
+  ## - 3 -
     - Product Description
 
-## - 4 -
+  ## - 4 -
     - Style Selector
 
-## - 5 -
+  ## - 5 -
     - Size/Options
 
 # Related Products
@@ -58,13 +58,13 @@
         -- Category from - Product Styles
         -- Name from - Product Info
         -- Price from - Product Styles
-          # - If on sale, sale price is shown in# red
+          # - If on sale, sale price is shown in red, strikethrough original.
         -- Average Rating from - Review Meta
 
 
   ## - 1.3 -
       - Comparison Modal -
-        -- Pop-up to compare related item with overview item
+        -- Pop-up to compare related item with overview item.
 
 
 ![Related Products](./Docs/RelatedModal.jpg)
@@ -77,23 +77,27 @@
 
   ## - 1 -
     - Oufit display
+      -- Card group for outfit builder
 
   ## - 2 -
     - Add to outfit button
+      -- Adds item to outfit. Currently persists in loacalStorage.
+      -- Contraints - Only one add per style.
 
   ## - 3 -
     - Remove from outfit button
+      -- Deletes from localStorage
 
 # Reviews
 
 ![Reviews](./Docs/Reviews.png)
 
-##  - 1 -
-  - Product Star Rating
+  ##  - 1 -
+    - Product Star Rating
 
-## - 2 -
-  - Characteristics Rating
+  ## - 2 -
+    - Characteristics Rating
 
-## - 3 -
-  - Reviews
+  ## - 3 -
+    - Reviews
 
