@@ -34,10 +34,12 @@ class Reviews extends React.Component {
             let total = obj[1] + obj[0];
             let perc = Math.round((obj[1] / total) * 100);
             return perc + '% of reviews recommend';
-        }else if (!obj.hasOwnProperty(1)){
+        }if (!obj.hasOwnProperty(1) && obj.hasOwnProperty(0)){
             return '100% of reviews did not recommend';
-        }else if (!obj.hasOwnProperty(0)){
+        }if (!obj.hasOwnProperty(0) && obj.hasOwnProperty(1)){
             return '100% of reviews recommend';
+        }if (!obj.hasOwnProperty(1) && !obj.hasOwnProperty(0)){
+            return 'No reviews for';
         }
     }
 
@@ -78,7 +80,8 @@ class Reviews extends React.Component {
 
     //in api recomended: {'0': 'no', '1': 'yes'}
     componentDidMount() {
-        fetch(`http://3.134.102.30/reviews/5/meta`) // using this as a good base case
+        console.log('propsId:', this.props.prodId);
+        fetch(`http://3.134.102.30/reviews/${this.props.prodId}/meta`) // using this as a good base case
             .then(res => res.json())
             .then((data) => {
                 let ratings = this.calcRating(data.ratings);
@@ -90,14 +93,21 @@ class Reviews extends React.Component {
             })
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.prodId !== this.props.prodId) {
+           this.componentDidMount();
+        }
+      }
+
     render() {
         return (
             <div className='container'>
+                {console.log('totalRatings', this.state.totalRatings)}
                 <h4><em><u>Ratings and Reviews</u></em></h4>
                 <div className='left-row-review'>
                     <div>
-                        <h1>{this.state.totalRatings} {this.state.totalRatings ? (<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.totalRatings} />) : 'loading'}</h1>
-                        <small>{this.state.percentOfRecommended} this product</small>
+                        <h1>{this.state.totalRatings} {this.state.totalRatings ? (<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={this.state.totalRatings} />) : 'Reviews'}</h1>
+                        <small><small>{this.state.percentOfRecommended} this product</small></small>
                         <br></br>
                         <div class="progress" style={{width: 140 + 'px'}}>5 stars {this.state.ratingsBreakdown[5] ?
                             (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[5], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[5]} aria-valuemin="0" aria-valuemax="100" ></div>) : ''}
@@ -118,7 +128,7 @@ class Reviews extends React.Component {
                         {Array.isArray(this.state.characteristics) ? (<CharacteristicSlides characteristics={this.state.characteristics}/>) : 'loading'}
                     </div>
                     <div className='right-row-review'>
-                        <ReviewCards />
+                        <ReviewCards prodId={this.props.prodId}/>
                     </div>
                 </div>
             </div>
