@@ -12,7 +12,7 @@ class ReviewCards extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://3.134.102.30/reviews/5/list?count=1000`)
+        fetch(`http://3.134.102.30/reviews/${this.props.prodId}/list?count=1000`)
             .then(res => res.json())
             .then((data) => {
                 console.log('data', data);
@@ -25,13 +25,19 @@ class ReviewCards extends React.Component {
             })
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.prodId !== this.props.prodId) {
+           this.componentDidMount();
+        }
+      }
+
     render() {
         return (
             <div>
                 <b>{this.state.reviews.length} reviews sorted by relevance</b>
                 {this.state.reviews.map(el => {
                     return (
-                        <div className='card w-400 reviewCard'>
+                        <div className='card w-425 reviewCard'>
                             <div className='card-body'>
                                 <span className='reviewStars'>{this.state.reviews.length > 0 ? <StarRatings starDimension={'15px'} starSpacing={'10px'} 
                                     starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating}/> : 'loading'}
