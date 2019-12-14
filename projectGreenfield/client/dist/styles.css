@@ -321,11 +321,12 @@ p {
     visibility: hidden;
     width:0em;
     height:0em;
+    margin-top: -30em;
 }
 
 @media (max-width: 768px) {
     /* .card   .container */
-    
+
     .carousel-control-prev-icon{
         width:4em;
         height:4em;
@@ -358,16 +359,24 @@ p {
     }
     
     #dropdownMenuButton {
-        font-size: 40px;
-        height: 3em;
-        width: 7em;
-        padding: 5px;
-    } 
-
-    .dropdown-menu{
-        padding: 5px;
+        /* font-size: 40px;
+        height: 5em;
+        width: 20em;
+        padding-right: 5px;
+        margin-right: 100px; */
+        margin-left: -18px;
+         
+    }  
+       
     
-    } */
+
+    /* .dropdown-menu{
+        height: 0px;
+        width: 0px;
+        border: none;
+       
+    
+    }  */
 
     .circleCol {
         width:9em;
@@ -397,7 +406,7 @@ p {
         visibility: hidden;
         margin-left:-200em;
         margin-right:-200em;
-        margin-bottom: -3em;
+        
     }
 
     .RowHolder {
@@ -408,14 +417,11 @@ p {
     }
     
     .logoBar {
-        /* width:1100px;
+        width:1100px;
         height:7em;
         margin-bottom:5em;
         margin-left:-5em;
-       
-       
-        background-color: rgb(116, 196, 245);  */
-        visibility: hidden;
+        /* visibility: hidden; */
     }
     .logoPic {
         width:12em;
