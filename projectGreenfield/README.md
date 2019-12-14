@@ -26,7 +26,6 @@
 # Overview/Product Detail
 
 # Related Products
-
-
+![Related Products](./Related.jpg)
 
 # Reviews
