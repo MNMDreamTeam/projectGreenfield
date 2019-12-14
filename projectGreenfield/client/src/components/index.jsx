@@ -51,7 +51,7 @@ class App extends React.Component {
         <Home prodId={this.state.prodId} handleStyles={this.handleStyles}/>
         <Related handleRelatedCard={this.handleRelatedCard} id={this.state.prodId}/>
         <Outfit currentStyle ={this.state.selectedStyle} product={this.state.prodId}/>
-        <Reviews />
+        <Reviews prodId={this.state.prodId}/>
       </div>
     )
   }

@@ -336,3 +336,29 @@ p {
     margin-top: -400px;
     margin-left: 270px;
 }
+
+.nameAndDate {
+    margin-left: 150px;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    max-width: 50px;
+}
+
+.reviewCard {
+    width: 600px;
+}
+
+.reviewSummary {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.reviewBody {
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
