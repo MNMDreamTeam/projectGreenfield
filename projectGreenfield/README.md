@@ -86,7 +86,7 @@
 
 # Reviews
 
-![Reviews](./Docs/Reviews.jpg)
+![Reviews](./Docs/Reviews.png)
 
 ##  - 1 -
   - Product Star Rating
