@@ -25,7 +25,7 @@
 
 # Overview/Product Detail
 
-![Related Products](./Docs/Related.jpg)
+![Related Products](./Docs/Overview.jpg)
 
 ## - 1 -
     - Product images
