@@ -1,3 +1,7 @@
+/*
+   TODO: Clean this up a bit. Load from localStorage and maybe get rid of state. Or maybe leave it?
+*/
+
 import React from 'react';
 import OutfitCard from './outfitCard.jsx';
 import Alert from './alert.jsx';
@@ -40,8 +44,8 @@ class Outfit extends React.Component {
                     this.componentDidMount();
                 })
         } else {
-            // Alert the user someother way than this garbage
-            alert('All the other kids')
+            // notify the user someother way than this alert garbage
+            alert("And say your hairs on fire, you must have lost your wits, yeah All the other kids with the pumped up kicks Youd better run, better run, out run my gun All the other kids with the pumped up kicks Youd better run, better run, faster than my bullet All the other kids with the pumped up kicks Youd better run, better run, out run my gun")
         }
     }
 

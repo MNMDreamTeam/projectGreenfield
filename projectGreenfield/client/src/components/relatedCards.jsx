@@ -23,7 +23,9 @@ const RelatedCards = (props) => {
                         {props.info.salePrice <= 0 &&
                             <p className="card-text text-left"><small>${props.info.price}</small></p>
                         }
-                        <StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={props.info.rating} />
+                        {props.info.rating > 0 &&
+                            <StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={props.info.rating} />
+                        }
                     </div>
                 </div>
             </div>
