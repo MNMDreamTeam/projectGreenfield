@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import StarRatings from '../../../react-star-ratings';
 
 class Form extends React.Component {
     constructor(props){
@@ -9,6 +10,10 @@ class Form extends React.Component {
             charLeft: 50,
             pictures: []
         };
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
     }
 
     handleChange(event) {
@@ -39,34 +44,34 @@ class Form extends React.Component {
     
     render() {
         return (
-            <form className="needs-validation container" noValidate>
+            <form className="needs-validation" noValidate>
                 <div className='col-md-8 border border-info rounded'>
                     <h2>Write Your Review</h2>
                     <div className='form-check border border-info rounded' required>
                         <h6 for='reviews'>About the {this.state.product}</h6>
                         <input className='form-check-input' type="radio" id="one star" name="drone" value="one star"></input>
                         <label className='form-check-label' for="one star">
-                            1 Star Review - "Poor"
+                            1 {<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={1} rating={1}/>} Review - "Poor"
                         </label>
                         <br></br>
                         <input className='form-check-input' type="radio" id="two star" name="drone" value="two star"></input>
                         <label className='form-check-label' for="two star">
-                            2 Star Review - "Fair"
+                            2 {<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={1} rating={1}/>} Review - "Fair"
                         </label>
                         <br></br>
                         <input className='form-check-input' type="radio" id="three star" name="drone" value="three star"></input>
                         <label className='form-check-label' for="three star">
-                            3 Star Review - "Average"
+                            3 {<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={1} rating={1}/>} Review - "Average"
                         </label>
                         <br></br>
                         <input className='form-check-input' type="radio" id="four star" name="drone" value="four star"></input>
                         <label className='form-check-label' for="four star">
-                            4 Star Review - "Good"
+                            4 {<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={1} rating={1}/>} Review - "Good"
                         </label>
                         <br></br>
                         <input className='form-check-input' type="radio" id="five star" name="drone" value="five star"></input>
                         <label className='form-check-label' for="five star">
-                            5 Star Review - "Great"
+                            5 {<StarRatings starDimension={'15px'} starSpacing={'10px'} starRatedColor={'rgb(189, 153, 57)'} numberOfStars={1} rating={1}/>} Review - "Great"
                         </label>
                     </div>
                     <br></br>
@@ -192,7 +197,7 @@ class Form extends React.Component {
                         <label>Upload your photos</label>
                         <br></br>
                         <textarea className='form-control rounded-0' id='photos' rows='1' placeholder='www.example-url.com'></textarea>
-                        <button type='submit' className="btn btn-secondary" onClick={this.addPicture.bind(this)}>Add photo</button>
+                        <button type='button' className="btn btn-secondary" onClick={this.addPicture.bind(this)}>Add photo</button>
                         {/* Look at react forms file input */}
                     </div>
                     <br></br>
@@ -211,7 +216,7 @@ class Form extends React.Component {
                         <label className='form-control-sm'>For authentication reasons, you will not be emailed</label>
                     </div>
                     <br></br>
-                    <button type="submit" className="btn btn-primary">Submit Review</button>
+                    <button type="submit" className="btn btn-primary" onClick={this.handleSubmit.bind(this)}>Submit Review</button>
                     <br></br>
                 </div>
             </form>
