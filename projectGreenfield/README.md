@@ -27,44 +27,44 @@
 
 ![Related Products](./Docs/Related.jpg)
 
-## -- 1.
-  ## - Product images
+## - 1 -
+    - Product images
 
-## -- 2.
-  ## - Product Carousel
+## - 2 -
+    - Product Carousel
 
-## -- 3.
-  ## - Product Description
+## - 3 -
+    - Product Description
 
-## -- 4.
-  ## - Style Selector
+## - 4 -
+    - Style Selector
 
-## -- 5.
-  ## - Size/Options
+## - 5 -
+    - Size/Options
 
 # Related Products
 
 ![Related Products](./Docs/Related.jpg)
 
-## -- 1.
+## - 1 -
   ### - Related products component -
   ### -- Displays all products that are related to the current product displayed in the overview.
 
 
-  ## -- 1.2
-  ### - Product Card -
-  ### -- Displays the product info summary.
-  ### -- Picture from - Product Styles
-  ### -- Category from - Product Styles
-  ### -- Name from - Product Info
-  ### -- Price from - Product Styles
-    # - If on sale, sale price is shown in# red
-  ### -- Average Rating from - Review Meta
+  ## - 1.2 -
+      - Product Card -
+        -- Displays the product info summary.
+        -- Picture from - Product Styles
+        -- Category from - Product Styles
+        -- Name from - Product Info
+        -- Price from - Product Styles
+          # - If on sale, sale price is shown in# red
+        -- Average Rating from - Review Meta
 
 
-  ## -- 1.3
-  ### - Comparison Modal -
-  ### -- Pop-up to compare related item with overview item
+  ## - 1.3 -
+      - Comparison Modal -
+        -- Pop-up to compare related item with overview item
 
 
 ![Related Products](./Docs/RelatedModal.jpg)
@@ -75,25 +75,25 @@
 
   ### -- Allows the user to build an outfit based on displayed overview product
 
-  ## -- 1
-  ### - Oufit display
+  ## - 1 -
+    - Oufit display
 
-  ## -- 2
-  ### - Add to outfit button
+  ## - 2 -
+    - Add to outfit button
 
-  ## -- 3
-  ### - Remove from outfit button
+  ## - 3 -
+    - Remove from outfit button
 
 # Reviews
 
 ![Reviews](./Docs/Reviews.jpg)
 
-##  -- 1.
-### - Product Star Rating
+##  - 1 -
+  - Product Star Rating
 
-## -- 2.
-### - Characteristics Rating
+## - 2 -
+  - Characteristics Rating
 
-## -- 3.
-### - Reviews
+## - 3 -
+  - Reviews
 
