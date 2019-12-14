@@ -76,27 +76,3 @@ describe('Star Ratings', () => {
   });
 });
 
-
-
-  // test('render Markdown in preview mode', () => {
-  //   const wrapper = shallow(
-  //       <MarkdownEditor value="*Hello* Jest!" />
-  //   );
-
-  //   expect(wrapper).toMatchSnapshot();
-
-  //   wrapper.find('[name="toggle-preview"]').simulate('click');
-
-  //   expect(wrapper).toMatchSnapshot();
-  // });
-
-
-// describe('VerticalCarousel', () => {
-//   it('button click should add item to bag', () => {
-//     const component = shallow(<Home onClick={clickFn} />);
-//     component
-//       .find('button#dropdownMenuButton')
-//       .simulate('click');
-//     expect(clickFn).toHaveBeenCalled();
-//   });
-// });

@@ -86,6 +86,13 @@
     border-spacing: .6em;
 }
 
+.RowHolder
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: .6em;
+}
 
 .Row2
 {
@@ -96,6 +103,12 @@
     margin-left: 8.5em;
     
     /* background-color:lightblue;  */
+}
+
+#webView {
+    display: table-cell;
+    border-spacing: 4em;
+   
 }
 
 .Col
@@ -155,12 +168,13 @@
 
  .showcase{
     display: table;
-    width:25em;
+    width:28em;
     height:38em;
     /* table-layout: fixed;  */
     
     margin-top: 7em;
     margin-left: 8em;
+    margin-left: -40em;
     background-color: rgb(230, 229, 229);
 }
 
@@ -184,6 +198,7 @@
     table-layout: fixed; /*Optional*/
     border-spacing: .6em;
     margin-left:1.4em;
+    flex-wrap: wrap;
     /* background-color:lightblue;  */
 }
 
@@ -197,6 +212,7 @@
     /* background-color: rgb(208, 208, 208); */
     margin-left: 1.5em;
     cursor: pointer;
+    flex-wrap: wrap;
     /* background-color:lightblue;  */
 
 }
@@ -242,7 +258,7 @@ p {
 }
 .logoBar {
     width:70em;
-    height:7em;
+    height:6.2em;
     margin-left:12em;
     margin-bottom:.5em;
     /* background-color: rgb(220, 244, 103); */
@@ -251,14 +267,14 @@ p {
 }
 
 .logoPic {
-    width:12em;
-    height:12em;
-    margin-top: -2.4em;
+    width:14em;
+    height:12.8em;
+    margin-top: -3em;
 }
 
 #description {
     margin-top: 1em;
-    margin-left:20em;
+    margin-left:15em;
 }
 
 #slogan {
@@ -301,6 +317,213 @@ p {
     padding: 1px 3px;
     font: 8px Verdana;
 }
+#mobileView {
+    visibility: hidden;
+    width:0em;
+    height:0em;
+    margin-top: -30em;
+}
+
+@media (max-width: 768px) {
+    /* .card   .container */
+
+    .carousel-control-prev-icon{
+        width:4em;
+        height:4em;
+     }
+     .carousel-control-next-icon{
+        width:4em;
+        height:4em;
+     }
+
+    #cart {
+        width:6em;
+        height:6em;
+        margin-bottom:2em; 
+    }
+    
+    .notification-counter {    
+        background-color: rgba(212, 19, 13, 1);
+        color: #fff;
+        border-radius: 6px;
+        padding: 2px 6px;
+        font: 20px Verdana;
+    }
+    .showcase {
+        width:0px;
+        height: 0px;
+        margin-bottom: -100px;
+        flex-direction: row;
+        margin-right: -20px;
+        
+    }
+    
+    #dropdownMenuButton {
+        /* font-size: 40px;
+        height: 5em;
+        width: 20em;
+        padding-right: 5px;
+        margin-right: 100px; */
+        margin-left: -18px;
+         
+    }  
+       
+    
+
+    /* .dropdown-menu{
+        height: 0px;
+        width: 0px;
+        border: none;
+       
+    
+    }  */
+
+    .circleCol {
+        width:9em;
+        height:9em;
+    }
+
+    .info {
+        font-size: 40px;
+    }
+
+    .infoLarge {
+        font-size: 80px;
+    }
+
+    .rightSide2 {
+        visibility: hidden;
+    }
+
+    #mobileView {
+        visibility: visible;
+        margin-left:1em;
+        margin-top:-20em;
+        width: 200px;
+        height: 200px;
+    }
+    #webView {
+        visibility: hidden;
+        margin-left:-200em;
+        margin-right:-200em;
+        
+    }
+
+    .RowHolder {
+    display: flexbox;
+     /*Optional*/
+   
+    border-spacing: .6em;
+    }
+    
+    .logoBar {
+        width:1100px;
+        height:7em;
+        margin-bottom:5em;
+        margin-left:-5em;
+        /* visibility: hidden; */
+    }
+    .logoPic {
+        width:12em;
+        height:11em;
+        margin-left:4em;
+        margin-top: -1.7em;
+    }
+    #description {
+        visibility: hidden;
+        margin-top: -5.5em;
+    }
+
+    /* .styleDescription {
+        margin-top: 40em;
+    } */
+    
+    #slogan {
+        margin-top: 0em;
+        margin-left:13em;
+        visibility: hidden;
+    }
+    #carousel2 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -16em;
+    }
+    
+    #carousel3 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -23em;
+    }
+    
+    #carousel4 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -27em;
+    }
+    
+    #carousel5 {
+        width:35em;
+        height:35em;
+        margin-left: 4em;
+        margin-top: -34em;
+    }
+    
+    #carousel6 {
+        width:62em;
+        height:50em;
+        margin-left: .3em;
+        margin-right: 1em;
+        margin-bottom: -20em;
+        margin-top: -42em;
+    }
+    
+    #carousel7 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -47em;
+    }
+    
+    #carousel8 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -52em;
+    }
+    
+    #carousel9 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -60em;
+    }
+    
+    #carousel10 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -67em;
+    }
+    
+    #carousel11 {
+        width:35em;
+        height:35em;
+        margin-left: 5em;
+        margin-top: -72em;
+    }
+    .carousel-item {
+        width:62em;
+        height:50em;
+    }
+    #thumbnail {
+        width:9em;
+        height:9em;
+    }
+    
+  }
 
 .progress {
     margin: 10px;

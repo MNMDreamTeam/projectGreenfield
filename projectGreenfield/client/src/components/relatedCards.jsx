@@ -8,7 +8,7 @@ const RelatedCards = (props) => {
                 <div className="card" style={{ width: 14 + 'rem', height: 31 + 'rem' }}>
                     <a href="#" className="stretched-link" style={{ position: 'absolute', width: 13 + 'rem', height: 27 + 'rem', marginTop: 22 + '%' }} onClick={props.handleRelatedCard.bind(this, props)} />
                     {(props.info.pic === null)
-                        ? <img src='../../images/back4.png' className="card-img-top" style={{ height: 17 + 'rem' }}></img>
+                        ? <img src='../../client/dist/images/back4.png' className="card-img-top" style={{ height: 17 + 'rem' }}></img>
                         : <img src={props.info.pic} className="card-img-top" style={{ height: 17 + 'rem' }}></img>}
                     <button className="btn btn-floating" type="button" style={{ position: 'absolute', top: .312 + 'rem', right: .312 + 'rem' }} onClick={props.modalClick.bind(this, props)}><b>&#9734;</b></button>
                     <div className="card-body flex-fill">
