@@ -335,6 +335,8 @@ p {
     margin-bottom: 400px;
     margin-top: -400px;
     margin-left: 270px;
+    display: flex;
+    flex-direction: column;
 }
 
 .nameAndDate {
