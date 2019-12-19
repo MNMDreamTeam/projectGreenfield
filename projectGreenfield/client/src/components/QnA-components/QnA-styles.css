@@ -1,0 +1,312 @@
+#qna-container {
+  display: block;
+  width: 100%;
+  height: 80%;
+  margin: auto;
+}
+
+#search-bar-container {
+  height: 60px;
+  width: 100%;
+  background-color: white;
+}
+
+#qna-searchbar {
+  height: 60px;
+  outline: none;
+}
+
+.search-input-icons {
+  width: 100%;
+  height: 48px;
+}
+
+.search-input-icons i {
+  padding-left: 15px;
+  padding-top: 20px;
+  position: absolute;
+}
+
+.search-input-field {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.qna-answer-container {
+  width: 70%;
+}
+
+.questionsModalAnswer {
+  width: 400px;
+  height: 100px;
+  padding: 12px 10px;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+}
+
+.qna-modal-main {
+  display: flex;
+  padding-top: 5%;
+  justify-content: center;
+}
+
+.qna-modal-main img {
+  width: 70%;
+  max-width: 700px;
+  height: 70%;
+  max-height: 700px;
+}
+
+.qna-pmodal-container {
+  display: inline-flex;
+}
+
+.qna-thumbnail {
+  width: 120px;
+  margin: 0;
+}
+
+.question-q-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.question-q-text-container {
+  width: 70%;
+}
+
+.questions-q-tools {
+  width: 30%;
+  margin-top: 1em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.questions-clear-btn {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  height: 15px;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.qna-span-thumbnail:focus {
+  outline: none;
+}
+
+.qna-load-more-q {
+  display: inline-block;
+  height: 60px;
+  width: 325px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 1px solid black;
+}
+
+.qna-add-q-btn {
+  display: inline-block;
+  height: 60px;
+  width: 200px;
+  margin-top: 20px;
+  border: 1px solid black;
+}
+
+.qna-modal-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.qna-load-more-q:hover {
+  cursor: pointer;
+}
+
+.qna-add-q-btn:hover {
+  cursor: pointer;
+}
+
+.qna-helpful-btn:hover {
+  cursor: pointer;
+}
+
+.qna-report-btn:hover {
+  cursor: pointer;
+}
+
+#qna-searchbar::-webkit-input-placeholder {
+  font-family: 'helvetica';
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#qna-searchbar:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+
+.qna-modal-a-body {
+  height: 100px !important;
+}
+
+#qna-modal-q-body {
+  height: 100px !important;
+}
+
+.form-style-7{
+	max-width:500px;
+	margin:50px auto;
+	background:#fff;
+	border-radius:2px;
+  padding:20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-7 h1{
+	display: block;
+	text-align: center;
+	padding: 0;
+	margin: 0px 0px 20px 0px;
+	color: #5C5C5C;
+	font-size:x-large;
+}
+.form-style-7 ul{
+  width: 450px;
+	list-style:none;
+	padding:0;
+  margin: auto;	
+}
+.form-style-7 li{
+	display: block;
+	padding: 9px;
+	border:1px solid #DDDDDD;
+	margin-bottom: 30px;
+	border-radius: 3px;
+}
+.form-style-7 li:last-child{
+	border:none;
+	margin-bottom: 0px;
+	text-align: center;
+}
+.form-style-7 li > label{
+	display: block;
+	float: left;
+	margin-top: -19px;
+	background: #FFFFFF;
+	height: 14px;
+	padding: 2px 5px 2px 5px;
+	color: #B9B9B9;
+	font-size: 14px;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.form-style-7 input[type="text"],
+.form-style-7 input[type="date"],
+.form-style-7 input[type="datetime"],
+.form-style-7 input[type="email"],
+.form-style-7 input[type="number"],
+.form-style-7 input[type="search"],
+.form-style-7 input[type="time"],
+.form-style-7 input[type="url"],
+.form-style-7 input[type="password"],
+.form-style-7 textarea,
+.form-style-7 select 
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	display: block;
+	outline: none;
+	border: none;
+	height: 25px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-7 input[type="text"]:focus,
+.form-style-7 input[type="date"]:focus,
+.form-style-7 input[type="datetime"]:focus,
+.form-style-7 input[type="email"]:focus,
+.form-style-7 input[type="number"]:focus,
+.form-style-7 input[type="search"]:focus,
+.form-style-7 input[type="time"]:focus,
+.form-style-7 input[type="url"]:focus,
+.form-style-7 input[type="password"]:focus,
+.form-style-7 textarea:focus,
+.form-style-7 select:focus 
+{
+}
+.form-style-7 li > span{
+	background: #F3F3F3;
+	display: block;
+	padding: 3px;
+	margin: 0 -9px -9px -9px;
+	text-align: center;
+	color: #C0C0C0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.form-style-7 textarea{
+	resize:none;
+}
+.form-style-7 input[type="submit"],
+.form-style-7 input[type="button"]{
+	background: #2471FF;
+	border: none;
+	padding: 10px 20px 10px 20px;
+	border-bottom: 3px solid #5994FF;
+	border-radius: 3px;
+	color: #D2E2FF;
+}
+.form-style-7 input[type="submit"]:hover,
+.form-style-7 input[type="button"]:hover{
+	background: #6B9FFF;
+	color:#fff;
+}
+
+#qna-modal-q-body:focus ~ #qna-modal-q-body-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+#qna-modal-q-name:focus ~ #qna-modal-q-name-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+#qna-modal-q-email:focus ~ #qna-modal-q-email-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+.qna-modal-a-email:focus ~ .qna-modal-a-email-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+.qna-modal-a-name:focus ~ .qna-modal-a-name-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+.qna-modal-a-pic:focus ~ .qna-modal-a-pic-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}
+
+.qna-modal-a-body:focus ~ .qna-modal-a-body-span{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 1s linear;
+}

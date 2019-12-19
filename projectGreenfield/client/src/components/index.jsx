@@ -5,6 +5,7 @@ import Reviews from './reviews.jsx';
 import Home from './home.jsx';
 import Related from './related.jsx';
 import Outfit from './outfit.jsx';
+import QnA from './QnA-components/QnA.jsx';
 
 
 class App extends React.Component {
@@ -50,6 +51,7 @@ class App extends React.Component {
       <div>
         <Home prodId={this.state.prodId} handleStyles={this.handleStyles}/>
         <Related handleRelatedCard={this.handleRelatedCard} id={this.state.prodId}/>
+        <QnA />
         <Outfit currentStyle ={this.state.selectedStyle} product={this.state.prodId}/>
         <Reviews prodId={this.state.prodId}/>
       </div>
