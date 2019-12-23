@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal.jsx';
 
-const url = 'http://localhost:3000';
+const url = 'http://3.134.102.30';
 
 class AddQuestion extends React.Component {
   constructor(props, { productName, productId }) {

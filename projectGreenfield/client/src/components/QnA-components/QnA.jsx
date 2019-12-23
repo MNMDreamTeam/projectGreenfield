@@ -4,23 +4,22 @@ import PropTypes from 'prop-types';
 import AddQuestion from './AddQuestion.jsx';
 import List from './List.jsx';
 import Search from './Search.jsx';
-import './QnA-styles.css';
 
-const url = 'http://localhost:3000';
+const url = 'http://3.134.102.30';
 
 
 class QnA extends React.Component {
-  constructor(props, { helpfulClickHandler, reportClickHandler }) {
-    super(props, { helpfulClickHandler, reportClickHandler });
+  constructor(props, { prodId }) {
+    super(props, { prodId });
     this.state = {
-      productId: props.productData.id,
+      productId: props.prodId,
       filteredQuestions: [],
       questions: [],
       search: '',
       questionDisplayCount: 2,
-      productName: props.productData.name,
+      productName: "Camo Onesie",
     };
-
+    console.log(this.state)
     this.searchFilter = () => {
       const { questions } = this.state;
       this.setState({ search: document.getElementById('qna-searchbar').value }, () => {
@@ -36,6 +35,30 @@ class QnA extends React.Component {
       });
     };
 
+    this.helpfulClickHandler = (component, id, type) => {
+      if (component === 'reviews') {
+        fetch(`${url}/${component}/helpful/${id}`, {
+          method: 'PUT',
+        });
+      } else {
+        fetch(`${url}/${component}/${type}/${id}/helpful`, {
+          method: 'PUT',
+        });
+      }
+    };
+
+    this.reportClickHandler = (component, id, type) => {
+      if (component === 'reviews') {
+        fetch(`${url}/${component}/report/${id}`, {
+          method: 'PUT',
+        });
+      } else {
+        fetch(`${url}/${component}/${type}/${id}/report`, {
+          method: 'PUT',
+        });
+      }
+    };
+
     this.increaseDisplayCount = () => {
       const { questionDisplayCount } = this.state;
       this.setState({ questionDisplayCount: questionDisplayCount + 2 });
@@ -43,10 +66,9 @@ class QnA extends React.Component {
   }
 
   componentDidMount() {
-    const { productData } = this.props;
-    const { id } = productData;
+    const { prodId } = this.props;
 
-    fetch(`${url}/qa/${id}`)
+    fetch(`${url}/qa/${prodId}`)
       .then((data) => data.json())
       .then((result) => {
         const currentState = this.state;
@@ -56,11 +78,10 @@ class QnA extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { productData } = this.props;
-    const { productId } = productData.id;
+    const { prodId } = this.props;
 
-    if (productData.id !== prevProps.productData.id) {
-      fetch(`${url}/qa/${productData.id}`)
+    if (prodId !== prevProps.prodId) {
+      fetch(`${url}/qa/${prodId}`)
         .then((data) => data.json())
         .then((result) => {
           const currentState = this.state;
@@ -79,9 +100,10 @@ class QnA extends React.Component {
       filteredQuestions,
       productName,
       questionDisplayCount,
+      helpfulClickHandler,
+      reportClickHandler,
     } = this.state;
 
-    const { helpfulClickHandler, reportClickHandler } = this.props;
     return (
       <div id="qna-container">
         <h4 style={{ marginTop: '50px' }}>
@@ -132,8 +154,6 @@ class QnA extends React.Component {
 }
 
 QnA.propTypes = {
-  helpfulClickHandler: PropTypes.func.isRequired,
-  reportClickHandler: PropTypes.func.isRequired,
   productData: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
