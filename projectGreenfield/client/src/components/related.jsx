@@ -33,13 +33,13 @@ class Related extends React.Component {
 
   componentDidMount() {
     let tempProductsArr = [];
-    fetch(`http://3.134.102.30/products/${this.props.id}/related`)
+    fetch(`http://127.0.0.1:3000/products/${this.props.id}/related`)
       .then(res => res.json())
       .then((relatedIds) => {
         relatedIds.forEach(el => {
-          let styles = fetch(`http://3.134.102.30/products/${el}/styles`).then(res => res.json());
-          let prods = fetch(`http://3.134.102.30/products/${el}`).then(res => res.json());
-          let ratings = fetch(`http://3.134.102.30/reviews/${el}/meta`).then(res => res.json());
+          let styles = fetch(`http://127.0.0.1:3000/products/${el}/styles`).then(res => res.json());
+          let prods = fetch(`http://127.0.0.1:3000/products/${el}`).then(res => res.json());
+          let ratings = fetch(`http://127.0.0.1:3000/reviews/${el}/meta`).then(res => res.json());
 
           let all = {};
 

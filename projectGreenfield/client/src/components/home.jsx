@@ -36,14 +36,14 @@ class Home extends React.Component {
 forceRender() {
     this.setState({loaded: false});
     this.setState({prodId: this.props.prodId})
-    $.get(`http://3.134.102.30/products/${this.props.prodId}`)
+    $.get(`http://127.0.0.1:3000/products/${this.props.prodId}`)
     .then(obj => {
         this.setState({currentProduct: obj});
         console.log('object in force render', obj);
     })
     .then(() => {
         var ID = this.state.currentProduct.id;
-        $.get(`http://3.134.102.30/products/${ID}/styles`)
+        $.get(`http://127.0.0.1:3000/products/${ID}/styles`)
         .then((styleObj) => {
             this.setState({styles: styleObj.results});
             this.setState({currentStyle: styleObj.results[0]});
@@ -103,7 +103,7 @@ change(e){
 
     // console.log(this.state.curStyleIndex);
     var ID = this.state.prodId;
-    $.get(`http://3.134.102.30/products/${ID}/styles`)
+    $.get(`http://127.0.0.1:3000/products/${ID}/styles`)
     .then((styleObj) => {
         this.setState({styles: styleObj.results});
        // this.setState({currentStyle:});
@@ -180,7 +180,7 @@ componentDidMount(){
     var num = localStorage.getItem('Items in Cart');
     this.setState({cartNum: Number(num)});
 
-    $.get('http://3.134.102.30/products/list?count=11')
+    $.get('http://127.0.0.1:3000/products/list?count=11')
     .then(items => {
         this.setState({products: items});
     })
@@ -189,7 +189,7 @@ componentDidMount(){
     })
     .then(() => {
         var ID = this.state.prodId;
-        $.get(`http://3.134.102.30/products/${ID}/styles`)
+        $.get(`http://127.0.0.1:3000/products/${ID}/styles`)
         .then((styleObj) => {
             this.setState({styles: styleObj.results});
             this.setState({currentStyle: styleObj.results[0]});

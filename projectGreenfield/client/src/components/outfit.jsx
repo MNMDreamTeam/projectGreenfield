@@ -26,7 +26,7 @@ class Outfit extends React.Component {
     addToOutfit(e) {
         if (!this.state.outfitList.find(({ styleId }) => styleId === this.props.currentStyle.style_id)) {
 
-            let product = fetch(`http://3.134.102.30/products/${this.props.product}`).then(res => res.json());
+            let product = fetch(`http://127.0.0.1:3000/products/${this.props.product}`).then(res => res.json());
             let cardInfo = {};
 
             Promise.all([product])
