@@ -13,8 +13,8 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    let current = fetch(`http://3.134.102.30/products/${this.props.currentView}`).then(res => res.json());
-    let compare = fetch(`http://3.134.102.30/products/${this.props.relatedId}`).then(res => res.json());
+    let current = fetch(`http://127.0.0.1:3000/products/${this.props.currentView}`).then(res => res.json());
+    let compare = fetch(`http://127.0.0.1:3000/products/${this.props.relatedId}`).then(res => res.json());
 
     Promise.all([current, compare])
       .then((data) => {

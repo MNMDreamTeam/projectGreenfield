@@ -132,8 +132,13 @@ changeNumber(e){
     // console.log(e.target.innerHTML);
     for (var key in this.state.currentStyle.skus){
         if (key === e.target.innerHTML){
+            if (this.state.currentStyle.skus[key] === undefined){
+                this.setState({curSizeNum : 0});
+                this.setState({curSize : 'none'});
+            } else{
             this.setState({curSizeNum : this.state.currentStyle.skus[key]});
             this.setState({curSize : key});
+            }
             // console.log('current size num in state', this.state.curSizeNum)
         }
     }
