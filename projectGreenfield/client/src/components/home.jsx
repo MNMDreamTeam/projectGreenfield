@@ -132,7 +132,7 @@ changeNumber(e){
     // console.log(e.target.innerHTML);
     for (var key in this.state.currentStyle.skus){
         if (key === e.target.innerHTML){
-            if (this.state.currentStyle.skus[key] === undefined){
+            if (this.state.currentStyle.skus[key] === null){
                 this.setState({curSizeNum : 0});
                 this.setState({curSize : 'none'});
             } else{
