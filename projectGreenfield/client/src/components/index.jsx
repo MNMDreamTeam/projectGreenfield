@@ -27,7 +27,6 @@ class App extends React.Component {
     var dt = new Date();
     var utcDate = dt.toUTCString();
     click.timeSamp = utcDate
-    console.log('click', click);
     var arr = this.state.userClicks;
     arr.push(click);
     this.setState({

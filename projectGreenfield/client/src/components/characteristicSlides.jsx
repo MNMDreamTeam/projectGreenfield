@@ -32,7 +32,6 @@ class CharacteristicSlides extends React.Component {
     render() {
         return (
             <div>
-                {console.log('characteristics:', this.props.characteristics)}
                 {this.props.characteristics.map(character => {
                     return (<div>
                         <small class='characteristics'>{Object.keys(character)}</small>

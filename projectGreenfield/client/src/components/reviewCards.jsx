@@ -15,11 +15,9 @@ class ReviewCards extends React.Component {
         fetch(`http://3.134.102.30/reviews/${this.props.prodId}/list?count=1000`)
             .then(res => res.json())
             .then((data) => {
-                console.log('data', data);
                 let reviewsArr = [];
                 for (let i = 0; i < data.results.length; i++){
                     reviewsArr.push((data.results)[i]);
-                    console.log('newArr:', reviewsArr);
                 }
                 this.setState({reviews: reviewsArr});
             })
@@ -37,7 +35,7 @@ class ReviewCards extends React.Component {
                 <b>{this.state.reviews.length} reviews sorted by relevance</b>
                 {this.state.reviews.map(el => {
                     return (
-                        <div className='card w-425 reviewCard'>
+                        <div className='card w-425 reviewCard' key={this.state.reviews.review_id}>
                             <div className='card-body'>
                                 <span className='reviewStars'>{this.state.reviews.length > 0 ? <StarRatings starDimension={'15px'} starSpacing={'10px'} 
                                     starRatedColor={'rgb(189, 153, 57)'} numberOfStars={5} rating={el.rating}/> : 'loading'}
@@ -61,7 +59,7 @@ class ReviewCards extends React.Component {
                             </div>
                         </div>)
                     })}
-                {console.log('state:', this.state.reviews)}
+                {/* {console.log('state:', this.state.reviews)} */}
                 {/* <Form /> */}
             </div>
         )

@@ -169,8 +169,6 @@
     display: table;
     width:15em;
     height:35em;
-    /* table-layout: fixed;  */
-   
     margin-top: 7em;
     margin-left: 4em;
     background-color:white;
@@ -179,12 +177,9 @@
 .circleRow
 {
     display: table;
-    /* width:4em;
-    height: 4em; */
     table-layout: fixed; /*Optional*/
     border-spacing: .6em;
     margin-left:1.4em;
-    /* background-color:lightblue;  */
 }
 
 .circleCol
@@ -194,11 +189,8 @@
     height: 4em;
     border-radius: 50%;
     border: black 1px solid;
-    /* background-color: rgb(208, 208, 208); */
     margin-left: 1.5em;
     cursor: pointer;
-    /* background-color:lightblue;  */
-
 }
 
 h2 {
@@ -245,8 +237,6 @@ p {
     height:7em;
     margin-left:12em;
     margin-bottom:.5em;
-    /* background-color: rgb(220, 244, 103); */
-   
     background-color: rgb(116, 196, 245); 
 }
 
@@ -342,7 +332,6 @@ p {
 .nameAndDate {
     margin-left: 150px;
     overflow: hidden;
-    /* white-space: nowrap; */
     text-overflow: ellipsis;
     max-width: 50px;
 }
@@ -360,7 +349,6 @@ p {
 
 .reviewBody {
     overflow: hidden;
-    /* white-space: nowrap; */
     text-overflow: ellipsis;
     max-width: 500px;
 }

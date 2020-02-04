@@ -74,14 +74,13 @@ class Reviews extends React.Component {
             characterObj[key] = obj[key];
             arr.push(characterObj);
         }
-        // console.log(arr);
         return arr;
     }
 
     //in api recomended: {'0': 'no', '1': 'yes'}
     componentDidMount() {
         console.log('propsId:', this.props.prodId);
-        fetch(`http://3.134.102.30/reviews/${this.props.prodId}/meta`) // using this as a good base case
+        fetch(`http://3.134.102.30/reviews/${this.props.prodId}/meta`)
             .then(res => res.json())
             .then((data) => {
                 let ratings = this.calcRating(data.ratings);
@@ -102,7 +101,6 @@ class Reviews extends React.Component {
     render() {
         return (
             <div className='container'>
-                {console.log('totalRatings', this.state.totalRatings)}
                 <h4><em><u>Ratings and Reviews</u></em></h4>
                 <div className='left-row-review'>
                     <div>
@@ -124,11 +122,10 @@ class Reviews extends React.Component {
                         <div class="progress" style={{width: 140 + 'px'}}>1 star &nbsp;{this.state.ratingsBreakdown[1] ?
                             (<div class="progress-bar" style={{width: this.state.ratingsBreakdown[1], backgroundColor: '#707070'}} role="progressbar" aria-valuenow={this.state.ratingsBreakdown[1]} aria-valuemin="0" aria-valuemax="100"></div>) : ''}
                         </div>
-                        {/* {console.log('state', this.state)} */}
                         {Array.isArray(this.state.characteristics) ? (<CharacteristicSlides characteristics={this.state.characteristics}/>) : 'loading'}
                     </div>
                     <div className='right-row-review'>
-                        <ReviewCards prodId={this.props.prodId}/>
+                        <ReviewCards prodId={this.props.prodId} key={this.state.percentOfRecommended}/>
                     </div>
                 </div>
             </div>
